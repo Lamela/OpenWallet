@@ -16,7 +16,7 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width" />
         
-        <title>Meménto | Another nice WP theme by YIW</title>
+        <title>Open Wallet - Probably the best online shop</title>
         
         <!-- [favicon] begin -->
         <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico" />
@@ -72,6 +72,53 @@
         <script type='text/javascript' src='js/layerslider.kreaturamedia.jquery-min.js'></script>
         <script type='text/javascript' src='js/jquery.quicksand.js'></script>
         
+        <link rel="stylesheet" type="text/css" media="all" href="bootstrap.min.css" />
+        <script type='text/javascript' src='js/bootstrap.min.js'></script>
+
+        <style>
+        div.searchDiv{
+            background-color: #000000;
+            width: 400px;
+            margin: 50px auto;
+            padding: 1px;
+            height: 40px;
+            display: block;
+            margin-bottom: 10px;
+        }
+        div.searchDiv input{
+            width: 275px;
+            border: 1px solid transparent;
+            height: 36px;
+            margin: 1px;
+            outline:none;
+            font-style: italic;
+        }
+        div.searchDiv button{
+            width: 110px;
+            border: 1px solid transparent;
+            background-color: #000000;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        img.logo{
+            position: absolute;
+            left: 0px;
+            top: 30px;
+            z-index:-1;
+        }
+        body{
+            font-size:12px;
+            font-family:Arial;
+        }
+        a{
+            color:#999;
+        }
+        a:hover{
+            text-decoration:none;
+            color:#C40000;
+        }
+        </style>
     </head>
     <body class="no_js responsive boxed-layout chrome ">
         
@@ -90,13 +137,13 @@
                 
                 <div class="topbar-right">
                     <ul class="topbar-level-1">
-                        <li>
+                        <!-- <li>
                             <a href="#">Top bar menu</a>
                             <ul class="sub-menu">
                                 <li><a href="#">And submenu</a></li>
                                 <li><a href="#"><i class="icon-home"></i>with icons</a></li>
                             </ul>
-                        </li>
+                        </li> -->
                         <li><a href="contact.html"><i class="icon-envelope"></i>Mail us</a></li>
                         <li class="login_link"><i class="icon-key"></i><a href="#">Login</a></li>
 						<li><a href="#"><i class="cart"></i>Cart</a></li>
@@ -118,29 +165,53 @@
                         <h1>
                             <a class="logo-text" href="index.html" title="Mem&eacute;nto">OpenWallet</a>                        
                         </h1>
-                        <p>One of the best online shops</p>
+                        <p>Probably the best online shop</p>
                     </div>
-                    <!-- END LOGO -->  
-                    
+                    <!-- END LOGO -->
                     <!-- START NAV -->
                     <div id="nav" class="group">
                         <ul id="menu-main-nav" class="level-1">
-                            
                             <li>
-                                <a href="index.html"><i class="icon-home"></i>Home</a>
+                                <a href="index.html"><i class="icon-home"></i>Departements</a>
                                 <ul class="sub-menu">
-                                    <li><a href="home-ii-stretched.html">Home II (stretched)</a></li>
-                                    <li><a href="home-iii-portfolio.html">Home III (portfolio)</a></li>
-                                    <li><a href="home-iv.html">Home IV</a></li>
-                                    <li><a href="home-v.html">Home V</a></li>
-                                    <li><a href="home-vi.html">Home VI</a></li>
-                                    <li><a href="home-vii.html">Home VII (parallax slider)</a></li>
-                                    <li><a href="home-ix-with-tab.html">Home IX (with tab)</a></li>
-                                    <li><a href="home-x.html">Home X</a></li>
+                                    <li><a href="home-ii-stretched.html">Boonks & Audible</a></li>
+                                    <li><a href="home-iii-portfolio.html">Electronics, Computers & Office</a></li>
+                                    <li><a href="home-iv.html">Home, Garden, Pets & Tools</a></li>
+                                    <li><a href="home-v.html">Food & Grocery</a></li>
+                                    <li><a href="home-vi.html">Beauty & Health</a></li>
+                                    <li><a href="home-vii.html">Toys, Kids & Baby</a></li>
+                                    <li><a href="home-ix-with-tab.html">Clothing, Shoes & Jewelry</a></li>
+                                    <li><a href="home-x.html">Handmade</a></li>
+                                    <li><a href="home-x.html">Sports & Outdoors</a></li>
+                                    <li><a href="home-x.html">Automotive & industrial</a></li>
                                 </ul>
                             </li>
+                        </div>
+                        <div id="nav" class="group">
+                           <div class="searchDiv">
+
+                            <input type="text" placeholder="I'm going to buy..." name="keyword">
+                            <button class="searchButton" type="submit">Search</button>
+                        </div>
+                        <!-- <ul id="menu-main-nav" class="level-1">
                             
                             <li>
+                                <a href="index.html"><i class="icon-home"></i>Departements</a>
+                                <ul class="sub-menu">
+                                    <li><a href="home-ii-stretched.html">Boonks & Audible</a></li>
+                                    <li><a href="home-iii-portfolio.html">Electronics, Computers & Office</a></li>
+                                    <li><a href="home-iv.html">Home, Garden, Pets & Tools</a></li>
+                                    <li><a href="home-v.html">Food & Grocery</a></li>
+                                    <li><a href="home-vi.html">Beauty & Health</a></li>
+                                    <li><a href="home-vii.html">Toys, Kids & Baby</a></li>
+                                    <li><a href="home-ix-with-tab.html">Clothing, Shoes & Jewelry</a></li>
+                                    <li><a href="home-x.html">Handmade</a></li>
+                                    <li><a href="home-x.html">Sports & Outdoors</a></li>
+                                    <li><a href="home-x.html">Automotive & industrial</a></li>
+                                </ul>
+                            </li> -->
+                            
+                            <!-- <li>
                                 <a href="#"><i class="icon-film"></i>Sliders</a>
                                 <ul class="sub-menu">
                                     <li><a href="slider-flash-slider.html">Flash Slider</a></li>
@@ -188,9 +259,9 @@
                                     <li><a href="big-thumbnails.html">Big thumbnails</a></li>
                                     <li><a href="small-thumbnails.html">Small thumbnails</a></li>
                                 </ul>
-                            </li>
+                            </li> -->
                             
-                            <li>
+                            <!-- <li>
                                 <a href="#"><i class="icon-list-alt"></i>Shortcodes</a>
                                 <ul class="sub-menu">
                                     <li><a href="shortcodes-alert-box-buttons.html"><i class="icon-list-alt   icon-warning-sign"></i>Alert Box &#038; Buttons</a></li>
@@ -203,9 +274,9 @@
                                 </ul>
                             </li>
                             
-                            <li><a href="features.html"><i class="icon-star"></i>Features</a></li>
+                            <li><a href="features.html"><i class="icon-star"></i>Features</a></li> -->
                             
-                        </ul>
+                        <!-- </ul> -->
                     </div>
                     <!-- END NAV -->     
                 </div>
@@ -468,8 +539,8 @@
             <div class="inner group">
                 <div class="left">
                     <p>
-                    	Copyright <a href="http://yithemes.com/live/?theme=memento"><strong>Mem[é]nto</strong></a> 2012 -
-                    	Powered by <a href="http://yithemes.com" title="Free HTML Template"><strong>Your Inspiration Themes</strong></a>
+                    	Copyright <a href="#"><strong>OpenWallet</strong></a> 2017 -
+                    	Powered by <a href="#" title="Free HTML Template"><strong>OWCompany</strong></a>
                     </p>
                 </div>
                 <div class="right">
