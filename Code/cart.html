@@ -72,6 +72,53 @@
         <script type='text/javascript' src='js/layerslider.kreaturamedia.jquery-min.js'></script>
         <script type='text/javascript' src='js/jquery.quicksand.js'></script>
         
+	<link rel="stylesheet" type="text/css" media="all" href="bootstrap.min.css" />
+        <script type='text/javascript' src='js/bootstrap.min.js'></script>
+
+        <style>
+        div.searchDiv{
+            background-color: #000000;
+            width: 400px;
+            margin: 50px auto;
+            padding: 1px;
+            height: 40px;
+            display: block;
+            margin-bottom: 10px;
+        }
+        div.searchDiv input{
+            width: 275px;
+            border: 1px solid transparent;
+            height: 36px;
+            margin: 1px;
+            outline:none;
+            font-style: italic;
+        }
+        div.searchDiv button{
+            width: 110px;
+            border: 1px solid transparent;
+            background-color: #000000;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        img.logo{
+            position: absolute;
+            left: 0px;
+            top: 30px;
+            z-index:-1;
+        }
+        body{
+            font-size:12px;
+            font-family:Arial;
+        }
+        a{
+            color:#999;
+        }
+        a:hover{
+            text-decoration:none;
+            color:#C40000;
+        }
+        </style>
     </head>
     <body class="no_js responsive boxed-layout chrome ">
         
@@ -90,15 +137,16 @@
                 
                 <div class="topbar-right">
                     <ul class="topbar-level-1">
-                        <li>
+                       <!-- <li>
                             <a href="#">Top bar menu</a>
                             <ul class="sub-menu">
                                 <li><a href="#">And submenu</a></li>
                                 <li><a href="#"><i class="icon-home"></i>with icons</a></li>
                             </ul>
-                        </li>
+					   </li>-->
                         <li><a href="contact.html"><i class="icon-envelope"></i> Mail us</a></li>
-                        <li class="login_link"><i class="icon-key"></i><a href="#">Log in</a></li>
+                        <li class="login_link"><i class="icon-key"></i><a href="#">Login</a></li>
+						<li><a href="#"><i class="cart"></i>Cart</a></li>
                     </ul>
                 </div>
                 
@@ -115,126 +163,54 @@
                     <!-- START LOGO -->
                     <div id="logo" class="group">
                         <h1>
-                            <a class="logo-text" href="index.html" title="Mem&eacute;nto">Mem<span>é</span>nto</a>                        
+                            <a class="logo-text" href="index.html" title="Mem&eacute;nto">OpenWallet</a>                        
                         </h1>
-                        <p>Another nice WP theme by YIW</p>
+                        <p>Probably the best online shop</p>
                     </div>
-                    <!-- END LOGO -->  
-                    
+                    <!-- END LOGO -->
                     <!-- START NAV -->
                     <div id="nav" class="group">
                         <ul id="menu-main-nav" class="level-1">
-                            
                             <li>
-                                <a href="index.html"><i class="icon-home"></i>Home</a>
+                                <a href="index.html"><i class="icon-home"></i>Departements</a>
                                 <ul class="sub-menu">
-                                    <li><a href="home-ii-stretched.html">Home II (stretched)</a></li>
-                                    <li><a href="home-iii-portfolio.html">Home III (portfolio)</a></li>
-                                    <li><a href="home-iv.html">Home IV</a></li>
-                                    <li><a href="home-v.html">Home V</a></li>
-                                    <li><a href="home-vi.html">Home VI</a></li>
-                                    <li><a href="home-vii.html">Home VII (parallax slider)</a></li>
-                                    <li><a href="home-ix-with-tab.html">Home IX (with tab)</a></li>
-                                    <li><a href="home-x.html">Home X</a></li>
+                                    <li><a href="home-ii-stretched.html">Boonks & Audible</a></li>
+                                    <li><a href="home-iii-portfolio.html">Electronics, Computers & Office</a></li>
+                                    <li><a href="home-iv.html">Home, Garden, Pets & Tools</a></li>
+                                    <li><a href="home-v.html">Food & Grocery</a></li>
+                                    <li><a href="home-vi.html">Beauty & Health</a></li>
+                                    <li><a href="home-vii.html">Toys, Kids & Baby</a></li>
+                                    <li><a href="home-ix-with-tab.html">Clothing, Shoes & Jewelry</a></li>
+                                    <li><a href="home-x.html">Handmade</a></li>
+                                    <li><a href="home-x.html">Sports & Outdoors</a></li>
+                                    <li><a href="home-x.html">Automotive & industrial</a></li>
                                 </ul>
                             </li>
-                            
-                            <li>
-                                <a href="#"><i class="icon-film"></i>Sliders</a>
-                                <ul class="sub-menu">
-                                    <li><a href="slider-flash-slider.html">Flash Slider</a></li>
-                                    <li><a href="slider-thumbnails-slider.html">Thumbnails Slider</a></li>
-                                    <li><a href="slider-elastic-slider.html">Elastic Slider</a></li>
-                                    <li><a href="slider-elegant-slider.html">Elegant Slider</a></li>
-                                    <li><a href="slider-nivo-slider.html">Nivo Slider</a></li>
-                                    <li><a href="slider-layers-slider.html">Parallax Slider</a></li>
-                                    <li><a href="slider-fixed-image.html">Fixed Image</a></li>
-                                </ul>
-                            </li>
-                            
-                            <li>
-                                <a href="portfolio.html"><i class="icon-picture"></i> Portfolio</a>
-                                <ul class="sub-menu">
-                                    <li><a href="portfolio-3-columns.html">3 Columns</a></li>
-                                    <li><a href="portfolio-big-image.html">Big Image</a></li>
-                                    <li><a href="portfolio-filterable.html">Filterable</a></li>
-                                    <li><a href="portfolio-full-description.html">Full Description</a></li>
-                                    <li><a href="portfolio-with-slider.html">With Slider</a></li>
-                                </ul>
-                            </li>
-                            
-                            <li>
-                                <a href="#"><i class="icon-file"></i>Pages</a>
-                                <ul class="sub-menu">
-                                    <li><a href="faqs.html"><i class="icon-file   icon-question-sign"></i>Faq</a></li>
-                                    <li><a href="testimonials.html"><i class="icon-comments"></i>Testimonials</a></li>
-                                    <li>
-                                        <a href="#"><i class="icon-leaf"></i>Gallery</a>
-                                        <ul class="sub-menu">
-                                            <li><a href="gallery-responsive.html">Responsive</a></li>
-                                            <li><a href="gallery-filterable.html">Filterable</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="contact.html"><i class="icon-edit"></i> Contact</a></li>
-                                    <li><a href="404.html"><i class="icon-remove-sign"></i>Error 404</a></li>
-                                    <li><a href="archives.html"><i class="icon-bookmark"></i>Archives</a></li>
-                                </ul>
-                            </li>
-                            
-                            <li>
-                                <a href="#"><i class="icon-calendar"></i>Blog</a>
-                                <ul class="sub-menu">
-                                    <li><a href="big-thumbnails.html">Big thumbnails</a></li>
-                                    <li><a href="small-thumbnails.html">Small thumbnails</a></li>
-                                </ul>
-                            </li>
-                            
-                            <li>
-                                <a href="#"><i class="icon-list-alt"></i>Shortcodes</a>
-                                <ul class="sub-menu">
-                                    <li><a href="shortcodes-alert-box-buttons.html"><i class="icon-list-alt   icon-warning-sign"></i>Alert Box &#038; Buttons</a></li>
-                                    <li><a href="shortcodes-icon-section.html"><i class="icon-screenshot"></i>Icon section</a></li>
-                                    <li><a href="shortcodes-media-widgets.html"><i class="icon-picture"></i>Media &#038; Widgets</a></li>
-                                    <li><a href="shortcodes-mix-various.html"><i class="icon-fire"></i>Mix &#038; Various</a></li>
-                                    <li><a href="shortcodes-nivo-slider.html"><i class="icon-facetime-video"></i>Nivo Slider</a></li>
-                                    <li><a href="shortcodes-table-box-prices.html"><i class="icon-th-list"></i>Table &#038; Box prices</a></li>
-                                    <li><a href="shortcodes-typography.html"><i class="icon-font"></i>Typography</a></li>
-                                </ul>
-                            </li>
-                            
-                            <li><a href="features.html"><i class="icon-star"></i>Features</a></li>
-                            
-                        </ul>
+                        </div>
+                        <div id="nav" class="group">
+                           <div class="searchDiv">
+
+                            <input type="text" placeholder="I'm going to buy..." name="keyword">
+                            <button class="searchButton" type="submit">Search</button>
+                        </div>
                     </div>
                     <!-- END NAV -->     
                 </div>
             </div>
             <!-- END HEADER -->
-
-            <!-- PAGE META -->
-			<div id="page_meta" class="home-section">
-			    <div class="inner group">
-			        <div class="meta-left">
-			            <h2 class="page-title">Table &amp; Box prices</h2>
-			        </div>
-			        <div class="meta-right">
-			            <p id="crumbs" class="theme_breadcumb"><a class="home" href="index.html">Home Page</a>  //  <a class="no-link" href="#">Shortcodes</a>  //  <a class="no-link current" href="#">Table &amp; Box prices</a></p>
-			        </div>
-			    </div>
-			</div>
 			<!-- /PAGE META -->        
 			<div id="primary" class="layout-sidebar-right home-section">
 			    <div class="inner group">
 			        <!-- START CONTENT -->
-			        <div id="content" class="group">
+			        <div id="content" class="group" style="margin-right:0px;width:650px;padding-right:0px">
 			            <div class="page type-page status-publish hentry group">
 							<h2 class="title-post-page">Shopping Cart</h2>
-							<div clas="cartTitle pull-right">
+							<!--<div clas="cartTitle pull-right">
 								<span>Chosen product</span>
 								<span class="cartTitlePrice">€0.00</span>
 								<button class="createOrderButton" disabled="disabled">Proceed to checkout</button>
-							</div>
-			                <table class="short-table white" style="width: 100%" cellspacing="0" cellpadding="0">
+							</div>-->
+			                <table class="short-table white" style="width: 95%" cellspacing="0" cellpadding="0">
 			                    <thead>
 			                        <tr>
 			                            <th></th>
@@ -262,353 +238,41 @@
 										<td><i class="yiw-sc-tick icon-ok" style="color:#23b10b;font-size:14px;">800€</i></td>
 										<td><a href="#">Delete</a></td>
 			                        </tr>
-			                        <tr>
-			                            <th class="features">Features 2</th>
-			                            <td>5</td>
-			                            <td><i class="yiw-sc-tick icon-ok" style="color:#23b10b;font-size:14px;"></i></td>
-			                            <td>35</td>
-			                        </tr>
-			                        <tr>
-			                            <th class="features">Features 3</th>
-			                            <td>3</td>
-			                            <td>6</td>
-			                            <td>10</td>
-			                        </tr>
-			                        <tr>
-			                            <th class="features">Features 4</th>
-			                            <td><i class="yiw-sc-tick icon-ok" style="color:#23b10b;font-size:14px;"></i></td>
-			                            <td>18</td>
-			                            <td><i class="yiw-sc-tick icon-ok" style="color:#23b10b;font-size:14px;"></i></td>
-			                        </tr>
-			                        <tr>
-			                            <th class="features">Features 5</th>
-			                            <td>3</td>
-			                            <td>6</td>
-			                            <td><i class="yiw-sc-tick icon-ok" style="color:#23b10b;font-size:14px;"></i></td>
-			                        </tr>
-			                        <tr>
-			                            <th class="features">Features 6</th>
-			                            <td>5</td>
-			                            <td>3</td>
-			                            <td>35</td>
-			                        </tr>
 			                    </tbody>
 			                </table>
-							<div class="cartFoot">
+							<!--<div class="cartFoot">
 								<div class="pull-right">
 									<span>You have chosen <span class="cartSumNumber">0</span> product</span>
 									<span>Summary: </span>
 									<span class="cartSumPrice">€0.00</span>
 									<button class="createOrderButton" disabled="disabled">Proceed to checkout</button>
 								</div>
-							</div>
-			                
-			                <h3>Red Table</h3>
-			                <table class="short-table red" style="width: 100%" cellspacing="0" cellpadding="0">
-			                    <thead>
-			                        <tr>
-			                            <th></th>
-			                            <th>Free</th>
-			                            <th>Mini</th>
-			                            <th>Standard</th>
-			                            <th>Premium</th>
-			                        </tr>
-			                    </thead>
-			                    <tbody>
-			                        <tr>
-			                            <th class="features">Features 1</th>
-			                            <td>1</td>
-			                            <td>unlimited</td>
-			                            <td><i class="yiw-sc-tick icon-ok" style="color:#23b10b;font-size:14px;"></i></td>
-			                            <td>-</td>
-			                        </tr>
-			                        <tr>
-			                            <th class="features">Features 2</th>
-			                            <td>3</td>
-			                            <td>5</td>
-			                            <td><i class="yiw-sc-tick icon-ok" style="color:#23b10b;font-size:14px;"></i></td>
-			                            <td>35</td>
-			                        </tr>
-			                        <tr>
-			                            <th class="features">Features 3</th>
-			                            <td>1</td>
-			                            <td>3</td>
-			                            <td>6</td>
-			                            <td>10</td>
-			                        </tr>
-			                        <tr>
-			                            <th class="features">Features 4</th>
-			                            <td>3</td>
-			                            <td><i class="yiw-sc-tick icon-ok" style="color:#23b10b;font-size:14px;"></i></td>
-			                            <td>18</td>
-			                            <td><i class="yiw-sc-tick icon-ok" style="color:#23b10b;font-size:14px;"></i></td>
-			                        </tr>
-			                        <tr>
-			                            <th class="features">Features 5</th>
-			                            <td>1</td>
-			                            <td>3</td>
-			                            <td>6</td>
-			                            <td><i class="yiw-sc-tick icon-ok" style="color:#23b10b;font-size:14px;"></i></td>
-			                        </tr>
-			                        <tr>
-			                            <th class="features">Features 6</th>
-			                            <td>3</td>
-			                            <td>5</td>
-			                            <td>3</td>
-			                            <td>35</td>
-			                        </tr>
-			                    </tbody>
-			                </table>
-			                
-			                <h3>Grey Table</h3>
-			                <table class="short-table grey" style="width: 100%" cellspacing="0" cellpadding="0">
-			                    <thead>
-			                        <tr>
-			                            <th></th>
-			                            <th>Free</th>
-			                            <th>Mini</th>
-			                            <th>Standard</th>
-			                            <th>Premium</th>
-			                        </tr>
-			                    </thead>
-			                    <tbody>
-			                        <tr>
-			                            <th class="features">Features 1</th>
-			                            <td>1</td>
-			                            <td>unlimited</td>
-			                            <td><i class="yiw-sc-tick icon-ok" style="color:#23b10b;font-size:14px;"></i></td>
-			                            <td>-</td>
-			                        </tr>
-			                        <tr>
-			                            <th class="features">Features 2</th>
-			                            <td>3</td>
-			                            <td>5</td>
-			                            <td><i class="yiw-sc-tick icon-ok" style="color:#23b10b;font-size:14px;"></i></td>
-			                            <td>35</td>
-			                        </tr>
-			                        <tr>
-			                            <th class="features">Features 3</th>
-			                            <td>1</td>
-			                            <td>3</td>
-			                            <td>6</td>
-			                            <td>10</td>
-			                        </tr>
-			                        <tr>
-			                            <th class="features">Features 4</th>
-			                            <td>3</td>
-			                            <td><i class="yiw-sc-tick icon-ok" style="color:#23b10b;font-size:14px;"></i></td>
-			                            <td>18</td>
-			                            <td><i class="yiw-sc-tick icon-ok" style="color:#23b10b;font-size:14px;"></i></td>
-			                        </tr>
-			                        <tr>
-			                            <th class="features">Features 5</th>
-			                            <td>1</td>
-			                            <td>3</td>
-			                            <td>6</td>
-			                            <td><i class="yiw-sc-tick icon-ok" style="color:#23b10b;font-size:14px;"></i></td>
-			                        </tr>
-			                        <tr>
-			                            <th class="features">Features 6</th>
-			                            <td>3</td>
-			                            <td>5</td>
-			                            <td>3</td>
-			                            <td>35</td>
-			                        </tr>
-			                    </tbody>
-			                </table>
-			                
-			                <h3>Blue Table</h3>
-			                <table class="short-table blue" style="width: 100%" cellspacing="0" cellpadding="0">
-			                    <thead>
-			                        <tr>
-			                            <th></th>
-			                            <th>Free</th>
-			                            <th>Mini</th>
-			                            <th>Standard</th>
-			                            <th>Premium</th>
-			                        </tr>
-			                    </thead>
-			                    <tbody>
-			                        <tr>
-			                            <th class="features">Features 1</th>
-			                            <td>1</td>
-			                            <td>unlimited</td>
-			                            <td><i class="yiw-sc-tick icon-ok" style="color:#23b10b;font-size:14px;"></i></td>
-			                            <td>-</td>
-			                        </tr>
-			                        <tr>
-			                            <th class="features">Features 2</th>
-			                            <td>3</td>
-			                            <td>5</td>
-			                            <td><i class="yiw-sc-tick icon-ok" style="color:#23b10b;font-size:14px;"></i></td>
-			                            <td>35</td>
-			                        </tr>
-			                        <tr>
-			                            <th class="features">Features 3</th>
-			                            <td>1</td>
-			                            <td>3</td>
-			                            <td>6</td>
-			                            <td>10</td>
-			                        </tr>
-			                        <tr>
-			                            <th class="features">Features 4</th>
-			                            <td>3</td>
-			                            <td><i class="yiw-sc-tick icon-ok" style="color:#23b10b;font-size:14px;"></i></td>
-			                            <td>18</td>
-			                            <td><i class="yiw-sc-tick icon-ok" style="color:#23b10b;font-size:14px;"></i></td>
-			                        </tr>
-			                        <tr>
-			                            <th class="features">Features 5</th>
-			                            <td>1</td>
-			                            <td>3</td>
-			                            <td>6</td>
-			                            <td><i class="yiw-sc-tick icon-ok" style="color:#23b10b;font-size:14px;"></i></td>
-			                        </tr>
-			                        <tr>
-			                            <th class="features">Features 6</th>
-			                            <td>3</td>
-			                            <td>5</td>
-			                            <td>3</td>
-			                            <td>35</td>
-			                        </tr>
-			                    </tbody>
-			                </table>
+							</div>-->
 			                
 			            </div>
 			        </div>
 			        <!-- END CONTENT -->
 			        <!-- START SIDEBAR -->
-			        <div id="sidebar" class="group one-fourth last">
-			            <div class="widget-first widget-last widget widget_nav_menu">
-			                <h3>Shortcodes</h3>
-			                <div class="menu-shortcodes-container">
-			                    <ul id="menu-shortcodes" class="menu">
-			                        <li><a href="alert-box-buttons.html">Alert Box &amp; Buttons</a></li>
-			                        <li><a href="icon-section.html">Icon section</a></li>
-			                        <li><a href="media-widgets.html">Media &amp; Widgets</a></li>
-			                        <li><a href="mix-various.html">Mix &amp; Various</a></li>
-			                        <li><a href="nivo-slider.html">Nivo Slider</a></li>
-			                        <li><a href="table-box-prices.html">Table &amp; Box prices</a></li>
-			                        <li><a href="typography.html">Typography</a></li>
-			                    </ul>
-			                </div>
-			            </div>
+			        <div id="sidebar" class="group one-fourth last" style="float:left;margin-left:0px;padding-left:0px">
+							<div class="price-table" style="margin:0px;padding:0px;float:left">
+								<div class="head">
+									<p>Subtotal:</p>
+										<h2 class="price">45.0 $</h2>
+								</div>
+								<div class="body">
+									<ul>
+										 <li>Morbi est elit, imperdiet sit amet</li>
+										 <li>Lorem ipsum seget, egestas in leo.</li>
+										 <li>Morbi est elit, imperdiet sit amet</li>
+										 <li>Lorem ipsum seget, egestas in leo.</li>
+									 </ul>
+									 <p class="more"><a href="#">Proceed to checkout</a></p>
+								 </div>
+							 </div>
 			        </div>
 			        <!-- END SIDEBAR -->    
 			        <!-- START EXTRA CONTENT -->
-			        <div class="extra-content group">
-			            <h2 class="title-page">Box Prices</h2>
-			            <div class="one-third">
-			                <div class="price-table">
-			                    <div class="head">
-			                        <p>Standard Plan</p>
-			                        <h2 class="price">45.0 $</h2>
-			                    </div>
-			                    <div class="body">
-			                        <ul>
-			                            <li>Morbi est elit, imperdiet sit amet</li>
-			                            <li>Lorem ipsum seget, egestas in leo.</li>
-			                            <li>Morbi est elit, imperdiet sit amet</li>
-			                            <li>Lorem ipsum seget, egestas in leo.</li>
-			                        </ul>
-			                        <p class="more"><a href="#">More Info</a></p>
-			                    </div>
-			                </div>
-			                
-			            </div>
-			            <div class="one-third">
-			                <div class="price-table">
-			                    <div class="head grey">
-			                        <p>Standard Plan</p>
-			                        <h2 class="price">45.0 $</h2>
-			                    </div>
-			                    <div class="body">
-			                        <ul>
-			                            <li>Morbi est elit, imperdiet sit amet</li>
-			                            <li>Lorem ipsum seget, egestas in leo.</li>
-			                            <li>Morbi est elit, imperdiet sit amet</li>
-			                            <li>Lorem ipsum seget, egestas in leo.</li>
-			                        </ul>
-			                        <p class="more"><a href="#">More Info</a></p>
-			                    </div>
-			                </div>
-			                
-			            </div>
-			            <div class="one-third last">
-			                <div class="price-table">
-			                    <div class="head blue">
-			                        <p>Standard Plan</p>
-			                        <h2 class="price">45.0 $</h2>
-			                    </div>
-			                    <div class="body">
-			                        <ul>
-			                            <li>Morbi est elit, imperdiet sit amet</li>
-			                            <li>Lorem ipsum seget, egestas in leo.</li>
-			                            <li>Morbi est elit, imperdiet sit amet</li>
-			                            <li>Lorem ipsum seget, egestas in leo.</li>
-			                        </ul>
-			                        <p class="more"><a href="#">More Info</a></p>
-			                    </div>
-			                </div>
-			                
-			            </div>
-			            <div class="clear space"></div>
-			            <div class="one-third">
-			                <div class="price-table">
-			                    <div class="head red">
-			                        <p>Standard Plan</p>
-			                        <h2 class="price">45.0 $</h2>
-			                    </div>
-			                    <div class="body">
-			                        <ul>
-			                            <li>Morbi est elit, imperdiet sit amet</li>
-			                            <li>Lorem ipsum seget, egestas in leo.</li>
-			                            <li>Morbi est elit, imperdiet sit amet</li>
-			                            <li>Lorem ipsum seget, egestas in leo.</li>
-			                        </ul>
-			                        <p class="more"><a href="#">More Info</a></p>
-			                    </div>
-			                </div>
-			                
-			            </div>
-			            <div class="one-third">
-			                <div class="price-table">
-			                    <div class="head green">
-			                        <p>Standard Plan</p>
-			                        <h2 class="price">45.0 $</h2>
-			                    </div>
-			                    <div class="body">
-			                        <ul>
-			                            <li>Morbi est elit, imperdiet sit amet</li>
-			                            <li>Lorem ipsum seget, egestas in leo.</li>
-			                            <li>Morbi est elit, imperdiet sit amet</li>
-			                            <li>Lorem ipsum seget, egestas in leo.</li>
-			                        </ul>
-			                        <p class="more"><a href="#">More Info</a></p>
-			                    </div>
-			                </div>
-			                
-			            </div>
-			            <div class="one-third last">
-			                <div class="price-table">
-			                    <div class="head yellow">
-			                        <p>Standard Plan</p>
-			                        <h2 class="price">45.0 $</h2>
-			                    </div>
-			                    <div class="body">
-			                        <ul>
-			                            <li>Morbi est elit, imperdiet sit amet</li>
-			                            <li>Lorem ipsum seget, egestas in leo.</li>
-			                            <li>Morbi est elit, imperdiet sit amet</li>
-			                            <li>Lorem ipsum seget, egestas in leo.</li>
-			                        </ul>
-			                        <p class="more"><a href="#">More Info</a></p>
-			                    </div>
-			                </div>
-			                
-			            </div>
-			        </div>
-			        <!-- END EXTRA CONTENT -->
+			      			        <!-- END EXTRA CONTENT -->
 			    </div>
 			</div>
 			<div class="clear"></div>
