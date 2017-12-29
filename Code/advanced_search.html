@@ -72,6 +72,11 @@
         <script type='text/javascript' src='js/layerslider.kreaturamedia.jquery-min.js'></script>
         <script type='text/javascript' src='js/jquery.quicksand.js'></script>
 
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css"> -->
+        <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+        <!-- <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script> -->
+
 	<link rel="stylesheet" type="text/css" media="all" href="bootstrap.min.css" />
         <script type='text/javascript' src='js/bootstrap.min.js'></script>
 
@@ -202,22 +207,47 @@
 			<div id="primary" class="layout-sidebar-right home-section">
         <div class="inner home-row group">
             <div class="widget two-third widget-icon-text group">
-              <h2><i class="icon-envelope"></i> Search by</h2>
-                <input type="text" placeholder="I'm going to buy..." name="advanced_keyword">
-              </br>
-                <input type="checkbox" id="name_search">Name</input>
-                <input type="checkbox" id="price_search">Price</button>
-                <input type="checkbox" id="category_search">Category</button>
-                <input type="checkbox" id="review_search">Review</button>
-                <input type="checkbox" id="origin_search">Origin</button>
-                <input type="checkbox" id="stock_search">Stock</button>
-                <input type="checkbox" id="brand_search">Brand</button>
-                <input type="checkbox" id="color_search">Color</button>
+              <h2><i class="icon-envelope"></i>Advanced options</h2>
+              <h3>Name</h3>
+                <input type="text" placeholder="What are you looking for ?" name="advanced_keyword">
+                <br/>
+                <h3>Price</h3>
+                <div data-role="rangeslider">
+                        <label for="price-min">Minimum:</label>
+                        <input type="number" name="price-min" id="price-min" value="200" min="0" max="100000">
+                        <label for="price-max">Maximum:</label>
+                        <input type="number" name="price-max" id="price-max" value="800" min="0" max="100000">
+                </div>
+                <!-- <input type="checkbox" id="price_search">Price</button> -->
+                <br/>
+                <h3>Category</h3>
+                <form>
+                  <select name="category">
+                    <option value="category 1">Boonks & Audible</option>
+                    <option value="category 2">Electronics, Computers & Office</option>
+                    <option value="category 3">Home, Garden, Pets & Tools</option>
+                    <option value="category 4">Food & Grocery</option>
+                    <option value="category 5">Beauty & Health</option>
+                    <option value="category 6">Toys, Kids & Baby</option>
+                    <option value="category 7">Clothing, Shoes & Jewelry</option>
+                    <option value="category 8">Handmade</option>
+                    <option value="category 9">Sports & Outdoors</option>
+                    <option value="category 10">Automotive & industrial</option>
+                  </select>
+                </form>
+                <br/>
+                <h3>Review</h3>
+                <input type="text" id="review_search">
+                <h3>Origin</h3>
+                <input type="text" placeholder="Origin of the product" id="origin_search">
+                <h3>Stock</h3>
+                <input type="text" id="stock_search">
+                <h3>Brand</h3>
+                <input type="text" id="brand_search">
+                <h3>Color</h3>
+                <input type="color" id="color_search">
             </div>
-            <div class="widget one-third widget-icon-text group">
-                <button class="searchButton" type="submit">Advanced search</button>
-            </div>
-
+            <button class="searchButton" type="submit">Advanced search</button>
 
         </div>
 			        <!-- END CONTENT -->
@@ -347,5 +377,8 @@
   })();
 
 </script>
+
+
+
     </body>
 </html>
