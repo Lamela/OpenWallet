@@ -78,6 +78,9 @@
         <!-- <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script> -->
 
 	<link rel="stylesheet" type="text/css" media="all" href="bootstrap.min.css" />
+
+  <!-- Add star icon library -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <script type='text/javascript' src='js/bootstrap.min.js'></script>
 
         <style>
@@ -236,16 +239,21 @@
                   </select>
                 </form>
                 <br/>
-                <h3>Review</h3>
-                <input type="text" id="review_search">
+                <h3>Review (minimal rating)</h3>
+                <div data-role="rangeslider">
+                        <label for="price-min">Minimum:</label>
+                        <input type="number" name="price-min" id="price-min" value="0" min="5" max="5">
+                        <label for="price-max">Maximum:</label>
+                        <input type="number" name="price-max" id="price-max" value="5" min="0" max="5">
+                </div>
                 <h3>Origin</h3>
-                <input type="text" placeholder="Origin of the product" id="origin_search">
+                  <input type="text" placeholder="Origin of the product" id="origin_search">
                 <h3>Stock</h3>
-                <input type="text" id="stock_search">
+                  <input type="text" id="stock_search">
                 <h3>Brand</h3>
-                <input type="text" id="brand_search">
+                  <input type="text" id="brand_search">
                 <h3>Color</h3>
-                <input type="color" id="color_search">
+                  <input type="color" id="color_search">
             </div>
             <button class="searchButton" type="submit">Advanced search</button>
 
