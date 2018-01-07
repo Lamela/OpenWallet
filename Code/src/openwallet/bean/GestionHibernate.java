@@ -1,4 +1,4 @@
-package org.sosi;
+package openwallet.bean;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.Session;
@@ -105,7 +105,7 @@ public class GestionHibernate {
 			Session mySession = sf.openSession();
 			try {
 			    myTransaction = mySession.beginTransaction();
-			    myListObjects = mySession.createQuery("from "+cl.getName()+" where patientID = "+myID).list();
+			    myListObjects = mySession.createQuery("from "+cl.getName()+" where id_" + cl.getName().toLowerCase()+ " = "+myID).list();
 			} catch(RuntimeException e) {
 			    e.printStackTrace();
 			} finally {

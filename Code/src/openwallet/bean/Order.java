@@ -1,3 +1,5 @@
+package openwallet.bean;
+
  import javax.persistence.Entity;
  import javax.persistence.Id;
  import javax.persistence.GeneratedValue;
