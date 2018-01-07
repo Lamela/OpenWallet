@@ -16,16 +16,16 @@ import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
-import tmall.dao.CategoryDAO;
-import tmall.dao.OrderDAO;
-import tmall.dao.OrderItemDAO;
-import tmall.dao.ProductDAO;
-import tmall.dao.ProductImageDAO;
-import tmall.dao.PropertyDAO;
-import tmall.dao.PropertyValueDAO;
-import tmall.dao.ReviewDAO;
-import tmall.dao.UserDAO;
-import tmall.util.Page;
+import openwallet.dao.CategoryDAO;
+// import openwallet.dao.OrderDAO;
+// import openwallet.dao.OrderItemDAO;
+// import openwallet.dao.ProductDAO;
+// import openwallet.dao.ProductImageDAO;
+// import openwallet.dao.PropertyDAO;
+// import openwallet.dao.PropertyValueDAO;
+// import openwallet.dao.ReviewDAO;
+// import openwallet.dao.UserDAO;
+import openwallet.util.Page;
 
 public abstract class BaseBackServlet extends HttpServlet {
 
@@ -35,7 +35,16 @@ public abstract class BaseBackServlet extends HttpServlet {
 	public abstract String update(HttpServletRequest request, HttpServletResponse response, Page page) ;
 	public abstract String list(HttpServletRequest request, HttpServletResponse response, Page page) ;
 	
-
+	protected CategoryDAO categoryDAO = new CategoryDAO();
+    // protected OrderDAO orderDAO = new OrderDAO();
+    // protected OrderItemDAO orderItemDAO = new OrderItemDAO();
+    // protected ProductDAO productDAO = new ProductDAO();
+    // protected ProductImageDAO productImageDAO = new ProductImageDAO();
+    // protected PropertyDAO propertyDAO = new PropertyDAO();
+    // protected PropertyValueDAO propertyValueDAO = new PropertyValueDAO();
+    // protected ReviewDAO reviewDAO = new ReviewDAO();
+    // protected UserDAO userDAO = new UserDAO();
+    
 	public void service(HttpServletRequest request, HttpServletResponse response) {
 		try {
 			

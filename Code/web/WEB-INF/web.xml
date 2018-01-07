@@ -74,10 +74,10 @@
         <url-pattern>/propertyServlet</url-pattern>
     </servlet-mapping>
 
-    <filter>
+   <filter>
         <filter-name>EncodingFilter</filter-name>
         <filter-class>openwallet.filter.EncodingFilter</filter-class>
-    </filter>
+    </filter> 
  
     <filter-mapping>
         <filter-name>EncodingFilter</filter-name>
