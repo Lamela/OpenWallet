@@ -48,7 +48,7 @@ package openwallet.bean;
        this.code_order = code_order;
        this.total_price = total_price;
        this.id_delivery_address = id_delivery_address;
-       this.id_invoice_address = ;
+       this.id_invoice_address = id_invoice_address;
        this.user_message = user_message;
        this.create_date_order = create_date_order;
        this.pay_date = pay_date;
