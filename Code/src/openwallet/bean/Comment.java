@@ -9,7 +9,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.FetchType;
 import javax.persistence.OrderBy;
 import javax.persistence.Column;
-import java.sql.Date;
+import java.util.Date;
 import java.util.Set;
 import javax.persistence.Table;
 import javax.persistence.CascadeType;
@@ -29,19 +29,18 @@ public class Comment {
   private int id_user;
   @OneToOne(cascade=CascadeType.ALL,fetch = FetchType.LAZY)
   private int id_product;
-  private LocalDate date_comment;
+  private Date date_comment;
   private double note;
   private boolean is_anonymous;
 
   public Comment(){};
 
-  public Comment(int id_comment, int id_user, int id_product, LocalDate date_comment, double note, boolean is_anonymous) {
+  public Comment(int id_comment, int id_user, int id_product, Date date_comment, double note) {
      this.id_comment = id_comment;
      this.id_user = id_user;
      this.id_product = id_product;
      this.date_comment = date_comment;
      this.note = note;
-     this.is_anonymous = is_anonymous;
    }
 
    public int getId_comment() {
@@ -68,11 +67,11 @@ public class Comment {
        this.id_product = id_product;
    }
 
-   public LocalDate getDate_comment() {
+   public Date getDate_comment() {
        return date_comment;
    }
 
-   public void setDate_comment(LocalDate date_comment) {
+   public void setDate_comment(Date date_comment) {
        this.date_comment = date_comment;
    }
 
@@ -84,11 +83,4 @@ public class Comment {
        this.note = note;
    }
 
-   public boolean isIs_anonymous() {
-       return is_anonymous;
-   }
-
-   public void setIs_anonymous(boolean is_anonymous) {
-       this.is_anonymous = is_anonymous;
-   }
 }
