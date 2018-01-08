@@ -27,17 +27,17 @@ public class User {
   private int id_user;
   private String firstname_user;
   private String lastname_user;
-  private LocalDate birthday;
+  private Date birthday;
   private String type_user;
   private boolean premium;
   private String email;
   private String password;
-  private String telephone_number;
-  private ArrayList cart;
+  private String mobile_user;
+  private String number_id_card;
 
   public User(){};
 
-  public User(int id_user, String firstname_user, String lastname_user, LocalDate birthday, String type_user, boolean premium, String email, String password, String telephone_number, Address delivery_address, Address invoice_address, ArrayList cart) {
+  public User(int id_user, String firstname_user, String lastname_user, Date birthday, String type_user, boolean premium, String email, String password, String mobile_user, String number_id_card)
       this.id_user = id_user;
       this.firstname_user = firstname_user;
       this.lastname_user = lastname_user;
@@ -46,89 +46,89 @@ public class User {
       this.premium = premium;
       this.email = email;
       this.password = password;
-      this.telephone_number = telephone_number;
-      this.cart = cart;
+      this.mobile_user = mobile_user;
+      this.number_id_card = number_id_card;
   }
 
   //Getters:
-      public int getId_user() {
-          return id_user;
-      }
+  public int getId_user() {
+      return id_user;
+  }
 
-      public String getFirstname_user() {
-          return firstname_user;
-      }
+  public String getFirstname_user() {
+      return firstname_user;
+  }
 
-      public String getLastname_user() {
-          return lastname_user;
-      }
+  public String getLastname_user() {
+      return lastname_user;
+  }
 
-      public LocalDate getBirthday() {
-          return birthday;
-      }
+  public Date getBirthday() {
+      return birthday;
+  }
 
-      public String getType_user() {
-          return type_user;
-      }
+  public String getType_user() {
+      return type_user;
+  }
 
-      public boolean isPremium() {
-          return premium;
-      }
+  public boolean isPremium() {
+      return premium;
+  }
 
-      public String getEmail() {
-          return email;
-      }
+  public String getEmail() {
+      return email;
+  }
 
-      public String getPassword() {
-          return password;
-      }
+  public String getPassword() {
+      return password;
+  }
 
-      public String getTelephone_number() {
-          return telephone_number;
-      }
+  public String getMobile_user() {
+      return mobile_user;
+  }
 
-      public ArrayList getCart() {
-          return cart;
-      }
+  public String getNumber_id_card() {
+      return number_id_card;
+  }
 
-    //Setters:
-    public void setId_user(int id_user) {
-        this.id_user = id_user;
-    }
+  //Setters:
+  public void setId_user(int id_user) {
+      this.id_user = id_user;
+  }
 
-    public void setFirstname_user(String firstname_user) {
-        this.firstname_user = firstname_user;
-    }
+  public void setFirstname_user(String firstname_user) {
+      this.firstname_user = firstname_user;
+  }
 
-    public void setLastname_user(String lastname_user) {
-        this.lastname_user = lastname_user;
-    }
+  public void setLastname_user(String lastname_user) {
+      this.lastname_user = lastname_user;
+  }
 
-    public void setBirthday(LocalDate birthday) {
-        this.birthday = birthday;
-    }
+  public void setBirthday(Date birthday) {
+      this.birthday = birthday;
+  }
 
-    public void setType_user(String type_user) {
-        this.type_user = type_user;
-    }
+  public void setType_user(String type_user) {
+      this.type_user = type_user;
+  }
 
-    public void setPremium(boolean premium) {
-        this.premium = premium;
-    }
+  public void setPremium(boolean premium) {
+      this.premium = premium;
+  }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+  public void setEmail(String email) {
+      this.email = email;
+  }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+  public void setPassword(String password) {
+      this.password = password;
+  }
 
-    public void setTelephone_number(String telephone_number) {
-        this.telephone_number = telephone_number;
-    }
+  public void setMobile_number(String mobile_user) {
+      this.mobile_user = mobile_user;
+  }
 
-    public void setCart(ArrayList cart) {
-        this.cart = cart;
-    }
+  public void setNumber_id_card(String number_id_card) {
+      this.number_id_card = number_id_card;
+  }
 }
