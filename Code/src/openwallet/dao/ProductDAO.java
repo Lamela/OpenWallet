@@ -11,7 +11,6 @@ import java.util.List;
  
 import openwallet.bean.Category;
 import openwallet.bean.Product;
-import openwallet.bean.ProductImage;
 import openwallet.util.DBUtil;
 import openwallet.util.DateUtil;
   
@@ -149,7 +148,6 @@ public class ProductDAO {
                 bean.setMaterial(material);
                 bean.setNote(note);
                 bean.setId_product(id_product);
-                setFirstProductImage(bean);
             }
   
         } catch (SQLException e) {
@@ -206,7 +204,6 @@ public class ProductDAO {
                 bean.setMaterial(material);
                 bean.setNote(note);
                 bean.setId_product(id_product);
-                setFirstProductImage(bean);
                 beans.add(bean);
             }
         } catch (SQLException e) {
@@ -263,7 +260,6 @@ public class ProductDAO {
                 bean.setMaterial(material);
                 bean.setNote(note);
                 bean.setId_product(id_product);
-                setFirstProductImage(bean);
                 beans.add(bean);
             }
         } catch (SQLException e) {
@@ -297,24 +293,21 @@ public class ProductDAO {
         }
     }
      
-    public void setFirstProductImage(Product p) {
-        List<ProductImage> pis= new ProductImageDAO().list(p, ProductImageDAO.type_single);
-        if(!pis.isEmpty())
-            p.setFirstProductImage(pis.get(0));     
-    }
+    // public void setFirstProductImage(Product p) {
+    //     List<ProductImage> pis= new ProductImageDAO().list(p, ProductImageDAO.type_single);
+    //     if(!pis.isEmpty())
+    //         p.setFirstProductImage(pis.get(0));     
+    // }
      
-    public void setSaleAndReviewNumber(Product p) {
-        int saleCount = new OrderItemDAO().getSaleCount(p.getId_product());
-        p.setSaleCount(saleCount);          
- 
-        int reviewCount = new ReviewDAO().getCount(p.getId_product());
-        p.setReviewCount(reviewCount);
+    public void setCommentNumber(Product p) {        
+        int commentCount = new CommentDAO().getCount(p.getId_product());
+        p.setCommentCount(commentCount);
          
     }
  
-    public void setSaleAndReviewNumber(List<Product> products) {
+    public void setCommentNumber(List<Product> products) {
         for (Product p : products) {
-            setSaleAndReviewNumber(p);
+            setCommentNumber(p);
         }
     }
  
@@ -364,8 +357,7 @@ public class ProductDAO {
                     bean.setColor(color);
                     bean.setMaterial(material);
                     bean.setNote(note);
-                    bean.setId_product(id_product);
-                    setFirstProductImage(bean);                
+                    bean.setId_product(id_product);             
                     beans.add(bean);
                 }
             } catch (SQLException e) {
