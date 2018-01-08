@@ -1,0 +1,203 @@
+%% LyX 2.1.4 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[english]{article}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage{float}
+\usepackage{graphicx}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\usepackage{hyperref}   % pour les liens cliquables de la table des matières
+ 
+\makeatletter
+\@addtoreset{section}{part}   % reprendre à partir de 1 les sections des parties suivantes.
+\makeatother
+ 
+
+\makeatother
+
+\usepackage{babel}
+\begin{document}
+
+\title{Technologie Web 2}
+
+
+\author{Rapport de Projet}
+
+\maketitle
+\tableofcontents{}
+
+\listoffigures
+
+
+
+\part{Introduction}
+
+L\textquoteright objectif de ce projet est de réaliser un site de
+vente en ligne, sur le même modèle principe que des sites comme www.amazon.com
+ou leboncoin.fr. 
+
+
+\section{Fonctionnalités principales}
+
+On retrouvera sur le site les fonctionnalités présentés ci-après : 
+
+
+\subsection{La création et la gestion de comptes}
+
+Elle permettra la création/édition d'un compte via les informations
+données par l'utilisateur (identité, email, pseudo et mot de passe).
+Il existera aussi un compte administrateur qui pourra modifier le
+contenu du site en ligne.
+
+
+\subsection{Recherche d'un produit}
+
+La recherche d'un produit peut se faire de deux manières :
+\begin{enumerate}
+\item via la barre de recherche
+\item via la recherche avancée, qui sera multi-critères (nom/ type d'objet
+/ prix / note de l\textquoteright objet / nombre de ventes réalisées
+/ réputation du vendeur)
+\end{enumerate}
+
+\subsection{Actions disponibles sur le site}
+
+Les autres fonctions du site sont listés ci-après :
+\begin{itemize}
+\item deux types de connexions : utilisateur simple (acheteur ou vendeur)
+ou administrateur,
+\item consulter un produit,
+\item acheter un produit,
+\item vendre un produit,
+\item système de paiement,
+\item commenter et noter un produit,
+\item accéder au support client
+\end{itemize}
+
+\subsection{Valorisation de comptes}
+
+Le systèle de valorisation de comptes qui sera utilisée sera le suivant
+:
+\begin{itemize}
+\item un compte Premium ayant des avantages supplémentaires lors de l'achat
+de produits par rapport à l'utilisateur simple.
+\item un compte Super Premium ayant encore plus d'avantages.
+\end{itemize}
+
+\section{Liste des acteurs }
+
+Cette liste reprend et résume les éléments concernant les types d'utilisateur
+énoncés dans la partie 1 Fonctionnalités principales
+\begin{enumerate}
+\item Utilisateur simple : cet utilisateur peut être soit acheteur ou vendeur
+sur le site; il n'a aucun droit de modification sur le site.
+\item Administrateur : cet utilisateur a tous les droits sur le site, il
+peut en modifier le contenu à volonté. 
+\end{enumerate}
+
+\section{Contraintes matérielles et logicielles }
+\begin{enumerate}
+\item Le site doit être accessible depuis les navigateurs suivants : Google
+Chrome, Mozilla Firefox.
+\item Résolutions d'écran supportées : le site web doit pouvoir s'adapter
+à tous types d'afficheurs.
+\end{enumerate}
+
+\part{Spécifications}
+
+
+\section{Diagrammes de cas d'utilisation}
+
+\begin{figure}[H]
+\includegraphics[scale=0.4]{/home/rasendrasoa/OpenWallet/Conception/use_case_create_account}
+
+\caption{cas d'utilisation : création/gestion de compte}
+\end{figure}
+\begin{figure}[H]
+\includegraphics[scale=0.3]{/home/rasendrasoa/OpenWallet/Conception/use_case_search_products}
+
+\caption{cas d'utilisation : rechercher un produit}
+\end{figure}
+\begin{figure}[H]
+\includegraphics[scale=0.5]{/home/rasendrasoa/OpenWallet/Conception/use_case_identification}
+
+\caption{cas d'utilisation : connexion}
+
+
+\end{figure}
+\begin{figure}[H]
+\includegraphics[scale=0.5]{/home/rasendrasoa/OpenWallet/Conception/use_case_consult_a_product.jpeg}
+
+\caption{cas d'utilisation : consulter un produit}
+
+
+\end{figure}
+\begin{figure}[H]
+\includegraphics[scale=0.5]{/home/rasendrasoa/OpenWallet/Conception/use_case_add_delete_product.jpeg}
+
+\caption{cas d'utilisation : ajouter/supprimer un produit}
+
+
+\end{figure}
+\begin{figure}[H]
+\includegraphics[scale=0.5]{/home/rasendrasoa/OpenWallet/Conception/use_case_diagram_comment.jpeg}
+
+\caption{cas d'utilisation : commenter un produit}
+
+
+\end{figure}
+\begin{figure}[H]
+\includegraphics[scale=0.5]{/home/rasendrasoa/OpenWallet/Conception/use_case_diagram_management_cart}
+
+\caption{cas d'utilisation : gestion du panier d'achat}
+
+
+\end{figure}
+\begin{figure}[H]
+\includegraphics[scale=0.5]{/home/rasendrasoa/OpenWallet/Conception/use_case_diagram_payment.jpeg}
+
+\caption{cas d'utilisation : paiement}
+
+
+\end{figure}
+\begin{figure}[H]
+\includegraphics[scale=0.4]{/home/rasendrasoa/OpenWallet/Conception/use_case_Grade}
+
+\caption{cas d'utilisation : noter un produit}
+
+
+\end{figure}
+
+
+
+\section{Diagramme de navigation}
+
+\begin{figure}[H]
+\includegraphics[scale=0.3]{/home/rasendrasoa/OpenWallet/Conception/diagramme_nav}
+
+\caption{Diagramme de navigation}
+
+
+\end{figure}
+
+
+
+\part{Conception préliminaire}
+
+
+\section{Diagrammes de séquence}
+
+
+\section{Diagramme de classe}
+
+
+\part{Conception détaillée}
+
+
+\part{Implémentation et tests}
+
+
+\part{Conclusions et perspectives}
+\end{document}
