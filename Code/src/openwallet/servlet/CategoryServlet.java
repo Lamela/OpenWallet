@@ -42,7 +42,7 @@ public class CategoryServlet extends BaseBackServlet {
 			            fos.write(b, 0, length);
 			        }
 			        fos.flush();
-			        //通过如下代码，把文件保存为jpg格式
+			        //save the file to jpg format
 			        BufferedImage img = ImageUtil.change2jpg(file);
 			        ImageIO.write(img, "jpg", file);		
 			    }
