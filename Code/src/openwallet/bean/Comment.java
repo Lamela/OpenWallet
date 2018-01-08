@@ -29,7 +29,7 @@ public class Comment {
   private int id_user;
   @OneToOne(cascade=CascadeType.ALL,fetch = FetchType.LAZY)
   private int id_product;
-  private LocalDate date_comment;
+  private Date date_comment;
   private double note;
   private boolean is_anonymous;
 

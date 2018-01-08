@@ -34,7 +34,7 @@ public class ProductDAO {
   
     public void add(Product bean) {
  
-        String sql = "insert into Product values(null,?,?,?,?,?,?,?, ?, ?, ?, ?, ?, ?)";
+        String sql = "insert into Product values(null,?,?,?,?,?,?,?, ?, ?, ?, ?, ?)";
         try (Connection c = DBUtil.getConnection(); PreparedStatement ps = c.prepareStatement(sql);) {
   
             ps.setInt(1, bean.getCategory().getId_category());
@@ -49,7 +49,6 @@ public class ProductDAO {
             ps.setString(10, bean.getBrand());
             ps.setString(11, bean.getColor());
             ps.setString(12, bean.getMaterial());
-            ps.setDouble(13, bean.getNote());
             ps.execute();
   
             ResultSet rs = ps.getGeneratedKeys();
@@ -65,7 +64,7 @@ public class ProductDAO {
   
     public void update(Product bean) {
  
-        String sql = "update Product set id_category = ?, id_user = ?, name_product = ?, description = ?, price = ?, stock = ?, create_date_product = ?, origin = ?, sold = ?, brand = ?, color = ?, material = ?, note = ? where id_product = ?";
+        String sql = "update Product set id_category = ?, id_user = ?, name_product = ?, description = ?, price = ?, stock = ?, create_date_product = ?, origin = ?, sold = ?, brand = ?, color = ?, material = ? where id_product = ?";
         try (Connection c = DBUtil.getConnection(); PreparedStatement ps = c.prepareStatement(sql);) {
  
             ps.setInt(1, bean.getCategory().getId_category());
@@ -80,7 +79,6 @@ public class ProductDAO {
             ps.setString(10, bean.getBrand());
             ps.setString(11, bean.getColor());
             ps.setString(12, bean.getMaterial());
-            ps.setDouble(13, bean.getNote());
             ps.setInt(14, bean.getId_product());
             ps.execute();
   
@@ -130,7 +128,6 @@ public class ProductDAO {
                 String brand = rs.getString("brand");
                 String color = rs.getString("color");
                 String material = rs.getString("material");
-                double note = rs.getDouble("note");
                
                 bean.setCategory(category);
                 bean.setUser(user);
@@ -144,7 +141,6 @@ public class ProductDAO {
                 bean.setBrand(brand);
                 bean.setColor(color);
                 bean.setMaterial(material);
-                bean.setNote(note);
                 bean.setId_product(id_product);
             }
   
@@ -186,7 +182,6 @@ public class ProductDAO {
                 String brand = rs.getString("brand");
                 String color = rs.getString("color");
                 String material = rs.getString("material");
-                double note = rs.getDouble("note");
  
                 bean.setCategory(category);
                 bean.setUser(user);
@@ -200,7 +195,6 @@ public class ProductDAO {
                 bean.setBrand(brand);
                 bean.setColor(color);
                 bean.setMaterial(material);
-                bean.setNote(note);
                 bean.setId_product(id_product);
                 beans.add(bean);
             }
@@ -242,7 +236,6 @@ public class ProductDAO {
                 String brand = rs.getString("brand");
                 String color = rs.getString("color");
                 String material = rs.getString("material");
-                double note = rs.getDouble("note");
                
                 bean.setCategory(category);
                 bean.setUser(user);
@@ -256,7 +249,6 @@ public class ProductDAO {
                 bean.setBrand(brand);
                 bean.setColor(color);
                 bean.setMaterial(material);
-                bean.setNote(note);
                 bean.setId_product(id_product);
                 beans.add(bean);
             }
@@ -299,7 +291,7 @@ public class ProductDAO {
      
     public void setCommentNumber(Product p) {        
         int commentCount = new CommentDAO().getCount(p.getId_product());
-        p.setCommentCount(commentCount);
+        p.setComment_count(commentCount);
          
     }
  
@@ -340,7 +332,6 @@ public class ProductDAO {
                     String brand = rs.getString("brand");
                     String color = rs.getString("color");
                     String material = rs.getString("material");
-                    double note = rs.getDouble("note");
 
                     bean.setCategory(category);
                     bean.setUser(user);
@@ -354,7 +345,6 @@ public class ProductDAO {
                     bean.setBrand(brand);
                     bean.setColor(color);
                     bean.setMaterial(material);
-                    bean.setNote(note);
                     bean.setId_product(id);             
                     beans.add(bean);
                 }

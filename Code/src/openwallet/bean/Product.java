@@ -37,11 +37,11 @@ public class Product {
   private String brand;
   private String color;
   private String material;
-  private double note;
+  private int comment_count;
 
   public Product(){};
 
-  public Product(int id_product, Category category, User user, String name_product, String description, double price, int stock, Date create_date_product, String origin, int sold, String brand, String color, String material, double note) {
+  public Product(int id_product, Category category, User user, String name_product, String description, double price, int stock, Date create_date_product, String origin, int sold, String brand, String color, String material) {
     this.id_product = id_product;
     this.category = category;
     this.user = user;
@@ -55,7 +55,7 @@ public class Product {
     this.brand = brand;
     this.color = color;
     this.material = material;
-    this.note = note;
+	this.comment_count = comment_count;
   }
 
   public int getId_product() {
@@ -161,12 +161,12 @@ public class Product {
   public void setMaterial(String material) {
       this.material = material;
   }
-
-  public double getNote() {
-      return note;
+  
+  public void setComment_count(int comment_count) {
+      this.comment_count = comment_count;
   }
 
-  public void setNote(double note) {
-      this.note = note;
+  public int getComment_count() {
+  	  return this.comment_count;
   }
 }
