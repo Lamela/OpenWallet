@@ -9,10 +9,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
  
-import openwallet.bean.Category;
-import openwallet.bean.Product;
-import openwallet.util.DBUtil;
-import openwallet.util.DateUtil;
+import openwallet.bean.*;
+import openwallet.util.*;
   
 public class ProductDAO {
     
@@ -45,7 +43,7 @@ public class ProductDAO {
             ps.setString(4, bean.getDescription());
             ps.setDouble(5, bean.getPrice());
             ps.setInt(6, bean.getStock());
-            ps.setTimestamp(7, DateUtil.d2t(getCreate_date_product()));
+            ps.setTimestamp(7, DateUtil.d2t(bean.getCreate_date_product()));
             ps.setString(8, bean.getOrigin());
             ps.setInt(9, bean.getSold());
             ps.setString(10, bean.getBrand());
@@ -158,7 +156,7 @@ public class ProductDAO {
     }
   
     public List<Product> list(int id_category) {
-        return list(cid,0, Short.MAX_VALUE);
+        return list(id_category,0, Short.MAX_VALUE);
     }
   
     public List<Product> list(int id_category, int start, int count) {
@@ -357,7 +355,7 @@ public class ProductDAO {
                     bean.setColor(color);
                     bean.setMaterial(material);
                     bean.setNote(note);
-                    bean.setId_product(id_product);             
+                    bean.setId_product(id);             
                     beans.add(bean);
                 }
             } catch (SQLException e) {
