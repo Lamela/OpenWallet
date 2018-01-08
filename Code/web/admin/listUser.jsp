@@ -12,9 +12,10 @@
 
 
 <div class="workingArea">
-	<h1 class="label label-info" >User Admin</h1>
+	
 
 	<br>
+	<h1 class="label label-info" style="font-size: 16pt">User Admin</h1>
 	<br>
 	
 	<div class="listDataTableDiv">
