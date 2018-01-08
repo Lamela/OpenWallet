@@ -10,10 +10,12 @@
     <script src="http://how2j.cn/study/js/jquery/2.0.0/jquery.min.js"></script>
     <link href="http://how2j.cn/study/css/bootstrap/3.3.6/bootstrap.min.css" rel="stylesheet">
     <script src="http://how2j.cn/study/js/bootstrap/3.3.6/bootstrap.min.js"></script>
-	<script src="include/js/jquery-3.2.1.min.js"></script>
-	<link href="include/css/bootstrap.min.css" rel="stylesheet">
-	<script src="include/js/bootstrap.min.js"></script>
-	<link href="include/css/back/style.css" rel="stylesheet">
+	<script src="js/jquery-3.2.1.min.js"></script>
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<script src="js/bootstrap.min.js"></script>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <script src="js/bootstrap.js"></script>
+	<link href="css/back/style.css" rel="stylesheet">
 	<meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width" />
 
