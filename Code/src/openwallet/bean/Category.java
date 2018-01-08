@@ -16,6 +16,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.OneToMany;
 import java.util.TreeSet;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name = "Category")

@@ -66,7 +66,7 @@ public class Product {
       this.id_product = id_product;
   }
 
-  public int getCategory() {
+  public Category getCategory() {
       return category;
   }
 
@@ -74,7 +74,7 @@ public class Product {
       this.category = category;
   }
 
-  public int getUser() {
+  public User getUser() {
       return user;
   }
 
@@ -114,11 +114,11 @@ public class Product {
       this.stock = stock;
   }
 
-  public LocalDate getCreate_date_product() {
+  public Date getCreate_date_product() {
       return create_date_product;
   }
 
-  public void setCreate_date_product(LocalDate create_date_product) {
+  public void setCreate_date_product(Date create_date_product) {
       this.create_date_product = create_date_product;
   }
 
