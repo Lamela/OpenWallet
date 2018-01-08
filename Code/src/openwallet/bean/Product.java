@@ -38,6 +38,7 @@ public class Product {
   private String color;
   private String material;
   private double note;
+  private int comment_count;
 
   public Product(){};
 
@@ -56,6 +57,7 @@ public class Product {
     this.color = color;
     this.material = material;
     this.note = note;
+	this.comment_count = comment_count;
   }
 
   public int getId_product() {
@@ -168,5 +170,13 @@ public class Product {
 
   public void setNote(double note) {
       this.note = note;
+  }
+  
+  public void setComment_count(int comment_count) {
+      this.comment_count = comment_count;
+  }
+
+  public int getComment_count() {
+  	  return this.comment_count;
   }
 }

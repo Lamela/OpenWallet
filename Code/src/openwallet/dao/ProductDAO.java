@@ -299,7 +299,7 @@ public class ProductDAO {
      
     public void setCommentNumber(Product p) {        
         int commentCount = new CommentDAO().getCount(p.getId_product());
-        p.setCommentCount(commentCount);
+        p.setComment_count(commentCount);
          
     }
  
