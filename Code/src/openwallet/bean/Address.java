@@ -79,6 +79,14 @@ public class Address {
   this.lastname_receiver = lastname_receiver;
   }
 
+  public void setMobile_receiver(String mobile_receiver) {
+  this.mobile_receiver = mobile_receiver;
+  }
+
+  public String getMobile_receiver() {
+  return mobile_receiver;
+  }
+
   public String getStreet() {
   return street;
   }
@@ -103,11 +111,11 @@ public class Address {
   this.country = country;
   }
 
-  public String getCodepost() {
-  return codepost;
+  public String getPost_address() {
+  return post_address;
   }
 
-  public void setCodepost(String codepost) {
-  this.codepost = codepost;
+  public void setPost_address(String post_address) {
+  this.post_address = post_address;
   }
 }
