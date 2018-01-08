@@ -9,7 +9,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.FetchType;
 import javax.persistence.OrderBy;
 import javax.persistence.Column;
-import java.sql.Date;
+import java.util.Date;
 import java.util.Set;
 import javax.persistence.Table;
 import javax.persistence.CascadeType;
@@ -37,7 +37,7 @@ public class User {
 
   public User(){};
 
-  public User(int id_user, String firstname_user, String lastname_user, Date birthday, String type_user, boolean premium, String email, String password, String mobile_user, String number_id_card)
+  public User(int id_user, String firstname_user, String lastname_user, Date birthday, String type_user, boolean premium, String email, String password, String mobile_user, String number_id_card) {
       this.id_user = id_user;
       this.firstname_user = firstname_user;
       this.lastname_user = lastname_user;
@@ -124,7 +124,7 @@ public class User {
       this.password = password;
   }
 
-  public void setMobile_number(String mobile_user) {
+  public void setMobile_user(String mobile_user) {
       this.mobile_user = mobile_user;
   }
 

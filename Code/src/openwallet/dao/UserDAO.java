@@ -9,9 +9,11 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Date;
 
 import openwallet.bean.User;
 import openwallet.util.DBUtil;
+import openwallet.util.DateUtil;
  
 public class UserDAO {
  
@@ -111,9 +113,9 @@ public class UserDAO {
             if (rs.next()) {
                 bean = new User();
                 String firstname_user = rs.getString("firstname_user");
-                bean.setFirstname_user(name);
+                bean.setFirstname_user(firstname_user);
                 String lastname_user = rs.getString("lastname_user");
-                bean.setLastname_user(name);
+                bean.setLastname_user(lastname_user);
                 Date birthday = DateUtil.t2d(rs.getTimestamp("birthday"));
                 bean.setBirthday(birthday);
                 String type_user = rs.getString("type_user");
@@ -159,9 +161,9 @@ public class UserDAO {
                 int id = rs.getInt(1);
 
                 String firstname_user = rs.getString("firstname_user");
-                bean.setFirstname_user(name);
+                bean.setFirstname_user(firstname_user);
                 String lastname_user = rs.getString("lastname_user");
-                bean.setLastname_user(name);
+                bean.setLastname_user(lastname_user);
                 Date birthday = DateUtil.t2d(rs.getTimestamp("birthday"));
                 bean.setBirthday(birthday);
                 String type_user = rs.getString("type_user");

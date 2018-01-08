@@ -24,7 +24,7 @@ import openwallet.dao.CategoryDAO;
 // import openwallet.dao.PropertyDAO;
 // import openwallet.dao.PropertyValueDAO;
 // import openwallet.dao.ReviewDAO;
-// import openwallet.dao.UserDAO;
+import openwallet.dao.UserDAO;
 import openwallet.util.Page;
 
 public abstract class BaseBackServlet extends HttpServlet {
@@ -43,7 +43,7 @@ public abstract class BaseBackServlet extends HttpServlet {
     // protected PropertyDAO propertyDAO = new PropertyDAO();
     // protected PropertyValueDAO propertyValueDAO = new PropertyValueDAO();
     // protected ReviewDAO reviewDAO = new ReviewDAO();
-    // protected UserDAO userDAO = new UserDAO();
+    protected UserDAO userDAO = new UserDAO();
     
 	public void service(HttpServletRequest request, HttpServletResponse response) {
 		try {
