@@ -1,4 +1,4 @@
-package tmall.dao;
+package openwallet.dao;
 
 
 import java.sql.Connection;
@@ -10,8 +10,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import tmall.bean.User;
-import tmall.util.DBUtil;
+import openwallet.bean.User;
+import openwallet.util.DBUtil;
  
 public class UserDAO {
  
@@ -34,18 +34,25 @@ public class UserDAO {
  
     public void add(User bean) {
  
-        String sql = "insert into user values(null ,? ,?)";
+        String sql = "insert into user values(null ,? ,?, ?, ?, ?, ?, ?, ?, ?)";
         try (Connection c = DBUtil.getConnection(); PreparedStatement ps = c.prepareStatement(sql);) {
  
-            ps.setString(1, bean.getName());
-            ps.setString(2, bean.getPassword());
+            ps.setString(1, bean.getFirstname_user());
+            ps.setString(2, bean.getLastname_user());
+            ps.setTimestamp(3, DateUtil.d2t(bean.getBirthday()));
+            ps.setString(4, bean.getType_user());
+            ps.setBoolean(5, bean.isPremium());
+            ps.setString(6, bean.getEmail());
+            ps.setString(7, bean.getPassword());
+            ps.setString(8, bean.getMobile_user());
+            ps.setString(9, bean.getNumber_id_card());
  
             ps.execute();
  
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
                 int id = rs.getInt(1);
-                bean.setId(id);
+                bean.setId_user(id);
             }
         } catch (SQLException e) {
  
@@ -55,12 +62,19 @@ public class UserDAO {
  
     public void update(User bean) {
  
-        String sql = "update user set name= ? , password = ? where id = ? ";
+        String sql = "update user set firstname_user= ? , lastname_user = ?, birthday = ?, type_user = ?, premium = ?, email = ?, password = ?, mobile_user = ?, number_id_card = ? where id = ? ";
         try (Connection c = DBUtil.getConnection(); PreparedStatement ps = c.prepareStatement(sql);) {
  
-            ps.setString(1, bean.getName());
-            ps.setString(2, bean.getPassword());
-            ps.setInt(3, bean.getId());
+            ps.setString(1, bean.getFirstname_user());
+            ps.setString(2, bean.getLastname_user());
+            ps.setTimestamp(3, DateUtil.d2t(bean.getBirthday()));
+            ps.setString(4, bean.getType_user());
+            ps.setBoolean(5, bean.isPremium());
+            ps.setString(6, bean.getEmail());
+            ps.setString(7, bean.getPassword());
+            ps.setString(8, bean.getMobile_user());
+            ps.setString(9, bean.getNumber_id_card());
+            ps.setInt(10, bean.getId_user());
  
             ps.execute();
  
@@ -75,7 +89,7 @@ public class UserDAO {
  
         try (Connection c = DBUtil.getConnection(); Statement s = c.createStatement();) {
  
-            String sql = "delete from User where id = " + id;
+            String sql = "delete from User where id_user = " + id;
  
             s.execute(sql);
  
@@ -90,17 +104,31 @@ public class UserDAO {
  
         try (Connection c = DBUtil.getConnection(); Statement s = c.createStatement();) {
  
-            String sql = "select * from User where id = " + id;
+            String sql = "select * from User where id_user = " + id;
  
             ResultSet rs = s.executeQuery(sql);
  
             if (rs.next()) {
                 bean = new User();
-                String name = rs.getString("name");
-                bean.setName(name);
+                String firstname_user = rs.getString("firstname_user");
+                bean.setFirstname_user(name);
+                String lastname_user = rs.getString("lastname_user");
+                bean.setLastname_user(name);
+                Date birthday = DateUtil.t2d(rs.getTimestamp("birthday"));
+                bean.setBirthday(birthday);
+                String type_user = rs.getString("type_user");
+                bean.setType_user(type_user);
+                boolean premium = rs.getBoolean("premium");
+                bean.setPremium(premium);
+                String email = rs.getString("email");
+                bean.setEmail(email);
                 String password = rs.getString("password");
                 bean.setPassword(password);
-                bean.setId(id);
+                String mobile_user = rs.getString("mobile_user");
+                bean.setMobile_user(mobile_user);
+                String number_id_card = rs.getString("number_id_card");
+                bean.setNumber_id_card(number_id_card);
+                bean.setId_user(id);
             }
  
         } catch (SQLException e) {
@@ -117,7 +145,7 @@ public class UserDAO {
     public List<User> list(int start, int count) {
         List<User> beans = new ArrayList<User>();
  
-        String sql = "select * from User order by id desc limit ?,? ";
+        String sql = "select * from User order by id_user desc limit ?,? ";
  
         try (Connection c = DBUtil.getConnection(); PreparedStatement ps = c.prepareStatement(sql);) {
  
@@ -130,12 +158,26 @@ public class UserDAO {
                 User bean = new User();
                 int id = rs.getInt(1);
 
-                String name = rs.getString("name");
-                bean.setName(name);
+                String firstname_user = rs.getString("firstname_user");
+                bean.setFirstname_user(name);
+                String lastname_user = rs.getString("lastname_user");
+                bean.setLastname_user(name);
+                Date birthday = DateUtil.t2d(rs.getTimestamp("birthday"));
+                bean.setBirthday(birthday);
+                String type_user = rs.getString("type_user");
+                bean.setType_user(type_user);
+                boolean premium = rs.getBoolean("premium");
+                bean.setPremium(premium);
+                String email = rs.getString("email");
+                bean.setEmail(email);
                 String password = rs.getString("password");
                 bean.setPassword(password);
+                String mobile_user = rs.getString("mobile_user");
+                bean.setMobile_user(mobile_user);
+                String number_id_card = rs.getString("number_id_card");
+                bean.setNumber_id_card(number_id_card);
                 
-                bean.setId(id);
+                bean.setId_user(id);
                 beans.add(bean);
             }
         } catch (SQLException e) {
@@ -145,27 +187,41 @@ public class UserDAO {
         return beans;
     }
 
-	public boolean isExist(String name) {
-		User user = get(name);
+	public boolean isExist(String firstname, String lastname) {
+		User user = get(firstname, lastname);
 		return user!=null;
 
 	}
 
-	public User get(String name) {
+	public User get(String firstname, String lastname) {
 		User bean = null;
 		 
-		String sql = "select * from User where name = ?";
+		String sql = "select * from User where firstname_user = ? AND lastname_user = ?";
         try (Connection c = DBUtil.getConnection(); PreparedStatement ps = c.prepareStatement(sql)) {
-        	ps.setString(1, name);
-            ResultSet rs =ps.executeQuery();
+        	ps.setString(1, firstname);
+            ps.setString(2, lastname);
+            ResultSet rs = ps.executeQuery();
  
             if (rs.next()) {
                 bean = new User();
-                int id = rs.getInt("id");
-                bean.setName(name);
+                int id = rs.getInt("id_user");
+                bean.setFirstname_user(firstname);
+                bean.setLastname_user(lastname);
+                Date birthday = DateUtil.t2d(rs.getTimestamp("birthday"));
+                bean.setBirthday(birthday);
+                String type_user = rs.getString("type_user");
+                bean.setType_user(type_user);
+                boolean premium = rs.getBoolean("premium");
+                bean.setPremium(premium);
+                String email = rs.getString("email");
+                bean.setEmail(email);
                 String password = rs.getString("password");
                 bean.setPassword(password);
-                bean.setId(id);
+                String mobile_user = rs.getString("mobile_user");
+                bean.setMobile_user(mobile_user);
+                String number_id_card = rs.getString("number_id_card");
+                bean.setNumber_id_card(number_id_card);
+                bean.setId_user(id);
             }
  
         } catch (SQLException e) {
@@ -175,21 +231,35 @@ public class UserDAO {
         return bean;
 	}
 
-	public User get(String name, String password) {
+	public User get(String firstname, String lastname, String password) {
 		User bean = null;
 		 
-		String sql = "select * from User where name = ? and password=?";
+		String sql = "select * from User where firstname = ? and lastname = ? and password=?";
         try (Connection c = DBUtil.getConnection(); PreparedStatement ps = c.prepareStatement(sql)) {
-        	ps.setString(1, name);
-        	ps.setString(2, password);
-            ResultSet rs =ps.executeQuery();
+        	ps.setString(1, firstname);
+            ps.setString(2, lastname);
+        	ps.setString(3, password);
+            ResultSet rs = ps.executeQuery();
  
             if (rs.next()) {
                 bean = new User();
-                int id = rs.getInt("id");
-                bean.setName(name);
+                int id = rs.getInt("id_user");
+                bean.setFirstname_user(firstname);
+                bean.setLastname_user(lastname);
                 bean.setPassword(password);
-                bean.setId(id);
+                Date birthday = DateUtil.t2d(rs.getTimestamp("birthday"));
+                bean.setBirthday(birthday);
+                String type_user = rs.getString("type_user");
+                bean.setType_user(type_user);
+                boolean premium = rs.getBoolean("premium");
+                bean.setPremium(premium);
+                String email = rs.getString("email");
+                bean.setEmail(email);
+                String mobile_user = rs.getString("mobile_user");
+                bean.setMobile_user(mobile_user);
+                String number_id_card = rs.getString("number_id_card");
+                bean.setNumber_id_card(number_id_card);
+                bean.setId_user(id);
             }
  
         } catch (SQLException e) {
