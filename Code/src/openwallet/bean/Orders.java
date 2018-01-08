@@ -27,7 +27,6 @@ public class Orders {
   private int id_order;
   @OneToOne(cascade=CascadeType.ALL,fetch = FetchType.LAZY)
   private User user;
-  private int id_user;
   private int code_order;
   private double total_price;
   private Address delivery_address;
@@ -42,9 +41,8 @@ public class Orders {
 
   public Orders(){};
 
-  public Orders(User user, int id_order, int id_user, int code_order, double total_price, Address delivery_address, Address invoice_address, String user_message, Date create_date_order, Date pay_date, Date delivery_date, Date confirm_date, String status) {
+  public Orders(int id_order, User user, int code_order, double total_price, Address delivery_address, Address invoice_address, String user_message, Date create_date_order, Date pay_date, Date delivery_date, Date confirm_date, String status) {
       this.user = user;
-      this.id_order = id_order;
       this.id_user = id_user;
       this.code_order = code_order;
       this.total_price = total_price;
@@ -72,14 +70,6 @@ public class Orders {
 
   public void setId_order(int id_order) {
       this.id_order = id_order;
-  }
-
-  public int getId_user() {
-      return id_user;
-  }
-
-  public void setId_user(int id_user) {
-      this.id_user = id_user;
   }
 
   public int getCode_order() {
