@@ -25,6 +25,8 @@ public class Category {
   @Column(name = "id_category")
   private int id_category;
   private String name_category;
+  List<Product> products;
+  List<List<Product>> productsByRow;
 
   public Category(){};
 
@@ -48,5 +50,21 @@ public class Category {
 
       public void setName_category(String name_category) {
           this.name_category = name_category;
+      }
+
+      public List<Product> getProducts() {
+        return products;
+      }
+
+      public void setProducts(List<Product> products) {
+        this.products = products;
+      }
+
+      public List<List<Product>> getProductsByRow() {
+        return productsByRow;
+      }
+
+      public void setProductsByRow(List<List<Product>> productsByRow) {
+        this.productsByRow = productsByRow;
       }
 }

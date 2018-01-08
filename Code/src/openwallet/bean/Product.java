@@ -25,8 +25,8 @@ public class Product {
   @Column(name = "id_product")
   private int id_product;
   @OneToOne(cascade=CascadeType.ALL,fetch = FetchType.LAZY)
-  private int id_category;
-  private int id_user;
+  private Category category;
+  private User user;
   private String name_product;
   private String description;
   private double price;
@@ -41,10 +41,10 @@ public class Product {
 
   public Product(){};
 
-  public Product(int id_product, int id_category, int id_user, String name_product, String description, double price, int stock, Date create_date_product, String origin, int sold, String brand, String color, String material, double note) {
+  public Product(int id_product, Category category, User user, String name_product, String description, double price, int stock, Date create_date_product, String origin, int sold, String brand, String color, String material, double note) {
     this.id_product = id_product;
-    this.id_category = id_category;
-    this.id_user = id_user;
+    this.category = category;
+    this.user = user;
     this.name_product = name_product;
     this.description = description;
     this.price = price;
@@ -66,20 +66,20 @@ public class Product {
       this.id_product = id_product;
   }
 
-  public int getId_category() {
-      return id_category;
+  public int getCategory() {
+      return category;
   }
 
-  public void setId_category(int id_category) {
-      this.id_category = id_category;
+  public void setCategory(Category category) {
+      this.category = category;
   }
 
-  public int getId_user() {
-      return id_user;
+  public int getUser() {
+      return user;
   }
 
-  public void setId_user(int id_user) {
-      this.id_user = id_user;
+  public void setUser(User user) {
+      this.user = user;
   }
 
   public String getName_product() {

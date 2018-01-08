@@ -63,7 +63,6 @@ CREATE TABLE comment (
 	id_product int(11) DEFAULT NULL,
 	date_comment datetime DEFAULT NULL,
 	note double(11,1) DEFAULT NULL,
-	is_anonymous boolean DEFAULT false,
 	PRIMARY KEY (id_comment),
 	CONSTRAINT fk_comment_product FOREIGN KEY (id_product) REFERENCES product (id_product),
 	CONSTRAINT fk_comment_user FOREIGN KEY (id_user) REFERENCES user (id_user)
