@@ -21,7 +21,6 @@
 <title>Category Management</title>
 
 <div class="workingArea">
-	<h1 class="label label-info">Category Management</h1>
 	<br>
 	<br>
 
