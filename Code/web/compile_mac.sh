@@ -6,5 +6,5 @@ javac -cp $CLASSPATH -sourcepath src -d ./WEB-INF/classes ../src/openwallet/dao/
 javac -cp $CLASSPATH -sourcepath src -d ./WEB-INF/classes ../src/openwallet/filter/*.java
 javac -cp $CLASSPATH -sourcepath src -d ./WEB-INF/classes ../src/openwallet/servlet/*.java
 
-jar cf Openwallet.war WEB-INF include admin css fonts images js style.css
+jar cf Openwallet.war WEB-INF include admin css fonts images js style.css img
 cp Openwallet.war /Library/apache-tomcat-8.5.23/webapps
