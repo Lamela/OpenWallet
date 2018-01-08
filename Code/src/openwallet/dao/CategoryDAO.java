@@ -52,7 +52,7 @@ public class CategoryDAO {
  
     public void update(Category bean) {
  
-        String sql = "update category set name= ? where id = ?";
+        String sql = "update category set name_category= ? where id_category = ?";
         try (Connection c = DBUtil.getConnection(); PreparedStatement ps = c.prepareStatement(sql);) {
  
             ps.setString(1, bean.getName_category());
@@ -71,7 +71,7 @@ public class CategoryDAO {
  
         try (Connection c = DBUtil.getConnection(); Statement s = c.createStatement();) {
  
-            String sql = "delete from Category where id = " + id;
+            String sql = "delete from Category where id_category = " + id;
  
             s.execute(sql);
  
@@ -86,7 +86,7 @@ public class CategoryDAO {
  
         try (Connection c = DBUtil.getConnection(); Statement s = c.createStatement();) {
  
-            String sql = "select * from Category where id = " + id;
+            String sql = "select * from Category where id_category = " + id;
  
             ResultSet rs = s.executeQuery(sql);
  
@@ -111,7 +111,7 @@ public class CategoryDAO {
     public List<Category> list(int start, int count) {
         List<Category> beans = new ArrayList<Category>();
  
-        String sql = "select * from Category order by id desc limit ?,? ";
+        String sql = "select * from Category order by id_category desc limit ?,? ";
  
         try (Connection c = DBUtil.getConnection(); PreparedStatement ps = c.prepareStatement(sql);) {
  

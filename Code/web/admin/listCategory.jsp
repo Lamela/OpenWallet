@@ -31,7 +31,6 @@
 					<th>ID</th>
 					<th>Image</th>
 					<th>Category Name</th>
-						<th>Product Management</th>
 					<th>Edit</th>
 					<th>Delete</th>
 				</tr>
