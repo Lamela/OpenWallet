@@ -25,7 +25,9 @@
 <title>Category Management</title>
 
 <div class="workingArea">
+
 	<br>
+    <h1 class="label label-info" style="font-size: 16pt">Category Admin</h1>
 	<br>
 
 	<div class="listDataTableDiv">

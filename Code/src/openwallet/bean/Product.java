@@ -9,7 +9,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.FetchType;
 import javax.persistence.OrderBy;
 import javax.persistence.Column;
-import java.sql.Date;
+import java.util.Date;
 import java.util.Set;
 import javax.persistence.Table;
 import javax.persistence.CascadeType;
@@ -31,9 +31,9 @@ public class Product {
   private String description;
   private double price;
   private int stock;
-  private LocalDate create_date_product;
+  private Date create_date_product;
   private String origin;
-  private boolean sold;
+  private int sold;
   private String brand;
   private String color;
   private String material;
@@ -41,7 +41,7 @@ public class Product {
 
   public Product(){};
 
-  public Product(int id_product, int id_category, int id_user, String name_product, String description, double price, int stock, LocalDate create_date_product, String origin, boolean sold, String brand, String color, String material, double note) {
+  public Product(int id_product, int id_category, int id_user, String name_product, String description, double price, int stock, Date create_date_product, String origin, int sold, String brand, String color, String material, double note) {
     this.id_product = id_product;
     this.id_category = id_category;
     this.id_user = id_user;
@@ -130,11 +130,11 @@ public class Product {
       this.origin = origin;
   }
 
-  public boolean isSold() {
+  public int getSold() {
       return sold;
   }
 
-  public void setSold(boolean sold) {
+  public void setSold(int sold) {
       this.sold = sold;
   }
 
