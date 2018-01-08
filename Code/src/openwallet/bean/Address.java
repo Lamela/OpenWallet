@@ -27,22 +27,24 @@ public class Address {
   private int id_user;
   private String firstname_receiver;
   private String lastname_receiver;
+  private String mobile_receiver;
   private String street;
   private String city;
   private String country;
-  private String codepost;
+  private String post_address;
 
   public Address(){};
 
-  public Address(int id_address, int id_user, String firstname_receiver, String lastname_receiver, String street, String city, String country, String codepost) {
+  public Address(int id_address, int id_user, String firstname_receiver, String lastname_receiver, String mobile_receiver, String street, String city, String country, String post_address) {
     this.id_address = id_address;
     this.id_user = id_user;
     this.firstname_receiver = firstname_receiver;
     this.lastname_receiver = lastname_receiver;
+    this.mobile_receiver = mobile_receiver;
     this.street = street;
     this.city = city;
     this.country = country;
-    this.codepost = codepost;
+    this.post_address = post_address;
   }
 
   public int getId_address() {
@@ -77,6 +79,14 @@ public class Address {
   this.lastname_receiver = lastname_receiver;
   }
 
+  public void setMobile_receiver(String mobile_receiver) {
+  this.mobile_receiver = mobile_receiver;
+  }
+
+  public String getMobile_receiver() {
+  return mobile_receiver;
+  }
+
   public String getStreet() {
   return street;
   }
@@ -101,11 +111,11 @@ public class Address {
   this.country = country;
   }
 
-  public String getCodepost() {
-  return codepost;
+  public String getPost_address() {
+  return post_address;
   }
 
-  public void setCodepost(String codepost) {
-  this.codepost = codepost;
+  public void setPost_address(String post_address) {
+  this.post_address = post_address;
   }
 }
