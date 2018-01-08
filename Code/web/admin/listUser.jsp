@@ -23,6 +23,7 @@
 			<thead>
 				<tr class="success">
 					<th>ID</th>
+					<th>Image</th>
 					<th>User Firstname</th>
 					<th>User Lastname</th>
 					<th>User Birthday</th>
@@ -38,6 +39,7 @@
 				<c:forEach items="${us}" var="u">
 				<tr>
 					<td>${u.id_user}</td>
+					<td><img height="40px" src="img/category/${u.id_user}.jpg"></td>
 					<td>${u.firstname_user}</td>
 					<td>${u.lastname_user}</td>
 					<td>${u.birthday}</td>
