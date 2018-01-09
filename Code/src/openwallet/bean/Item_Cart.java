@@ -26,17 +26,17 @@ public class Item_Cart {
   @Column(name = "id_item_cart")
   private int id_item_cart;
   @OneToOne(cascade=CascadeType.ALL,fetch = FetchType.LAZY)
-  private int id_user;
+  private User user;
   @OneToOne(cascade=CascadeType.ALL,fetch = FetchType.LAZY)
-  private int id_product;
+  private Product Product;
   private int number_item_cart;
 
   public Item_Cart(){};
 
-  public Item_Cart(int id_item_cart, int id_user, int id_product, int number_item_cart) {
+  public Item_Cart(int id_item_cart, User user, Product product, int number_item_cart) {
     this.id_item_cart = id_item_cart;
-    this.id_user = id_user;
-    this.id_product = id_product;
+    this.user = user;
+    this.product = product;
     this.number_item_cart = number_item_cart;
   }
 
@@ -48,20 +48,20 @@ public class Item_Cart {
       this.id_item_cart = id_item_cart;
   }
 
-  public int getId_user() {
-      return id_user;
+  public User geUuser() {
+      return user;
   }
 
-  public void setId_user(int id_user) {
-      this.id_user = id_user;
+  public void setUser(User user) {
+      this.user = user;
   }
 
-  public int getId_product() {
-      return id_product;
+  public Product getProduct() {
+      return product;
   }
 
-  public void setId_product(int id_product) {
-      this.id_product = id_product;
+  public void setProduct(Product product) {
+      this.product = product;
   }
 
   public int getNumber_item_cart() {
