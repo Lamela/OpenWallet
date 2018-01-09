@@ -43,7 +43,6 @@ public class Orders {
 
   public Orders(int id_order, User user, int code_order, double total_price, Address delivery_address, Address invoice_address, String user_message, Date create_date_order, Date pay_date, Date delivery_date, Date confirm_date, String status) {
       this.user = user;
-      this.id_user = id_user;
       this.code_order = code_order;
       this.total_price = total_price;
       this.delivery_address = delivery_address;
