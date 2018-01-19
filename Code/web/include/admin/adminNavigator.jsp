@@ -27,7 +27,8 @@
                         </li> -->
                         <li><a href="admin_category_list"><i class="icon-envelope"></i>Category Admin</a></li>
                         <li><a href="admin_user_list"><i class="icon-key"></i>User Admin</a></li>
-						<li><a href="admin_order_list"><i class="cart"></i>Order Admin</a></li>
+                        <li><a href="admin_product_list"><i class="icon-key"></i>Product Admin</a></li>
+						<li><a href="admin_orders_list"><i class="cart"></i>Order Admin</a></li>
                     </ul>
                 </div>
 

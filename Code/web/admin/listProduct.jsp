@@ -132,7 +132,7 @@
 					</tr>
 					<tr>
 						<td>Create Date</td>
-						<td><input id="create_date_product" name="create_date_product" type="text" 
+						<td><input id="create_date_product" name="create_date_product" type="date" 
 							class="form-control"></td>
 					</tr>
 					<tr>

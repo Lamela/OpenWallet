@@ -19,7 +19,10 @@ public class ProductServlet extends BaseBackServlet {
 		String description = request.getParameter("description");
 		double price = Double.parseDouble(request.getParameter("price"));
 		int stock = Integer.parseInt(request.getParameter("stock"));
-		Date create_date_product = request.getParameter("create_date_product");
+		String[] date = request.getParameter("create_date_product").split("-");	
+		GregorianCalendar cal = new GregorianCalendar();
+		cal.set(Integer.parseInt(date[0]), Integer.parseInt(date[1]), Integer.parseInt(date[2]));
+		Date create_date_product = cal.getTime();
 		String origin = request.getParameter("origin");
 		int sold = Integer.parseInt(request.getParameter("sold"));
 		String brand = request.getParameter("brand");
@@ -99,7 +102,10 @@ public class ProductServlet extends BaseBackServlet {
 		String description = request.getParameter("description");
 		double price = Double.parseDouble(request.getParameter("price"));
 		int stock = Integer.parseInt(request.getParameter("stock"));
-		Date create_date_product = request.getParameter("create_date_product");
+		String[] date = request.getParameter("create_date_product").split("-");	
+		GregorianCalendar cal = new GregorianCalendar();
+		cal.set(Integer.parseInt(date[0]), Integer.parseInt(date[1]), Integer.parseInt(date[2]));
+		Date create_date_product = cal.getTime();
 		String origin = request.getParameter("origin");
 		int sold = Integer.parseInt(request.getParameter("sold"));
 		String brand = request.getParameter("brand");
@@ -130,14 +136,14 @@ public class ProductServlet extends BaseBackServlet {
 
 	
 	public String list(HttpServletRequest request, HttpServletResponse response, Page page) {
-		int cid = Integer.parseInt(request.getParameter("id_category"));
-		Category c = categoryDAO.get(cid);
+		int id_category = Integer.parseInt(request.getParameter("id_category"));
+		Category c = categoryDAO.get(id_category);
 		int id_user = Integer.parseInt(request.getParameter("id_user"));
 		User u = userDAO.get(id_user);
 		
-		List<Product> ps = productDAO.list(cid, page.getStart(),page.getCount());
+		List<Product> ps = productDAO.list(id_category, page.getStart(),page.getCount());
 		
-		int total = productDAO.getTotal(cid);
+		int total = productDAO.getTotal(id_category);
 		page.setTotal(total);
 		page.setParam("&id_category="+c.getId_category());
 		

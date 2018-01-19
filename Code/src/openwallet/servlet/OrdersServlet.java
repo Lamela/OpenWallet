@@ -27,7 +27,7 @@ public class OrdersServlet extends BaseBackServlet {
 		o.setDelivery_date(new Date());
 		o.setStatus(OrdersDAO.waitConfirm);
 		ordersDAO.update(o);
-		return "@admin_order_list";
+		return "@admin_orders_list";
 	}
 
 	
@@ -50,6 +50,6 @@ public class OrdersServlet extends BaseBackServlet {
 		request.setAttribute("os", os);
 		request.setAttribute("page", page);
 		
-		return "admin/listOrder.jsp";
+		return "admin/listOrders.jsp";
 	}
 }
