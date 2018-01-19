@@ -1,6 +1,6 @@
 package openwallet.servlet;
 
-import java.util.List;
+import java.util.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import openwallet.bean.*;
@@ -18,22 +18,33 @@ public class ProductServlet extends BaseBackServlet {
 		String name_product = request.getParameter("name_product");
 		String description = request.getParameter("description");
 		double price = Double.parseDouble(request.getParameter("price"));
-		Date create_date_product = 
 		int stock = Integer.parseInt(request.getParameter("stock"));
+		Date create_date_product = request.getParameter("create_date_product");
+		String origin = request.getParameter("origin");
+		int sold = Integer.parseInt(request.getParameter("sold"));
+		String brand = request.getParameter("brand");
+		String color = request.getParameter("color");
+		String material = request.getParameter("material");
+		int comment_count = Integer.parseInt(request.getParameter("comment_count"));
 
 		Product p = new Product();
 
 		p.setCategory(c);
-		p.setName(name);
-		p.setSubTitle(subTitle);
-		p.setOrignalPrice(orignalPrice);
-		p.setPromotePrice(promotePrice);
+		p.setUser(u);
+		p.setName_product(name_product);
+		p.setDescription(description);
+		p.setPrice(price);
 		p.setStock(stock);
-		
-
+		p.setCreate_date_product(create_date_product);
+		p.setOrigin(origin);
+		p.setSold(sold);
+		p.setBrand(brand);
+		p.setColor(color);
+		p.setMaterial(material);
+		p.setComment_count(comment_count);
 		
 		productDAO.add(p);
-		return "@admin_product_list?cid="+cid;
+		return "@admin_product_list?id_category="+id_category;
 	}
 
 	
@@ -41,7 +52,7 @@ public class ProductServlet extends BaseBackServlet {
 		int id = Integer.parseInt(request.getParameter("id"));
 		Product p = productDAO.get(id);
 		productDAO.delete(id);
-		return "@admin_product_list?cid="+p.getCategory().getId();
+		return "@admin_product_list?id_category="+p.getCategory().getId_category();
 	}
 
 	
@@ -52,6 +63,7 @@ public class ProductServlet extends BaseBackServlet {
 		return "admin/editProduct.jsp";		
 	}
 	
+	/*
 	public String editPropertyValue(HttpServletRequest request, HttpServletResponse response, Page page) {
 		int id = Integer.parseInt(request.getParameter("id"));
 		Product p = productDAO.get(id);
@@ -75,44 +87,59 @@ public class ProductServlet extends BaseBackServlet {
 		propertyValueDAO.update(pv);
 		return "%success";
 	}
+	*/
 	
 	public String update(HttpServletRequest request, HttpServletResponse response, Page page) {
-		int cid = Integer.parseInt(request.getParameter("cid"));
-		Category c = categoryDAO.get(cid);
-
-		int id = Integer.parseInt(request.getParameter("id"));
+		int id_product = Integer.parseInt(request.getParameter("id_product"));		
+		int id_category = Integer.parseInt(request.getParameter("id_category"));
+		Category c = categoryDAO.get(id_category);
+		int id_user = Integer.parseInt(request.getParameter("id_user"));
+		User u = userDAO.get(id_user);
+		String name_product = request.getParameter("name_product");
+		String description = request.getParameter("description");
+		double price = Double.parseDouble(request.getParameter("price"));
 		int stock = Integer.parseInt(request.getParameter("stock"));
-		float orignalPrice = Float.parseFloat(request.getParameter("orignalPrice"));
-		float promotePrice = Float.parseFloat(request.getParameter("promotePrice"));
-		String subTitle= request.getParameter("subTitle");
-		String name= request.getParameter("name");
-		
+		Date create_date_product = request.getParameter("create_date_product");
+		String origin = request.getParameter("origin");
+		int sold = Integer.parseInt(request.getParameter("sold"));
+		String brand = request.getParameter("brand");
+		String color = request.getParameter("color");
+		String material = request.getParameter("material");
+		int comment_count = Integer.parseInt(request.getParameter("comment_count"));
+
 		Product p = new Product();
 
-		p.setName(name);
-		p.setSubTitle(subTitle);
-		p.setOrignalPrice(orignalPrice);
-		p.setPromotePrice(promotePrice);
+		p.setId_product(id_product);
+		p.setCategory(c);
+		p.setUser(u);
+		p.setName_product(name_product);
+		p.setDescription(description);
+		p.setPrice(price);
 		p.setStock(stock);
-		p.setId(id);
-		p.setCategory(c);		
+		p.setCreate_date_product(create_date_product);
+		p.setOrigin(origin);
+		p.setSold(sold);
+		p.setBrand(brand);
+		p.setColor(color);
+		p.setMaterial(material);
+		p.setComment_count(comment_count);		
 
 		productDAO.update(p);
-		return "@admin_product_list?cid="+p.getCategory().getId();
+		return "@admin_product_list?id_category="+p.getCategory().getId_category();
 	}
 
 	
 	public String list(HttpServletRequest request, HttpServletResponse response, Page page) {
-		int cid = Integer.parseInt(request.getParameter("cid"));
+		int cid = Integer.parseInt(request.getParameter("id_category"));
 		Category c = categoryDAO.get(cid);
-		int id_user = Integer.parseInt(request.getParameter("seller"));
+		int id_user = Integer.parseInt(request.getParameter("id_user"));
 		User u = userDAO.get(id_user);
 		
 		List<Product> ps = productDAO.list(cid, page.getStart(),page.getCount());
 		
 		int total = productDAO.getTotal(cid);
 		page.setTotal(total);
-		page.setParam("&cid="+c.getId_category());
+		page.setParam("&id_category="+c.getId_category());
 		
 		request.setAttribute("ps", ps);
 		request.setAttribute("c", c);

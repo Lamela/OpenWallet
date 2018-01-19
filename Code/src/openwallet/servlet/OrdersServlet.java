@@ -44,7 +44,7 @@ public class OrdersServlet extends BaseBackServlet {
 	public String list(HttpServletRequest request, HttpServletResponse response, Page page) {
 		List<Orders> os = ordersDAO.list(page.getStart(),page.getCount());
 		itemOrderDAO.fill(os);
-		int total_number = ordersDAO.getTotal_number();
+		int total_number = ordersDAO.getTotal();
 		page.setTotal(total_number);
 		
 		request.setAttribute("os", os);
