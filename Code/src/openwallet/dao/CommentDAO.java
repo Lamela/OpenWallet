@@ -10,9 +10,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import openwallet.bean.Product;
-import openwallet.bean.Comment;
-import openwallet.bean.User;
+import openwallet.bean.*;
 import openwallet.util.DBUtil;
 import openwallet.util.DateUtil;
  
@@ -58,8 +56,8 @@ public class CommentDAO {
         String sql = "insert into Comment values(null,?,?,?,?)";
         try (Connection c = DBUtil.getConnection(); PreparedStatement ps = c.prepareStatement(sql);) {
  
-            ps.setInt(1, bean.getId_user());
-            ps.setInt(2, bean.getId_product());
+            ps.setInt(1, bean.getUser().getId_user());
+            ps.setInt(2, bean.getProduct().getId_product());
             ps.setTimestamp(3, DateUtil.d2t(bean.getDate_comment()));
 	    ps.setDouble(4, bean.getNote());
             
@@ -80,8 +78,8 @@ public class CommentDAO {
 
         String sql = "update Comment set id_user= ?, id_product=?, date_comment=? , note = ? where id_comment = ?";
         try (Connection c = DBUtil.getConnection(); PreparedStatement ps = c.prepareStatement(sql);) {
-            ps.setInt(1, bean.getId_user());
-            ps.setInt(2, bean.getId_product());
+            ps.setInt(1, bean.getUser().getId_user());
+            ps.setInt(2, bean.getProduct().getId_product());
             ps.setTimestamp(3, DateUtil.d2t(bean.getDate_comment()));
 	    ps.setDouble(4, bean.getNote());
             ps.setInt(5, bean.getId_comment());
@@ -118,17 +116,17 @@ public class CommentDAO {
             ResultSet rs = s.executeQuery(sql);
 
             if (rs.next()) {
+				UserDAO userDAO = new UserDAO();
+				ProductDAO productDAO = new ProductDAO();
                 int id_user = rs.getInt("id_user");
                 int id_product = rs.getInt("id_product");
                 Date date_comment = DateUtil.t2d(rs.getTimestamp("date_comment"));
-                
                 Double note = rs.getDouble("note");
-                
                 
                 bean.setId_comment(id);
                 bean.setDate_comment(date_comment);
-                bean.setId_user(id_user);
-                bean.setId_product(id_product);
+                bean.setUser(userDAO.get(id_user));
+                bean.setProduct(productDAO.get(id_product));
                 bean.setNote(note);
             }
  
@@ -173,20 +171,21 @@ public class CommentDAO {
  
             ResultSet rs = ps.executeQuery();
  
+			UserDAO userDAO = new UserDAO();
+			ProductDAO productDAO = new ProductDAO();
             while (rs.next()) {
                 Comment bean = new Comment();
                 int id_comment = rs.getInt("id_comment");
                 int id_user = rs.getInt("id_user");
                 int id_product = rs.getInt("id_product");
                 Date date_comment = DateUtil.t2d(rs.getTimestamp("date_comment"));
-                
                 Double note = rs.getDouble("note");
                 
                 
                 bean.setId_comment(id_comment);
                 bean.setDate_comment(date_comment);
-                bean.setId_user(id_user);
-                bean.setId_product(id_product);
+                bean.setUser(userDAO.get(id_user));
+                bean.setProduct(productDAO.get(id_product));
                 bean.setNote(note);
                 beans.add(bean);
             }

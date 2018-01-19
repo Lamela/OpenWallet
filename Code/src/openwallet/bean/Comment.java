@@ -26,19 +26,19 @@ public class Comment {
   @Column(name = "id_comment")
   private int id_comment;
   @OneToOne(cascade=CascadeType.ALL,fetch = FetchType.LAZY)
-  private int id_user;
+  private User user;
   @OneToOne(cascade=CascadeType.ALL,fetch = FetchType.LAZY)
-  private int id_product;
+  private Product product;
   private Date date_comment;
   private double note;
   private boolean is_anonymous;
 
   public Comment(){};
 
-  public Comment(int id_comment, int id_user, int id_product, Date date_comment, double note) {
+  public Comment(int id_comment, User user, Product product, Date date_comment, double note) {
      this.id_comment = id_comment;
-     this.id_user = id_user;
-     this.id_product = id_product;
+     this.user = user;
+     this.product = product;
      this.date_comment = date_comment;
      this.note = note;
    }
@@ -51,20 +51,20 @@ public class Comment {
        this.id_comment = id_comment;
    }
 
-   public int getId_user() {
-       return id_user;
+   public int getUser() {
+       return user;
    }
 
-   public void setId_user(int id_user) {
-       this.id_user = id_user;
+   public void setUser(User user) {
+       this.user = user;
    }
 
-   public int getId_product() {
-       return id_product;
+   public int getProduct() {
+       return product;
    }
 
-   public void setId_product(int id_product) {
-       this.id_product = id_product;
+   public void setProduct(Product product) {
+       this.product = product;
    }
 
    public Date getDate_comment() {
