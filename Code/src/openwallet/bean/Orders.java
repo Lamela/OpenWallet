@@ -37,11 +37,13 @@ public class Orders {
   private Date delivery_date;
   private Date confirm_date;
   private String status;
+  private int total_number
+  private List<ItemOrder> itemOrders;
 
 
   public Orders(){};
 
-  public Orders(int id_order, User user, int code_order, double total_price, Address delivery_address, Address invoice_address, String user_message, Date create_date_order, Date pay_date, Date delivery_date, Date confirm_date, String status) {
+  public Orders(int id_order, User user, int code_order, double total_price, Address delivery_address, Address invoice_address, String user_message, Date create_date_order, Date pay_date, Date delivery_date, Date confirm_date, String status, int total_number, List<ItemOrder> itemOrders) {
       this.user = user;
       this.code_order = code_order;
       this.total_price = total_price;
@@ -53,6 +55,8 @@ public class Orders {
       this.delivery_date = delivery_date;
       this.confirm_date = confirm_date;
       this.status = status;
+      this.total_number = total_number;
+      this.itemOrders = itemOrders;
   }
 
   public User getUser() {
@@ -149,5 +153,21 @@ public class Orders {
 
   public void setStatus(String status) {
       this.status = status;
+  }
+
+  public int getTotal_number() {
+    return total_number;
+  }
+
+  public void setTotal_number(int total_number) {
+    this.total_number = total_number;
+  }
+
+  public List<ItemOrder> getItemOrders() {
+    return itemOrders;
+  }
+
+  public void setItemOrders(List<ItemOrder> itemOrders) {
+    this.itemOrders = itemOrders;
   }
 }

@@ -97,10 +97,12 @@ CREATE TABLE item_cart (
 
 CREATE TABLE item_order (
 	id_item_order int(11) NOT NULL AUTO_INCREMENT,
-	id_order int(11) DEFAULT NULL,
 	id_product int(11) DEFAULT NULL,
+	id_order int(11) DEFAULT NULL,
+	id_user int(11) DEFAULT NULL,
 	number_item_order int(11) DEFAULT NULL,
 	PRIMARY KEY (id_item_order),
-	CONSTRAINT fk_item_order_user FOREIGN KEY (id_order) REFERENCES orders (id_order),
-	CONSTRAINT fk_item_order_product FOREIGN KEY (id_product) REFERENCES product (id_product)
+	CONSTRAINT fk_item_order_order FOREIGN KEY (id_order) REFERENCES orders (id_order),
+	CONSTRAINT fk_item_order_product FOREIGN KEY (id_product) REFERENCES product (id_product),
+	CONSTRAINT fk_item_order_user FOREIGN KEY (id_user) REFERENCES user (id_user)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

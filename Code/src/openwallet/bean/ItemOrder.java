@@ -24,6 +24,7 @@ public class ItemOrder {
   @GeneratedValue(strategy=GenerationType.AUTO)
   @Column(name = "id_item_order")
   private int id_item_order;
+  private User user;
   @OneToOne(cascade=CascadeType.ALL,fetch = FetchType.LAZY)
   private Orders orders;
   @OneToOne(cascade=CascadeType.ALL,fetch = FetchType.LAZY)
@@ -32,10 +33,11 @@ public class ItemOrder {
 
   public ItemOrder(){};
 
-  public ItemOrder(int id_item_order, int id_order, int id_product, int number_item_order) {
+  public ItemOrder(int id_item_order, User user, Orders orders, Product product, int number_item_order) {
     this.id_item_order = id_item_order;
     this.orders = orders;
     this.product = product;
+    this.user = user;
     this.number_item_order = number_item_order;
   }
 
@@ -63,6 +65,13 @@ public class ItemOrder {
       this.product = product;
   }
 
+  public User getUser() {
+      return user;
+  }
+
+  public User setUser(User user) {
+      this.user = user;
+  }
   public int getNumber_item_order() {
       return number_item_order;
   }

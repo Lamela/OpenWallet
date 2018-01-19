@@ -1,4 +1,4 @@
-package tmall.dao;
+package openwallet.dao;
 
 
 import java.sql.Connection;
@@ -9,20 +9,16 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import tmall.bean.Category;
-import tmall.bean.Order;
-import tmall.bean.OrderItem;
-import tmall.bean.Product;
-import tmall.bean.User;
-import tmall.util.DBUtil;
+import openwallet.bean.*;
+import openwallet.util.*;
  
-public class OrderItemDAO {
+public class ItemOrderDAO {
  
     public int getTotal() {
         int total = 0;
         try (Connection c = DBUtil.getConnection(); Statement s = c.createStatement();) {
  
-            String sql = "select count(*) from OrderItem";
+            String sql = "select count(*) from ItemOrder";
  
             ResultSet rs = s.executeQuery(sql);
             while (rs.next()) {
@@ -35,29 +31,29 @@ public class OrderItemDAO {
         return total;
     }
  
-    public void add(OrderItem bean) {
+    public void add(ItemOrder bean) {
 
 
 
-        String sql = "insert into OrderItem values(null,?,?,?,?)";
+        String sql = "insert into ItemOrder values(null,?,?,?,?)";
         try (Connection c = DBUtil.getConnection(); PreparedStatement ps = c.prepareStatement(sql);) {
  
-            ps.setInt(1, bean.getProduct().getId());
+            ps.setInt(1, bean.getProduct().getId_product());
             
             //订单项在创建的时候，是没有蒂订单信息的
-            if(null==bean.getOrder())
+            if(null==bean.getOrders())
             	ps.setInt(2, -1);
             else
-            	ps.setInt(2, bean.getOrder().getId());  
+            	ps.setInt(2, bean.getOrders().getId_order());  
             
-            ps.setInt(3, bean.getUser().getId());
-            ps.setInt(4, bean.getNumber());
+            ps.setInt(3, bean.getUser().getId_user);
+            ps.setInt(4, bean.getNumber_item_number());
             ps.execute();
  
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
-                int id = rs.getInt(1);
-                bean.setId(id);
+                int id_item_order = rs.getInt(1);
+                bean.setId_item_order(id_item_order);
             }
         } catch (SQLException e) {
  
@@ -65,24 +61,23 @@ public class OrderItemDAO {
         }
     }
  
-    public void update(OrderItem bean) {
+    public void update(ItemOrder bean) {
 
-        String sql = "update OrderItem set pid= ?, oid=?, uid=?,number=?  where id = ?";
+        String sql = "update ItemOrder set id_product = ?, id_order = ?, id_user = ?, number_item_order = ?  where id_item_order = ?";
         try (Connection c = DBUtil.getConnection(); PreparedStatement ps = c.prepareStatement(sql);) {
 
 
-            ps.setInt(1, bean.getProduct().getId());
-            if(null==bean.getOrder())
+            ps.setInt(1, bean.getProduct().getId_product());
+            if(null==bean.getOrders())
             	ps.setInt(2, -1);
             else
-            	ps.setInt(2, bean.getOrder().getId());            	
-            ps.setInt(3, bean.getUser().getId());
-            ps.setInt(4, bean.getNumber());
+            	ps.setInt(2, bean.getOrders().getId_order());
+            ps.setInt(3, bean.getUser().getId_user());
+            ps.setInt(4, bean.getNumber_item_number());
             
 
-            ps.setInt(5, bean.getId());
-            ps.execute();
- 
+            ps.setInt(5, bean.getId_item_order());
+            ps.execute(); 
         } catch (SQLException e) {
  
             e.printStackTrace();
@@ -94,7 +89,7 @@ public class OrderItemDAO {
  
         try (Connection c = DBUtil.getConnection(); Statement s = c.createStatement();) {
  
-            String sql = "delete from OrderItem where id = " + id;
+            String sql = "delete from ItemOrder where id_item_order = " + id;
  
             s.execute(sql);
  
@@ -104,32 +99,32 @@ public class OrderItemDAO {
         }
     }
  
-    public OrderItem get(int id) {
-        OrderItem bean = new OrderItem();
+    public ItemOrder get(int id) {
+        ItemOrder bean = new ItemOrder();
  
         try (Connection c = DBUtil.getConnection(); Statement s = c.createStatement();) {
  
-            String sql = "select * from OrderItem where id = " + id;
+            String sql = "select * from ItemOrder where id_item_order = " + id;
  
             ResultSet rs = s.executeQuery(sql);
  
             if (rs.next()) {
-                int pid = rs.getInt("pid");
-                int oid = rs.getInt("oid");
-                int uid = rs.getInt("uid");
-                int number = rs.getInt("number");
-                Product product = new ProductDAO().get(pid);
-                User user = new UserDAO().get(uid);
+                int id_product = rs.getInt("id_product");
+                int id_order = rs.getInt("id_order");
+                int id_user = rs.getInt("id_user");
+                int number_item_order = rs.getInt("number_item_order");
+                User user = new UserDAO.get(id_user);
+                Product product = new ProductDAO().get(id_product);
                 bean.setProduct(product);
                 bean.setUser(user);
-                bean.setNumber(number);
+                bean.setNumber_item_order(number_item_order);
                 
-                if(-1!=oid){
-                    Order order= new OrderDAO().get(oid);
-                    bean.setOrder(order);               	
+                if(-1 != id_order){
+                    Orders orders = new OrdersDAO().get(id_order);
+                    bean.setOrders(orders);               	
                 }
                 
-                bean.setId(id);
+                bean.setId_item_order(id);
             }
  
         } catch (SQLException e) {
@@ -139,44 +134,44 @@ public class OrderItemDAO {
         return bean;
     }
  
-    public List<OrderItem> listByUser(int uid) {
-        return listByUser(uid, 0, Short.MAX_VALUE);
+    public List<ItemOrder> listByUser(int id_user) {
+        return listByUser(id_user, 0, Short.MAX_VALUE);
     }
  
-    public List<OrderItem> listByUser(int uid, int start, int count) {
-        List<OrderItem> beans = new ArrayList<OrderItem>();
+    public List<ItemOrder> listByUser(int id_user, int start, int count) {
+        List<ItemOrder> beans = new ArrayList<ItemOrder>();
  
-        String sql = "select * from OrderItem where uid = ? and oid=-1 order by id desc limit ?,? ";
+        String sql = "select * from ItemOrder where id_user = ? and id_order = -1 order by id_item_order desc limit ?,? ";
  
         try (Connection c = DBUtil.getConnection(); PreparedStatement ps = c.prepareStatement(sql);) {
  
-            ps.setInt(1, uid);
+            ps.setInt(1, id_user);
             ps.setInt(2, start);
             ps.setInt(3, count);
  
             ResultSet rs = ps.executeQuery();
  
             while (rs.next()) {
-                OrderItem bean = new OrderItem();
-                int id = rs.getInt(1);
+                ItemOrder bean = new ItemOrder();
+                int id_item_order = rs.getInt(1);
 
-                int pid = rs.getInt("pid");
-                int oid = rs.getInt("oid");
-                int number = rs.getInt("number");
+                int id_product = rs.getInt("id_product");
+                int id_order = rs.getInt("id_order");
+                int number_item_order = rs.getInt("number_item_order");
                 
               
-                Product product = new ProductDAO().get(pid);
-                if(-1!=oid){
-                    Order order= new OrderDAO().get(oid);
-                    bean.setOrder(order);               	
+                Product product = new ProductDAO().get(id_product);
+                if(-1 != id_order){
+                    Orders orders = new OrdersDAO().get(id_order);
+                    bean.setOrders(orders);               	
                 }
 
-                User user = new UserDAO().get(uid);
+                User user = new UserDAO().get(id_user);
                 bean.setProduct(product);
 
                 bean.setUser(user);
-                bean.setNumber(number);
-                bean.setId(id);                
+                bean.setNumber_item_order(number_item_order);
+                bean.setId_item_order(id_item_order);                
                 beans.add(bean);
             }
         } catch (SQLException e) {
@@ -185,44 +180,44 @@ public class OrderItemDAO {
         }
         return beans;
     }
-    public List<OrderItem> listByOrder(int oid) {
-    	return listByOrder(oid, 0, Short.MAX_VALUE);
+    public List<ItemOrder> listByOrder(int id_order) {
+    	return listByOrder(id_order, 0, Short.MAX_VALUE);
     }
     
-    public List<OrderItem> listByOrder(int oid, int start, int count) {
-    	List<OrderItem> beans = new ArrayList<OrderItem>();
+    public List<ItemOrder> listByOrder(int oid, int start, int count) {
+    	List<ItemOrder> beans = new ArrayList<ItemOrder>();
     	
-    	String sql = "select * from OrderItem where oid = ? order by id desc limit ?,? ";
+    	String sql = "select * from ItemOrder where id_order = ? order by id_item_order desc limit ?,? ";
     	
     	try (Connection c = DBUtil.getConnection(); PreparedStatement ps = c.prepareStatement(sql);) {
     		
-    		ps.setInt(1, oid);
+    		ps.setInt(1, id_order);
     		ps.setInt(2, start);
     		ps.setInt(3, count);
     		
     		ResultSet rs = ps.executeQuery();
     		
     		while (rs.next()) {
-    			OrderItem bean = new OrderItem();
-    			int id = rs.getInt(1);
+    			ItemOrder bean = new ItemOrder();
+    			int id_item_order = rs.getInt(1);
     			
-    			int pid = rs.getInt("pid");
-    			int uid = rs.getInt("uid");
-    			int number = rs.getInt("number");
+    			int id_product = rs.getInt("id_product");
+    			int id_user = rs.getInt("id_user");
+    			int number_item_order = rs.getInt("number_item_order");
     			
     			
-    			Product product = new ProductDAO().get(pid);
-    			if(-1!=oid){
-    				Order order= new OrderDAO().get(oid);
-    				bean.setOrder(order);               	
+    			Product product = new ProductDAO().get(id_product);
+    			if(-1 != id_order){
+    				Orders orders = new OrdersDAO().get(id_order);
+    				bean.setOrders(orders);               	
     			}
     			
-    			User user = new UserDAO().get(uid);
+    			User user = new UserDAO().get(id_user);
     			bean.setProduct(product);
     			
     			bean.setUser(user);
-    			bean.setNumber(number);
-    			bean.setId(id);                
+    			bean.setNumber_item_order(number_item_order);
+    			bean.setId_item_order(id_item_order);                
     			beans.add(bean);
     		}
     	} catch (SQLException e) {
@@ -232,17 +227,17 @@ public class OrderItemDAO {
     	return beans;
     }
 
-	public void fill(List<Order> os) {
-		for (Order o : os) {
-			List<OrderItem> ois=listByOrder(o.getId());
-			float total = 0;
-			int totalNumber = 0;
-			for (OrderItem oi : ois) {
-				 total+=oi.getNumber()*oi.getProduct().getPromotePrice();
-				 totalNumber+=oi.getNumber();
+	public void fill(List<Orders> os) {
+		for (Orders o : os) {
+			List<ItemOrder> ois = listByOrder(o.getId_order());
+			double total_price= 0;
+			int total_number = 0;
+			for (ItemOrder oi : ois) {
+				 total += oi.getNumber_item_number() * oi.getProduct().getPrice();
+				 total_number += oi.getNumber_item_number();
 			}
-			o.setTotal(total);
-			o.setOrderItems(ois);
+			o.setTotal_price(total_price);
+			o.setItemOrders(ois);
 			o.setTotalNumber(totalNumber);
 		}
 		
@@ -251,53 +246,53 @@ public class OrderItemDAO {
 	}
 
 	public void fill(Order o) {
-		List<OrderItem> ois=listByOrder(o.getId());
-		float total = 0;
-		for (OrderItem oi : ois) {
-			 total+=oi.getNumber()*oi.getProduct().getPromotePrice();
+		List<ItemOrder> ois = listByOrder(o.getId_order());
+		double total_price = 0;
+		for (ItemOrder oi : ois) {
+			 total_price += oi.getNumber_item_number() * oi.getProduct().getPrice();
 		}
-		o.setTotal(total);
-		o.setOrderItems(ois);
+		o.setTotal_price(total);
+		o.setItemOrders(ois);
 	}
 
-    public List<OrderItem> listByProduct(int pid) {
-        return listByProduct(pid, 0, Short.MAX_VALUE);
+    public List<ItemOrder> listByProduct(int id_product) {
+        return listByProduct(id_product, 0, Short.MAX_VALUE);
     }
  
-    public List<OrderItem> listByProduct(int pid, int start, int count) {
-        List<OrderItem> beans = new ArrayList<OrderItem>();
+    public List<ItemOrder> listByProduct(int id_product, int start, int count) {
+        List<ItemOrder> beans = new ArrayList<ItemOrder>();
  
-        String sql = "select * from OrderItem where pid = ? order by id desc limit ?,? ";
+        String sql = "select * from ItemOrder where id_product = ? order by id_item_order desc limit ?,? ";
  
         try (Connection c = DBUtil.getConnection(); PreparedStatement ps = c.prepareStatement(sql);) {
  
-            ps.setInt(1, pid);
+            ps.setInt(1, id_product);
             ps.setInt(2, start);
             ps.setInt(3, count);
  
             ResultSet rs = ps.executeQuery();
  
             while (rs.next()) {
-                OrderItem bean = new OrderItem();
-                int id = rs.getInt(1);
+                ItemOrder bean = new ItemOrder();
+                int id_id_item_order = rs.getInt(1);
 
-                int uid = rs.getInt("uid");
-                int oid = rs.getInt("oid");
-                int number = rs.getInt("number");
+                int id_user = rs.getInt("id_user");
+                int id_order = rs.getInt("id_order");
+                int number_item_order = rs.getInt("number_item_order");
                 
               
-                Product product = new ProductDAO().get(pid);
-                if(-1!=oid){
-                    Order order= new OrderDAO().get(oid);
-                    bean.setOrder(order);               	
+                Product product = new ProductDAO().get(id_product);
+                if(-1 != id_order){
+                    Orders orders = new OrdersDAO().get(id_order);
+                    bean.setOrders(orders);               	
                 }
 
-                User user = new UserDAO().get(uid);
+                User user = new UserDAO().get(id_user);
                 bean.setProduct(product);
 
                 bean.setUser(user);
-                bean.setNumber(number);
-                bean.setId(id);                
+                bean.setNumber_item_order(number_item_order);
+                bean.setId_item_order(id_item_order);                
                 beans.add(bean);
             }
         } catch (SQLException e) {
@@ -306,22 +301,4 @@ public class OrderItemDAO {
         }
         return beans;
     }
-
-	public int getSaleCount(int pid) {
-		 int total = 0;
-	        try (Connection c = DBUtil.getConnection(); Statement s = c.createStatement();) {
-	 
-	            String sql = "select sum(number) from OrderItem where pid = " + pid;
-	 
-	            ResultSet rs = s.executeQuery(sql);
-	            while (rs.next()) {
-	                total = rs.getInt(1);
-	            }
-	        } catch (SQLException e) {
-	 
-	            e.printStackTrace();
-	        }
-	        return total;
-	}
-	
 }
