@@ -11,17 +11,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Date;
 
-import openwallet.bean.Address;
-import openwallet.util.DBUtil;
-import openwallet.util.DateUtil;
+import openwallet.bean.ItemCart;
+import openwallet.util.*;
  
-public class AddressDAO {
+public class ItemCartDAO {
  
     public int getTotal() {
         int total = 0;
         try (Connection c = DBUtil.getConnection(); Statement s = c.createStatement();) {
  
-            String sql = "select count(*) from Address";
+            String sql = "select count(*) from item_cart";
  
             ResultSet rs = s.executeQuery(sql);
             while (rs.next()) {
@@ -34,26 +33,21 @@ public class AddressDAO {
         return total;
     }
  
-    public void add(Address bean) {
+    public void add(ItemCart bean) {
  
-        String sql = "insert into address values(null, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "insert into item_cart values(null, ?, ?, ?)";
         try (Connection c = DBUtil.getConnection(); PreparedStatement ps = c.prepareStatement(sql);) {
  
 			ps.setInt(1, bean.getUser().getId_user());
-            ps.setString(2, bean.getFirstname_receiver());
-            ps.setString(3, bean.getLastname_receiver());
-            ps.setString(4, bean.getMobile_receiver());
-            ps.setString(5, bean.getStreet());
-            ps.setString(6, bean.getCity());
-            ps.setString(7, bean.getCountry());
-            ps.setString(8, bean.getPost_address());
+            ps.setString(2, bean.getProduct().getId_product());
+            ps.setString(3, bean.getNumber_item_cart());
  
             ps.execute();
  
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
                 int id = rs.getInt(1);
-                bean.setId_address(id);
+                bean.setId_item_cart(id);
             }
         } catch (SQLException e) {
  
@@ -61,20 +55,14 @@ public class AddressDAO {
         }
     }
  
-    public void update(Address bean) {
+    public void update(ItemCart bean) {
  
-        String sql = "update address set id_user = ? , firstname_receiver = ? , lastname_receiver = ?, mobile_receiver = ?, street = ?, city = ?, country = ?, post_address = ? where id_address = ? ";
+        String sql = "update item_cart set id_user = ? , id_product = ? , number_item_cart = ? ";
         try (Connection c = DBUtil.getConnection(); PreparedStatement ps = c.prepareStatement(sql);) {
  
 			ps.setInt(1, bean.getUser().getId_user());
-            ps.setString(2, bean.getFirstname_receiver());
-            ps.setString(3, bean.getLastname_receiver());
-            ps.setString(4, bean.getMobile_receiver());
-            ps.setString(5, bean.getStreet());
-            ps.setString(6, bean.getCity());
-            ps.setString(7, bean.getCountry());
-            ps.setString(8, bean.getPost_address());
-			ps.setInt(9, bean.getId_address());
+			ps.setInt(2, bean.getProduct().getId_product());
+			ps.setInt(3, bean.getNumber_item_cart());
  
             ps.execute();
  
@@ -89,7 +77,7 @@ public class AddressDAO {
  
         try (Connection c = DBUtil.getConnection(); Statement s = c.createStatement();) {
  
-            String sql = "delete from address where id_address = " + id;
+            String sql = "delete from item_cart where id_item_cart = " + id;
  
             s.execute(sql);
  
@@ -99,35 +87,28 @@ public class AddressDAO {
         }
     }
  
-    public Address get(int id) {
-        Address bean = null;
+    public ItemCart get(int id) {
+        ItemCart bean = null;
  
         try (Connection c = DBUtil.getConnection(); Statement s = c.createStatement();) {
  
-            String sql = "select * from Address where id_address = " + id;
+            String sql = "select * from item_cart where id_item_cart = " + id;
  
             ResultSet rs = s.executeQuery(sql);
  
             if (rs.next()) {
 				UserDAO userDAO = new UserDAO();
-                bean = new Address();
+				ProductDAO product = new ProductDAO();
+                bean = new ItemCart();
 				int id_user = rs.getInt("id_user");
-				bean.setUser(userDAO.get(id_user));
-                String firstname_receiver = rs.getString("firstname_receiver");
-                bean.setFirstname_receiver(firstname_receiver);
-                String lastname_receiver = rs.getString("lastname_receiver");
-                bean.setLastname_receiver(lastname_receiver);
-                String mobile_receiver = rs.getString("mobile_receiver");
-                bean.setMobile_receiver(mobile_receiver);
-                String street = rs.getString("street");
-                bean.setStreet(street);
-                String city = rs.getString("city");
-                bean.setCity(city);
-                String country = rs.getString("country");
-                bean.setCountry(country);
-                String post_address = rs.getString("post_address");
-                bean.setPost_address(post_address);
-                bean.setId_address(id);
+				User user = userDAO.get(id_user);
+				bean.setUser(user);
+				int id_product = rs.getInt("id_product");
+				Product product = productDAO.get(id_product);
+				bean.setProduct(product);
+				int number_item_cart = rs.getInt("number_item_cart");
+				bean.setNumber_item_cart(number_item_cart);
+                bean.setId_item_cart(id);
             }
  
         } catch (SQLException e) {
@@ -137,14 +118,14 @@ public class AddressDAO {
         return bean;
     }
  
-    public List<Address> list() {
+    public List<ItemCart> list() {
         return list(0, Short.MAX_VALUE);
     }
  
-    public List<Address> list(int start, int count) {
-        List<Address> beans = new ArrayList<>();
+    public List<ItemCart> list(int start, int count) {
+        List<ItemCart> beans = new ArrayList<>();
  
-        String sql = "select * from address order by id_address desc limit ?,? ";
+        String sql = "select * from item_cart order by id_item_cart desc limit ?,? ";
  
         try (Connection c = DBUtil.getConnection(); PreparedStatement ps = c.prepareStatement(sql);) {
  
@@ -152,28 +133,21 @@ public class AddressDAO {
             ps.setInt(2, count);
  
             ResultSet rs = ps.executeQuery();
-			UserDAO userDAO = new UserDAO(); 
+			UserDAO userDAO = new UserDAO();
+			ProductDAO product = new ProductDAO();
+ 
             while (rs.next()) {
-                Address bean = new Address();
+                ItemCart bean = new ItemCart();
                 int id = rs.getInt(1);
-
 				int id_user = rs.getInt("id_user");
-				bean.setId_user(userDAO.get(id_user));
-                String firstname_receiver = rs.getString("firstname_receiver");
-                bean.setFirstname_receiver(firstname_receiver);
-                String lastname_receiver = rs.getString("lastname_receiver");
-                bean.setLastname_receiver(lastname_receiver);
-                String mobile_receiver = rs.getString("mobile_receiver");
-                bean.setMobile_receiver(mobile_receiver);
-                String street = rs.getString("street");
-                bean.setStreet(street);
-                String city = rs.getString("city");
-                bean.setCity(city);
-                String country = rs.getString("country");
-                bean.setCountry(country);
-                String post_address = rs.getString("post_address");
-                bean.setPost_address(post_address);
-                bean.setId_address(id);
+				User user = userDAO.get(id_user);
+				bean.setUser(user);
+				int id_product = rs.getInt("id_product");
+				Product product = productDAO.get(id_product);
+				bean.setProduct(product);
+				int number_item_cart = rs.getInt("number_item_cart");
+				bean.setNumber_item_cart(number_item_cart);
+                bean.setId_item_cart(id);
 
                 beans.add(bean);
             }
