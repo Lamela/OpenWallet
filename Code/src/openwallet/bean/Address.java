@@ -55,7 +55,7 @@ public class Address {
   this.id_address = id_address;
   }
 
-  public int getUser() {
+  public User getUser() {
   return user;
   }
 

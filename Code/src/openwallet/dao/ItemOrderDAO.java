@@ -45,8 +45,8 @@ public class ItemOrderDAO {
             else
             	ps.setInt(2, bean.getOrders().getId_order());  
             
-            ps.setInt(3, bean.getUser().getId_user);
-            ps.setInt(4, bean.getNumber_item_number());
+            ps.setInt(3, bean.getUser().getId_user());
+            ps.setInt(4, bean.getNumber_item_order());
             ps.execute();
  
             ResultSet rs = ps.getGeneratedKeys();
@@ -72,7 +72,7 @@ public class ItemOrderDAO {
             else
             	ps.setInt(2, bean.getOrders().getId_order());
             ps.setInt(3, bean.getUser().getId_user());
-            ps.setInt(4, bean.getNumber_item_number());
+            ps.setInt(4, bean.getNumber_item_order());
             
 
             ps.setInt(5, bean.getId_item_order());
@@ -112,7 +112,7 @@ public class ItemOrderDAO {
                 int id_order = rs.getInt("id_order");
                 int id_user = rs.getInt("id_user");
                 int number_item_order = rs.getInt("number_item_order");
-                User user = new UserDAO.get(id_user);
+                User user = new UserDAO().get(id_user);
                 Product product = new ProductDAO().get(id_product);
                 bean.setProduct(product);
                 bean.setUser(user);
@@ -183,7 +183,7 @@ public class ItemOrderDAO {
     	return listByOrder(id_order, 0, Short.MAX_VALUE);
     }
     
-    public List<ItemOrder> listByOrder(int oid, int start, int count) {
+    public List<ItemOrder> listByOrder(int id_order, int start, int count) {
     	List<ItemOrder> beans = new ArrayList<ItemOrder>();
     	
     	String sql = "select * from ItemOrder where id_order = ? order by id_item_order desc limit ?,? ";
@@ -229,28 +229,28 @@ public class ItemOrderDAO {
 	public void fill(List<Orders> os) {
 		for (Orders o : os) {
 			List<ItemOrder> ois = listByOrder(o.getId_order());
-			double total_price= 0;
-			int total_number = 0;
+			double totalPrice= 0;
+			int totalNumber = 0;
 			for (ItemOrder oi : ois) {
-				 total += oi.getNumber_item_number() * oi.getProduct().getPrice();
-				 total_number += oi.getNumber_item_number();
+				 totalPrice += oi.getNumber_item_order() * oi.getProduct().getPrice();
+				 totalNumber += oi.getNumber_item_order();
 			}
-			o.setTotal_price(total_price);
+			o.setTotal_price(totalPrice);
 			o.setItemOrders(ois);
-			o.setTotalNumber(totalNumber);
+			o.setTotal_number(totalNumber);
 		}
 		
 		
 		
 	}
 
-	public void fill(Order o) {
+	public void fill(Orders o) {
 		List<ItemOrder> ois = listByOrder(o.getId_order());
-		double total_price = 0;
+		double totalPrice = 0;
 		for (ItemOrder oi : ois) {
-			 total_price += oi.getNumber_item_number() * oi.getProduct().getPrice();
+			 totalPrice += oi.getNumber_item_order() * oi.getProduct().getPrice();
 		}
-		o.setTotal_price(total);
+		o.setTotal_price(totalPrice);
 		o.setItemOrders(ois);
 	}
 
@@ -273,7 +273,7 @@ public class ItemOrderDAO {
  
             while (rs.next()) {
                 ItemOrder bean = new ItemOrder();
-                int id_id_item_order = rs.getInt(1);
+                int id_item_order = rs.getInt(1);
 
                 int id_user = rs.getInt("id_user");
                 int id_order = rs.getInt("id_order");

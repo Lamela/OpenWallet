@@ -158,7 +158,7 @@ public class AddressDAO {
                 int id = rs.getInt(1);
 
 				int id_user = rs.getInt("id_user");
-				bean.setId_user(userDAO.get(id_user));
+				bean.setUser(userDAO.get(id_user));
                 String firstname_receiver = rs.getString("firstname_receiver");
                 bean.setFirstname_receiver(firstname_receiver);
                 String lastname_receiver = rs.getString("lastname_receiver");

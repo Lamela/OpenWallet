@@ -41,21 +41,20 @@ public class OrdersDAO {
   }
 
   public void add(Orders bean) {
-    String sql = "insert into orders values(null,?,?,?,?,?,?,?,?,?,?,?,?)";
+    String sql = "insert into orders values(null,?,?,?,?,?,?,?,?,?,?,?)";
     try (Connection c = DBUtil.getConnection(); PreparedStatement ps = c.prepareStatement(sql);) {
 
       ps.setInt(1, bean.getUser().getId_user());
-      ps.setInt(2, bean.getCode_order());
-      ps.setDouble(3, bean.getTotal_price());
-      ps.setInt(4, bean.getDelivery_address().getId_address());
-      ps.setInt(5, bean.getInvoice_address().getId_address());
-      ps.setString(6, bean.getUser_message());
-      ps.setTimestamp(7, DateUtil.d2t(bean.getCreate_date_order()));
-      ps.setTimestamp(8, DateUtil.d2t(bean.getPay_date()));
-      ps.setTimestamp(9, DateUtil.d2t(bean.getDelivery_date()));
-      ps.setTimestamp(10, DateUtil.d2t(bean.getConfirm_date()));
-      ps.setString(11, bean.getStatus());
-      ps.setInt(12, bean.getTotal_number());
+      ps.setDouble(2, bean.getTotal_price());
+      ps.setInt(3, bean.getDelivery_address().getId_address());
+      ps.setInt(4, bean.getInvoice_address().getId_address());
+      ps.setString(5, bean.getUser_message());
+      ps.setTimestamp(6, DateUtil.d2t(bean.getCreate_date_order()));
+      ps.setTimestamp(7, DateUtil.d2t(bean.getPay_date()));
+      ps.setTimestamp(8, DateUtil.d2t(bean.getDelivery_date()));
+      ps.setTimestamp(9, DateUtil.d2t(bean.getConfirm_date()));
+      ps.setString(10, bean.getStatus());
+      ps.setInt(11, bean.getTotal_number());
 
       ps.execute();
 
@@ -71,22 +70,21 @@ public class OrdersDAO {
   }
 
   public void update(Orders bean) {
-    String sql = "update orders set id_user = ?, code_order =?, total_price = ?, id_delivery_address = ?, id_invoice_address = ? ,user_message = ? , create_date_order = ? , pay_date = ?, delivery_date = ?, confirm_date = ?, status = ?, total_number where id_order = ?";
+    String sql = "update orders set id_user = ?, total_price = ?, id_delivery_address = ?, id_invoice_address = ? ,user_message = ? , create_date_order = ? , pay_date = ?, delivery_date = ?, confirm_date = ?, status = ?, total_number where id_order = ?";
     try (Connection c = DBUtil.getConnection(); PreparedStatement ps = c.prepareStatement(sql);) {
 
 
       ps.setInt(1, bean.getUser().getId_user());
-      ps.setInt(2, bean.getCode_order());
-      ps.setDouble(3, bean.getTotal_price());
-      ps.setInt(4, bean.getDelivery_address().getId_address());
-      ps.setInt(5, bean.getInvoice_address().getId_address());
-      ps.setString(6, bean.getUser_message());
-      ps.setTimestamp(7, DateUtil.d2t(bean.getCreate_date_order()));
-      ps.setTimestamp(8, DateUtil.d2t(bean.getPay_date()));
-      ps.setTimestamp(9, DateUtil.d2t(bean.getDelivery_date()));
-      ps.setTimestamp(10, DateUtil.d2t(bean.getConfirm_date()));
-      ps.setString(11, bean.getStatus());
-      ps.setInt(12, bean.getTotal_number());
+      ps.setDouble(2, bean.getTotal_price());
+      ps.setInt(3, bean.getDelivery_address().getId_address());
+      ps.setInt(4, bean.getInvoice_address().getId_address());
+      ps.setString(5, bean.getUser_message());
+      ps.setTimestamp(6, DateUtil.d2t(bean.getCreate_date_order()));
+      ps.setTimestamp(7, DateUtil.d2t(bean.getPay_date()));
+      ps.setTimestamp(8, DateUtil.d2t(bean.getDelivery_date()));
+      ps.setTimestamp(9, DateUtil.d2t(bean.getConfirm_date()));
+      ps.setString(10, bean.getStatus());
+      ps.setInt(11, bean.getTotal_number());
       ps.execute();
 
     } catch (SQLException e) {
@@ -119,7 +117,6 @@ public class OrdersDAO {
 
        int id_user = rs.getInt( "id_user");
        User user = new UserDAO().get(id_user);
-       int code_order = rs.getInt( "code_order");
        double total_price = rs.getDouble("total_price");
        int id_delivery_address = rs.getInt("id_delivery_address");
        Address delivery_address = new AddressDAO().get(id_delivery_address);
@@ -131,12 +128,11 @@ public class OrdersDAO {
        Date delivery_date = DateUtil.t2d( rs.getTimestamp("delivery_date"));
        Date confirm_date = DateUtil.t2d( rs.getTimestamp("confirm_date"));
        String status = rs.getString("status");
-       Int total_number = rs.getInt("total_number");
+       int total_number = rs.getInt("total_number");
 
 
        bean.setId_order(id);
        bean.setUser(user);
-       bean.setCode_order(code_order);
        bean.setTotal_price(total_price);
        bean.setDelivery_address(delivery_address);
        bean.setInvoice_address(invoice_address);
@@ -179,7 +175,6 @@ public List<Orders> list(int start, int count) {
       int id_order=rs.getInt("id_order");
       int id_user = rs.getInt("id_user");
       User user = new UserDAO().get(id_user);
-      int code_order = rs.getInt("code_order");
       double total_price = rs.getDouble("total_price");
       int id_delivery_address = rs.getInt("id_delivery_address");
       Address delivery_address = new AddressDAO().get(id_delivery_address);
@@ -191,11 +186,10 @@ public List<Orders> list(int start, int count) {
       Date delivery_date = DateUtil.t2d( rs.getTimestamp("delivery_date"));
       Date confirm_date = DateUtil.t2d( rs.getTimestamp("confirm_date"));
       String status = rs.getString("status");
-      Int total_number = rs.getInt("total_number");
+      int total_number = rs.getInt("total_number");
 
       bean.setId_order(id_order);
       bean.setUser(user);
-      bean.setCode_order(code_order);
       bean.setTotal_price(total_price);
       bean.setDelivery_address(delivery_address);
       bean.setInvoice_address(invoice_address);
@@ -239,7 +233,6 @@ public List<Orders> list(int uid, String excludedStatus, int start, int count) {
    Orders bean = new Orders();
    int id_order=rs.getInt( "id_order");
    User user = new UserDAO().get(uid);
-   int code_order = rs.getInt( "code_order");
    double total_price = rs.getDouble("total_price");
    int id_delivery_address = rs.getInt("id_delivery_address");
    Address delivery_address = new AddressDAO().get(id_delivery_address);
@@ -251,11 +244,10 @@ public List<Orders> list(int uid, String excludedStatus, int start, int count) {
    Date delivery_date = DateUtil.t2d(rs.getTimestamp("delivery_date"));
    Date confirm_date = DateUtil.t2d(rs.getTimestamp("confirm_date"));
    String status = rs.getString("status");
-   Int total_number = rs.getInt("total_number");
+   int total_number = rs.getInt("total_number");
 
    bean.setId_order(id_order);
    bean.setUser(user);
-   bean.setCode_order(code_order);
    bean.setTotal_price(total_price);
    bean.setDelivery_address(delivery_address);
    bean.setInvoice_address(invoice_address);

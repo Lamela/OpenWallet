@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import openwallet.bean.*;
 import openwallet.util.*;
+import openwallet.dao.*;
 
 public class ProductServlet extends BaseBackServlet {
 

@@ -53,7 +53,7 @@ public class ItemOrder {
       return orders;
   }
 
-  public Orders setOrders(Orders orders) {
+  public void setOrders(Orders orders) {
       this.orders = orders;
   }
 
@@ -61,7 +61,7 @@ public class ItemOrder {
       return product;
   }
 
-  public Product setProduct(Product product) {
+  public void setProduct(Product product) {
       this.product = product;
   }
 
@@ -69,7 +69,7 @@ public class ItemOrder {
       return user;
   }
 
-  public User setUser(User user) {
+  public void setUser(User user) {
       this.user = user;
   }
   public int getNumber_item_order() {

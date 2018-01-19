@@ -51,7 +51,7 @@ public class Comment {
        this.id_comment = id_comment;
    }
 
-   public int getUser() {
+   public User getUser() {
        return user;
    }
 
@@ -59,7 +59,7 @@ public class Comment {
        this.user = user;
    }
 
-   public int getProduct() {
+   public Product getProduct() {
        return product;
    }
 
