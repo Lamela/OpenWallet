@@ -81,6 +81,7 @@ CREATE TABLE orders (
 	delivery_date datetime DEFAULT NULL,
 	confirm_date datetime DEFAULT NULL,
 	status varchar(255) DEFAULT NULL,
+	total_number int(11) DEFAULT NULL,
 	PRIMARY KEY (id_order),
 	CONSTRAINT fk_order_user FOREIGN KEY (id_user) REFERENCES user (id_user)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

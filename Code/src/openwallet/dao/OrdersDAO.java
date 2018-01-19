@@ -41,7 +41,7 @@ public class OrdersDAO {
   }
 
   public void add(Orders bean) {
-    String sql = "insert into orders values(null,?,?,?,?,?,?,?,?,?,?,?)";
+    String sql = "insert into orders values(null,?,?,?,?,?,?,?,?,?,?,?,?)";
     try (Connection c = DBUtil.getConnection(); PreparedStatement ps = c.prepareStatement(sql);) {
 
       ps.setInt(1, bean.getUser().getId_user());
@@ -55,6 +55,7 @@ public class OrdersDAO {
       ps.setTimestamp(9, DateUtil.d2t(bean.getDelivery_date()));
       ps.setTimestamp(10, DateUtil.d2t(bean.getConfirm_date()));
       ps.setString(11, bean.getStatus());
+      ps.setInt(12, bean.getTotal_number());
 
       ps.execute();
 
@@ -70,7 +71,7 @@ public class OrdersDAO {
   }
 
   public void update(Orders bean) {
-    String sql = "update orders set id_user= ?, code_order=?, total_price=?,id_delivery_address=?,id_invoice_address=? ,user_message = ? , create_date_order =? , pay_date =?, delivery_date = ? , confirm_date =?, status=? where id_order = ?";
+    String sql = "update orders set id_user = ?, code_order =?, total_price = ?, id_delivery_address = ?, id_invoice_address = ? ,user_message = ? , create_date_order = ? , pay_date = ?, delivery_date = ?, confirm_date = ?, status = ?, total_number where id_order = ?";
     try (Connection c = DBUtil.getConnection(); PreparedStatement ps = c.prepareStatement(sql);) {
 
 
@@ -85,6 +86,7 @@ public class OrdersDAO {
       ps.setTimestamp(9, DateUtil.d2t(bean.getDelivery_date()));
       ps.setTimestamp(10, DateUtil.d2t(bean.getConfirm_date()));
       ps.setString(11, bean.getStatus());
+      ps.setInt(12, bean.getTotal_number());
       ps.execute();
 
     } catch (SQLException e) {
@@ -129,6 +131,7 @@ public class OrdersDAO {
        Date delivery_date = DateUtil.t2d( rs.getTimestamp("delivery_date"));
        Date confirm_date = DateUtil.t2d( rs.getTimestamp("confirm_date"));
        String status = rs.getString("status");
+       Int total_number = rs.getInt("total_number");
 
 
        bean.setId_order(id);
@@ -143,6 +146,7 @@ public class OrdersDAO {
        bean.setDelivery_date(delivery_date);
        bean.setConfirm_date(confirm_date);
        bean.setStatus(status);
+       bean.setTotal_number(total_number);
 
        bean.setId_order(id);
      }
@@ -187,7 +191,7 @@ public List<Orders> list(int start, int count) {
       Date delivery_date = DateUtil.t2d( rs.getTimestamp("delivery_date"));
       Date confirm_date = DateUtil.t2d( rs.getTimestamp("confirm_date"));
       String status = rs.getString("status");
-
+      Int total_number = rs.getInt("total_number");
 
       bean.setId_order(id_order);
       bean.setUser(user);
@@ -201,6 +205,7 @@ public List<Orders> list(int start, int count) {
       bean.setDelivery_date(delivery_date);
       bean.setConfirm_date(confirm_date);
       bean.setStatus(status); 
+      bean.setTotal_number(total_number);
 
       beans.add(bean);
 
@@ -246,6 +251,7 @@ public List<Orders> list(int uid, String excludedStatus, int start, int count) {
    Date delivery_date = DateUtil.t2d(rs.getTimestamp("delivery_date"));
    Date confirm_date = DateUtil.t2d(rs.getTimestamp("confirm_date"));
    String status = rs.getString("status");
+   Int total_number = rs.getInt("total_number");
 
    bean.setId_order(id_order);
    bean.setUser(user);
@@ -258,7 +264,8 @@ public List<Orders> list(int uid, String excludedStatus, int start, int count) {
    bean.setPay_date(pay_date);
    bean.setDelivery_date(delivery_date);
    bean.setConfirm_date(confirm_date);
-   bean.setStatus(status); 
+   bean.setStatus(status);
+   bean.setTotal_number(total_number);
 
    beans.add(bean);
  }
