@@ -45,7 +45,6 @@ public class Orders {
 
   public Orders(int id_order, User user, int code_order, double total_price, Address delivery_address, Address invoice_address, String user_message, Date create_date_order, Date pay_date, Date delivery_date, Date confirm_date, String status, int total_number, List<ItemOrder> itemOrders) {
       this.user = user;
-      this.code_order = code_order;
       this.total_price = total_price;
       this.delivery_address = delivery_address;
       this.invoice_address = invoice_address;
@@ -57,6 +56,33 @@ public class Orders {
       this.status = status;
       this.total_number = total_number;
       this.itemOrders = itemOrders;
+  }
+
+  public String getStatusDesc(){
+    String desc ="Unknown";
+    switch(status){
+      case OrderDAO.waitPay:
+        desc="Wait Pay";
+        break;
+      case OrderDAO.waitDelivery:
+        desc="Wait Delivery";
+        break;
+      case OrderDAO.waitConfirm:
+        desc="Wait Confirm";
+        break;
+      case OrderDAO.waitReview:
+        desc="Wait Comment";
+        break;
+      case OrderDAO.finish:
+        desc="Finished";
+        break;
+      case OrderDAO.delete:
+        desc="Deleted";
+        break;
+      default:
+        desc="Unknown";
+    }
+    return desc;
   }
 
   public User getUser() {
@@ -73,14 +99,6 @@ public class Orders {
 
   public void setId_order(int id_order) {
       this.id_order = id_order;
-  }
-
-  public int getCode_order() {
-      return code_order;
-  }
-
-  public void setCode_order(int code_order) {
-      this.code_order = code_order;
   }
 
   public double getTotal_price() {

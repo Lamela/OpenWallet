@@ -40,7 +40,6 @@ public class ItemOrderDAO {
  
             ps.setInt(1, bean.getProduct().getId_product());
             
-            //订单项在创建的时候，是没有蒂订单信息的
             if(null==bean.getOrders())
             	ps.setInt(2, -1);
             else

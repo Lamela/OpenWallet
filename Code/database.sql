@@ -71,7 +71,6 @@ CREATE TABLE comment (
 CREATE TABLE orders (
 	id_order int(11) NOT NULL AUTO_INCREMENT,
 	id_user int(11) DEFAULT NULL,
-	code_order varchar(255) DEFAULT NULL,
 	total_price double(11,2) DEFAULT NULL,
 	id_delivery_address int(11) DEFAULT NULL,
 	id_invoice_address int(11) DEFAULT NULL,
