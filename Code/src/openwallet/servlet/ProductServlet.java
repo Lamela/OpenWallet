@@ -19,7 +19,10 @@ public class ProductServlet extends BaseBackServlet {
 		String description = request.getParameter("description");
 		double price = Double.parseDouble(request.getParameter("price"));
 		int stock = Integer.parseInt(request.getParameter("stock"));
-		Date create_date_product = request.getParameter("create_date_product");
+		String[] date = request.getParameter("create_date_product").split("-");	
+		GregorianCalendar cal = new GregorianCalendar();
+		cal.set(Integer.parseInt(date[0]), Integer.parseInt(date[1]), Integer.parseInt(date[2]));
+		Date create_date_product = cal.getTime();
 		String origin = request.getParameter("origin");
 		int sold = Integer.parseInt(request.getParameter("sold"));
 		String brand = request.getParameter("brand");
@@ -99,7 +102,10 @@ public class ProductServlet extends BaseBackServlet {
 		String description = request.getParameter("description");
 		double price = Double.parseDouble(request.getParameter("price"));
 		int stock = Integer.parseInt(request.getParameter("stock"));
-		Date create_date_product = request.getParameter("create_date_product");
+		String[] date = request.getParameter("create_date_product").split("-");	
+		GregorianCalendar cal = new GregorianCalendar();
+		cal.set(Integer.parseInt(date[0]), Integer.parseInt(date[1]), Integer.parseInt(date[2]));
+		Date create_date_product = cal.getTime();
 		String origin = request.getParameter("origin");
 		int sold = Integer.parseInt(request.getParameter("sold"));
 		String brand = request.getParameter("brand");
