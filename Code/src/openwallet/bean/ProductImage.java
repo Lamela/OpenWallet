@@ -42,7 +42,7 @@ public class ProductImage {
       this.id_product_image = id_product_image;
   }
 
-  public int getProduct() {
+  public Product getProduct() {
       return product;
   }
 

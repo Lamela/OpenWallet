@@ -9,14 +9,13 @@ import javax.persistence.OneToOne;
 import javax.persistence.FetchType;
 import javax.persistence.OrderBy;
 import javax.persistence.Column;
-import java.util.Date;
-import java.util.Set;
+import java.util.*;
 import javax.persistence.Table;
 import javax.persistence.CascadeType;
 import javax.persistence.OneToMany;
-import java.util.TreeSet;
 import java.time.LocalDate;
 
+import openwallet.dao.*;
 
 @Entity
 @Table(name = "Orders")
@@ -27,7 +26,6 @@ public class Orders {
   private int id_order;
   @OneToOne(cascade=CascadeType.ALL,fetch = FetchType.LAZY)
   private User user;
-  private int code_order;
   private double total_price;
   private Address delivery_address;
   private Address invoice_address;
@@ -37,13 +35,13 @@ public class Orders {
   private Date delivery_date;
   private Date confirm_date;
   private String status;
-  private int total_number
+  private int total_number;
   private List<ItemOrder> itemOrders;
 
 
   public Orders(){};
 
-  public Orders(int id_order, User user, int code_order, double total_price, Address delivery_address, Address invoice_address, String user_message, Date create_date_order, Date pay_date, Date delivery_date, Date confirm_date, String status, int total_number, List<ItemOrder> itemOrders) {
+  public Orders(int id_order, User user, double total_price, Address delivery_address, Address invoice_address, String user_message, Date create_date_order, Date pay_date, Date delivery_date, Date confirm_date, String status, int total_number, List<ItemOrder> itemOrders) {
       this.user = user;
       this.total_price = total_price;
       this.delivery_address = delivery_address;
@@ -61,22 +59,22 @@ public class Orders {
   public String getStatusDesc(){
     String desc ="Unknown";
     switch(status){
-      case OrderDAO.waitPay:
+      case OrdersDAO.waitPay:
         desc="Wait Pay";
         break;
-      case OrderDAO.waitDelivery:
+      case OrdersDAO.waitDelivery:
         desc="Wait Delivery";
         break;
-      case OrderDAO.waitConfirm:
+      case OrdersDAO.waitConfirm:
         desc="Wait Confirm";
         break;
-      case OrderDAO.waitReview:
+      case OrdersDAO.waitReview:
         desc="Wait Comment";
         break;
-      case OrderDAO.finish:
+      case OrdersDAO.finish:
         desc="Finished";
         break;
-      case OrderDAO.delete:
+      case OrdersDAO.delete:
         desc="Deleted";
         break;
       default:

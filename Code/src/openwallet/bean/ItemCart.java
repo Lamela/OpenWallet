@@ -28,7 +28,7 @@ public class ItemCart {
   @OneToOne(cascade=CascadeType.ALL,fetch = FetchType.LAZY)
   private User user;
   @OneToOne(cascade=CascadeType.ALL,fetch = FetchType.LAZY)
-  private Product Product;
+  private Product product;
   private int number_item_cart;
 
   public ItemCart(){};

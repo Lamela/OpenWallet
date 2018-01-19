@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Date;
 
-import openwallet.bean.ItemCart;
+import openwallet.bean.*;
 import openwallet.util.*;
  
 public class ItemCartDAO {
@@ -39,8 +39,8 @@ public class ItemCartDAO {
         try (Connection c = DBUtil.getConnection(); PreparedStatement ps = c.prepareStatement(sql);) {
  
 			ps.setInt(1, bean.getUser().getId_user());
-            ps.setString(2, bean.getProduct().getId_product());
-            ps.setString(3, bean.getNumber_item_cart());
+            ps.setInt(2, bean.getProduct().getId_product());
+            ps.setInt(3, bean.getNumber_item_cart());
  
             ps.execute();
  
@@ -98,7 +98,7 @@ public class ItemCartDAO {
  
             if (rs.next()) {
 				UserDAO userDAO = new UserDAO();
-				ProductDAO product = new ProductDAO();
+				ProductDAO productDAO = new ProductDAO();
                 bean = new ItemCart();
 				int id_user = rs.getInt("id_user");
 				User user = userDAO.get(id_user);
@@ -134,7 +134,7 @@ public class ItemCartDAO {
  
             ResultSet rs = ps.executeQuery();
 			UserDAO userDAO = new UserDAO();
-			ProductDAO product = new ProductDAO();
+			ProductDAO productDAO = new ProductDAO();
  
             while (rs.next()) {
                 ItemCart bean = new ItemCart();

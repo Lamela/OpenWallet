@@ -156,7 +156,7 @@
 							class="form-control"></td>
 					</tr>
 					<tr>
-						<td>Material/td>
+						<td>Material</td>
 						<td><input id="material" name="material" type="text"
 							class="form-control"></td>
 					</tr>
