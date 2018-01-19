@@ -24,7 +24,7 @@ public class Address {
   @Column(name = "id_address")
   private int id_address;
   @OneToOne(cascade=CascadeType.ALL,fetch = FetchType.LAZY)
-  private int id_user;
+  private User user;
   private String firstname_receiver;
   private String lastname_receiver;
   private String mobile_receiver;
@@ -35,9 +35,9 @@ public class Address {
 
   public Address(){};
 
-  public Address(int id_address, int id_user, String firstname_receiver, String lastname_receiver, String mobile_receiver, String street, String city, String country, String post_address) {
+  public Address(int id_address, User user, String firstname_receiver, String lastname_receiver, String mobile_receiver, String street, String city, String country, String post_address) {
     this.id_address = id_address;
-    this.id_user = id_user;
+    this.user = user;
     this.firstname_receiver = firstname_receiver;
     this.lastname_receiver = lastname_receiver;
     this.mobile_receiver = mobile_receiver;
@@ -55,12 +55,12 @@ public class Address {
   this.id_address = id_address;
   }
 
-  public int getId_user() {
-  return id_user;
+  public int getUser() {
+  return user;
   }
 
-  public void setId_user(int id_user) {
-  this.id_user = id_user;
+  public void setUser(User user) {
+  this.user = user;
   }
 
   public String getFirstname_receiver() {
