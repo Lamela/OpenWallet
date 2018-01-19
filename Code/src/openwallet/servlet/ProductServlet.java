@@ -136,14 +136,14 @@ public class ProductServlet extends BaseBackServlet {
 
 	
 	public String list(HttpServletRequest request, HttpServletResponse response, Page page) {
-		int cid = Integer.parseInt(request.getParameter("id_category"));
-		Category c = categoryDAO.get(cid);
+		int id_category = Integer.parseInt(request.getParameter("id_category"));
+		Category c = categoryDAO.get(id_category);
 		int id_user = Integer.parseInt(request.getParameter("id_user"));
 		User u = userDAO.get(id_user);
 		
-		List<Product> ps = productDAO.list(cid, page.getStart(),page.getCount());
+		List<Product> ps = productDAO.list(id_category, page.getStart(),page.getCount());
 		
-		int total = productDAO.getTotal(cid);
+		int total = productDAO.getTotal(id_category);
 		page.setTotal(total);
 		page.setParam("&id_category="+c.getId_category());
 		
