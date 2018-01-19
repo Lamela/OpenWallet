@@ -31,6 +31,23 @@ public class ProductDAO {
         }
         return total;
     }
+
+	public int getTotal() {
+        int total = 0;
+        try (Connection c = DBUtil.getConnection(); Statement s = c.createStatement();) {
+  
+            String sql = "select count(*) from Product";
+  
+            ResultSet rs = s.executeQuery(sql);
+            while (rs.next()) {
+                total = rs.getInt(1);
+            }
+        } catch (SQLException e) {
+  
+            e.printStackTrace();
+        }
+        return total;
+    }
   
     public void add(Product bean) {
  

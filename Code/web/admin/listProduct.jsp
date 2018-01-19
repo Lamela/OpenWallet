@@ -42,7 +42,7 @@
 
 	<ol class="breadcrumb">
 	  <li><a href="admin_category_list">All Categories</a></li>
-	  <li><a href="admin_product_list?cid=${c.id_category}">${c.name_category}</a></li>
+	  <li><a href="admin_product_list?id_category=${c.id_category}">${c.name_category}</a></li>
 	  <li class="active">Product Admin</li>
 	</ol>
 
@@ -107,7 +107,12 @@
 				<table class="addTable">
 					<tr>
 						<td>Seller</td>
-						<td><input id="seller" name="seller" type="text"
+						<td><input id="id_user" name="id_user" type="text"
+							class="form-control"></td>
+					</tr>
+					<tr>
+						<td>Cagetory</td>
+						<td><input id="id_category" name="id_category" type="text"
 							class="form-control"></td>
 					</tr>
 					<tr>
