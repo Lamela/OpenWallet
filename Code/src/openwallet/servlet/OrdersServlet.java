@@ -10,7 +10,7 @@ import openwallet.bean.Orders;
 import openwallet.dao.OrdersDAO;
 import openwallet.util.Page;
 
-public class OrderServlet extends BaseBackServlet {
+public class OrdersServlet extends BaseBackServlet {
 
 	
 	public String add(HttpServletRequest request, HttpServletResponse response, Page page) {
@@ -44,7 +44,7 @@ public class OrderServlet extends BaseBackServlet {
 	public String list(HttpServletRequest request, HttpServletResponse response, Page page) {
 		List<Orders> os = ordersDAO.list(page.getStart(),page.getCount());
 		itemOrderDAO.fill(os);
-		int total_number = orderDAO.getTotal_number();
+		int total_number = ordersDAO.getTotal_number();
 		page.setTotal(total_number);
 		
 		request.setAttribute("os", os);

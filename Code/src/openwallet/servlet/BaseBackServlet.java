@@ -17,13 +17,13 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import openwallet.dao.CategoryDAO;
-// import openwallet.dao.OrderDAO;
-// import openwallet.dao.OrderItemDAO;
-// import openwallet.dao.ProductDAO;
+import openwallet.dao.OrdersDAO;
+import openwallet.dao.ItemOrderDAO;
+import openwallet.dao.ProductDAO;
 // import openwallet.dao.ProductImageDAO;
 // import openwallet.dao.PropertyDAO;
 // import openwallet.dao.PropertyValueDAO;
-// import openwallet.dao.ReviewDAO;
+import openwallet.dao.CommentDAO;
 import openwallet.dao.UserDAO;
 import openwallet.util.Page;
 
@@ -36,13 +36,13 @@ public abstract class BaseBackServlet extends HttpServlet {
 	public abstract String list(HttpServletRequest request, HttpServletResponse response, Page page) ;
 	
 	protected CategoryDAO categoryDAO = new CategoryDAO();
-    // protected OrderDAO orderDAO = new OrderDAO();
-    // protected OrderItemDAO orderItemDAO = new OrderItemDAO();
-    // protected ProductDAO productDAO = new ProductDAO();
+    protected OrdersDAO ordersDAO = new OrdersDAO();
+    protected ItemOrderDAO itemOrderDAO = new ItemOrderDAO();
+    protected ProductDAO productDAO = new ProductDAO();
     // protected ProductImageDAO productImageDAO = new ProductImageDAO();
     // protected PropertyDAO propertyDAO = new PropertyDAO();
     // protected PropertyValueDAO propertyValueDAO = new PropertyValueDAO();
-    // protected ReviewDAO reviewDAO = new ReviewDAO();
+    protected CommentDAO commentDAO = new CommentDAO();
     protected UserDAO userDAO = new UserDAO();
     
 	public void service(HttpServletRequest request, HttpServletResponse response) {
