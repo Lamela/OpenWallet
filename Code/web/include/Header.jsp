@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" isELIgnored="false"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix='fmt' %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> 
 <!DOCTYPE html>
 <!--[if IE 6]>
 <html id="ie6" dir="ltr" lang="en-US">
@@ -147,10 +150,18 @@
                             </ul>
                         </li> -->
                         <li><a href="home.jsp"><i class="icon-envelope"></i>Home</a></li>
-                        <li><a href="register.jsp"><i class="icon-envelope"></i>Inscription</a></li>
-                        <li class="login_link"><i class="icon-key"></i><a href="login.jsp">Login</a></li>
-						<li><a href="cart.jsp"><i class="cart"></i>Cart</a></li>
-                    </ul>
+                        <c:if test="${!empty user}">
+                            <li><a href="login.jsp"><i class="icon-envelope"></i>${user.firstname_user}</a></li>
+                            <li><a href="forelogout"><i class="icon-envelope"></i>Logout</a></li>     
+                        </c:if>
+
+                        <c:if test="${empty user}">
+                            <li><a href="login.jsp"><i class="icon-envelope"></i>Login</a></li>
+                            <li><a href="register.jsp"><i class="icon-envelope"></i>Register</a></li>     
+                        </c:if>
+                            <li><a href="forebought"><i class="icon-envelope"></i>My orders</a></li>
+                            <li><a href="forecart"><i class="cart"></i>Cart</a></li>
+                        </ul>
                 </div>
 
             </div>

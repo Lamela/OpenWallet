@@ -162,7 +162,12 @@ pageEncoding="UTF-8" isELIgnored="false"%>
                 <h4>New to OpenWallet? </h4>
                 <a href="register.jsp">Create your OpenWallet account</a>            
             </td>
-        </tr>            
+        </tr>
+        <tr>
+			<td colspan="2">
+				<h4>Wanna go back home page? >><a href="home.jsp" style="color: black;">Go back home</a></h4>
+			</td>
+		</tr>             
         
     </tbody></table>
 </form>

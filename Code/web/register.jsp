@@ -243,7 +243,7 @@ pageEncoding="UTF-8" isELIgnored="false"%>
 			</tr>      
 			<tr>
 				<td colspan="2">
-					<h4>Wanna go back home page? >><a href="home.jsp" style="color: black;">Go back home</a></h4>
+					<h4>Wanna go back to home page? >><a href="home.jsp" style="color: black;">Go to homepage</a></h4>
 				</td>
 			</tr>       
 

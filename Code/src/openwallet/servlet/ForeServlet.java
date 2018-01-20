@@ -111,7 +111,7 @@ public class ForeServlet extends BaseForeServlet {
 
 	public String logout(HttpServletRequest request, HttpServletResponse response, Page page) {
 		request.getSession().removeAttribute("user");
-		return "@forehome";	
+		return "home.jsp";	
 	}
 
 	public String checkLogin(HttpServletRequest request, HttpServletResponse response, Page page) {
