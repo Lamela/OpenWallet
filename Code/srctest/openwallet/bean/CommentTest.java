@@ -57,7 +57,7 @@ public class CommentTest {
     if(comment1.getId_comment()!=comment2.getId_comment()) {
       System.out.println("TestComment Error: id_comment not equals !");
     } else {
-      if(!comment1.getUser().equals(comment2.getUser())) {
+      if(!comment1.getUser().getId_user().equals(comment2.getUser().getId_user())) {
         System.out.println("TestComment Error: User not equals !");
       }else {
         if(!comment1.getProduct().equals(comment2.getProduct())) {
