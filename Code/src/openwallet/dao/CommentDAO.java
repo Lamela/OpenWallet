@@ -186,7 +186,7 @@ public class CommentDAO {
                 int id_product = rs.getInt("id_product");
                 Date date_comment = DateUtil.t2d(rs.getTimestamp("date_comment"));
                 Double note = rs.getDouble("note");
-				String content = rs.getContent("content");
+				String content = rs.getString("content");
                 
                 
                 bean.setId_comment(id_comment);
@@ -194,7 +194,7 @@ public class CommentDAO {
                 bean.setUser(userDAO.get(id_user));
                 bean.setProduct(productDAO.get(id_product));
                 bean.setNote(note);
-				bena.setContent(content);
+				bean.setContent(content);
                 beans.add(bean);
             }
         } catch (SQLException e) {

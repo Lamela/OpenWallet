@@ -189,49 +189,49 @@ public class UserDAO {
         return beans;
     }
 
-	public boolean isExist(String firstname, String lastname) {
-		User user = get(firstname, lastname);
+	public boolean isExist(String email, String password) {
+		User user = get(email, password);
 		return user!=null;
 
 	}
 
-	public User get(String firstname, String lastname) {
-		User bean = null;
+	// public User get(String firstname, String lastname) {
+	// 	User bean = null;
 		 
-		String sql = "select * from User where firstname_user = ? AND lastname_user = ?";
-        try (Connection c = DBUtil.getConnection(); PreparedStatement ps = c.prepareStatement(sql)) {
-        	ps.setString(1, firstname);
-            ps.setString(2, lastname);
-            ResultSet rs = ps.executeQuery();
+	// 	String sql = "select * from User where firstname_user = ? AND lastname_user = ?";
+ //        try (Connection c = DBUtil.getConnection(); PreparedStatement ps = c.prepareStatement(sql)) {
+ //        	ps.setString(1, firstname);
+ //            ps.setString(2, lastname);
+ //            ResultSet rs = ps.executeQuery();
  
-            if (rs.next()) {
-                bean = new User();
-                int id = rs.getInt("id_user");
-                bean.setFirstname_user(firstname);
-                bean.setLastname_user(lastname);
-                Date birthday = DateUtil.t2d(rs.getTimestamp("birthday"));
-                bean.setBirthday(birthday);
-                String type_user = rs.getString("type_user");
-                bean.setType_user(type_user);
-                boolean premium = rs.getBoolean("premium");
-                bean.setPremium(premium);
-                String email = rs.getString("email");
-                bean.setEmail(email);
-                String password = rs.getString("password");
-                bean.setPassword(password);
-                String mobile_user = rs.getString("mobile_user");
-                bean.setMobile_user(mobile_user);
-                String number_id_card = rs.getString("number_id_card");
-                bean.setNumber_id_card(number_id_card);
-                bean.setId_user(id);
-            }
+ //            if (rs.next()) {
+ //                bean = new User();
+ //                int id = rs.getInt("id_user");
+ //                bean.setFirstname_user(firstname);
+ //                bean.setLastname_user(lastname);
+ //                Date birthday = DateUtil.t2d(rs.getTimestamp("birthday"));
+ //                bean.setBirthday(birthday);
+ //                String type_user = rs.getString("type_user");
+ //                bean.setType_user(type_user);
+ //                boolean premium = rs.getBoolean("premium");
+ //                bean.setPremium(premium);
+ //                String email = rs.getString("email");
+ //                bean.setEmail(email);
+ //                String password = rs.getString("password");
+ //                bean.setPassword(password);
+ //                String mobile_user = rs.getString("mobile_user");
+ //                bean.setMobile_user(mobile_user);
+ //                String number_id_card = rs.getString("number_id_card");
+ //                bean.setNumber_id_card(number_id_card);
+ //                bean.setId_user(id);
+ //            }
  
-        } catch (SQLException e) {
+ //        } catch (SQLException e) {
  
-            e.printStackTrace();
-        }
-        return bean;
-	}
+ //            e.printStackTrace();
+ //        }
+ //        return bean;
+	// }
 
 	public User get(String email, String password) {
 		User bean = null;

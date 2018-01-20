@@ -11,10 +11,10 @@ import openwallet.util.Page;
 
 public class BaseForeServlet extends HttpServlet{
 
-	protected AddressDao addressDAO = new AddressDao();
+	protected AddressDAO addressDAO = new AddressDAO();
 	protected CategoryDAO categoryDAO = new CategoryDAO();
 	protected CommentDAO commentDAO = new CommentDAO();
-	protected OrderDAO orderDAO = new OrderDAO();
+	protected OrdersDAO orderDAO = new OrdersDAO();
 	protected ItemOrderDAO itemOrderDAO = new ItemOrderDAO();
 	protected ProductDAO productDAO = new ProductDAO();
 	//protected ProductImageDAO productImageDAO = new ProductImageDAO();

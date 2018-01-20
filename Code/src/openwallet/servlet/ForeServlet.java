@@ -3,10 +3,7 @@ package openwallet.servlet;
 import java.io.BufferedWriter;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,12 +11,13 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.lang.math.RandomUtils;
 import org.springframework.web.util.HtmlUtils;
 
+
 import openwallet.bean.*;
-import openwallet.comparator.ProductAllComparator;
-import openwallet.comparator.ProductDateComparator;
-import openwallet.comparator.ProductPriceComparator;
-import openwallet.comparator.ProductReviewComparator;
-import openwallet.comparator.ProductSaleCountComparator;
+// import openwallet.comparator.ProductAllComparator;
+// import openwallet.comparator.ProductDateComparator;
+// import openwallet.comparator.ProductPriceComparator;
+// import openwallet.comparator.ProductReviewComparator;
+// import openwallet.comparator.ProductSaleCountComparator;
 import openwallet.dao.*;
 import openwallet.util.Page;
 
@@ -34,11 +32,11 @@ public class ForeServlet extends BaseForeServlet {
 	}
 
 	public String register(HttpServletRequest request, HttpServletResponse response, Page page) {
-		String name = request.getParameter("email");
+		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		email = HtmlUtils.htmlEscape(email);
 		System.out.println(email);
-		boolean exist = userDAO.isExist(email);
+		boolean exist = userDAO.isExist(email, password);
 		
 		if(exist){
 			request.setAttribute("msg", "This email has been used, please change another one.");
@@ -107,7 +105,7 @@ public class ForeServlet extends BaseForeServlet {
 		request.setAttribute("comments", comments);
 
 		request.setAttribute("p", p);
-		request.setAttribute("pvs", pvs);
+		// request.setAttribute("pvs", pvs);
 		return "product.jsp";		
 	}
 
@@ -140,7 +138,7 @@ public class ForeServlet extends BaseForeServlet {
 		
 		Category c = new CategoryDAO().get(cid);
 		new ProductDAO().fill(c);
-		new ProductDAO().setSaleAndReviewNumber(c.getProducts());		
+		// new ProductDAO().setSaleAndReviewNumber(c.getProducts());		
 	/*	
 		String sort = request.getParameter("sort");
 		if(null!=sort){
@@ -186,13 +184,13 @@ public class ForeServlet extends BaseForeServlet {
 		
 		User user =(User) request.getSession().getAttribute("user");
 		boolean found = false;
-		List<ItemOrder> ois = itemOrderDAO.listByUser(user.getId());
+		List<ItemOrder> ois = itemOrderDAO.listByUser(user.getId_user());
 		for (ItemOrder oi : ois) {
 			if(oi.getProduct().getId_product() == p.getId_product()){
 				oi.setNumber_item_order(oi.getNumber_item_order()+num);
 				itemOrderDAO.update(oi);
 				found = true;
-				oiid = oi.getId();
+				oiid = oi.getId_item_order();
 				break;
 			}
 		}		
@@ -200,10 +198,10 @@ public class ForeServlet extends BaseForeServlet {
 		if(!found){
 			ItemOrder oi = new ItemOrder();
 			oi.setUser(user);
-			oi.setNumber(num);
+			oi.setNumber_item_order(num);
 			oi.setProduct(p);
 			itemOrderDAO.add(oi);
-			oiid = oi.getId();
+			oiid = oi.getId_item_order();
 		}
 		return "@forebuy?oiid="+oiid;
 	}
@@ -234,7 +232,7 @@ public class ForeServlet extends BaseForeServlet {
 		User user =(User) request.getSession().getAttribute("user");
 		boolean found = false;
 
-		List<ItemOrder> ois = itemOrderDAO.listByUser(user.getId());
+		List<ItemOrder> ois = itemOrderDAO.listByUser(user.getId_user());
 		for (ItemOrder oi : ois) {
 			if(oi.getProduct().getId_product() == p.getId_product()){
 				oi.setNumber_item_order(oi.getNumber_item_order()+num);
@@ -257,7 +255,7 @@ public class ForeServlet extends BaseForeServlet {
 
 	public String cart(HttpServletRequest request, HttpServletResponse response, Page page) {
 		User user =(User) request.getSession().getAttribute("user");
-		List<ItemOrder> ois = itemOrderDAO.listByUser(user.getId());
+		List<ItemOrder> ois = itemOrderDAO.listByUser(user.getId_user());
 		request.setAttribute("ois", ois);
 		return "cart.jsp";
 	}
@@ -269,7 +267,7 @@ public class ForeServlet extends BaseForeServlet {
 
 		int pid = Integer.parseInt(request.getParameter("id_product"));
 		int number = Integer.parseInt(request.getParameter("number"));
-		List<ItemOrder> ois = itemOrderDAO.listByUser(user.getId());
+		List<ItemOrder> ois = itemOrderDAO.listByUser(user.getId_user());
 		for (ItemOrder oi : ois) {
 			if(oi.getProduct().getId_product() == pid){
 				oi.setNumber_item_order(number);
@@ -293,9 +291,23 @@ public class ForeServlet extends BaseForeServlet {
 	public String createOrder(HttpServletRequest request, HttpServletResponse response, Page page){
 		User user =(User) request.getSession().getAttribute("user");
 
-	
-		String delivery_address = request.getParameter("delivery_address");
-		String invoice_address = request.getParameter("invoice_address");
+		String firstname_receiver = request.getParameter("firstname_receiver");
+		String lastname_receiver = request.getParameter("lastname_receiver");
+		String mobile_receiver = request.getParameter("mobile_receiver");
+		String street = request.getParameter("street");
+		String city = request.getParameter("city");
+		String country = request.getParameter("country");
+		String post_address = request.getParameter("post_address");
+		Address delivery_address = new Address();
+		delivery_address.setUser(user);
+		delivery_address.setFirstname_receiver(firstname_receiver);
+		delivery_address.setLastname_receiver(lastname_receiver);
+		delivery_address.setMobile_receiver(mobile_receiver);
+		delivery_address.setStreet(street);
+		delivery_address.setCity(city);
+		delivery_address.setCountry(country);
+		delivery_address.setPost_address(post_address);
+		Address invoice_address = delivery_address;
 		String user_message = request.getParameter("user_message");
 		
 		
@@ -305,7 +317,7 @@ public class ForeServlet extends BaseForeServlet {
 		double total =0;
 		int totalNumber = 0;
 		for (ItemOrder oi: ois) {
-			oi.setOrder(order);
+			oi.setOrders(order);
 			itemOrderDAO.update(oi);
 			total+=oi.getProduct().getPrice()*oi.getNumber_item_order();
 			totalNumber += oi.getNumber_item_order();
@@ -314,15 +326,15 @@ public class ForeServlet extends BaseForeServlet {
 		order.setDelivery_address(delivery_address);
 		order.setInvoice_address(invoice_address);
 		order.setUser_message(user_message);
-		order.setCreateDate(new Date());
+		order.setCreate_date_order(new Date());
 		order.setStatus(OrdersDAO.waitPay);
 		order.setTotal_number(totalNumber);
-		order.setItem_orders(ois);
+		order.setItemOrders(ois);
 
 		orderDAO.add(order);
 
 		
-		return "@forealipay?oid="+order.getId_orders() +"&total="+total;
+		return "@forealipay?oid="+order.getId_order() +"&total="+total;
 	}
 	
 	public String payed(HttpServletRequest request, HttpServletResponse response, Page page) {
@@ -337,7 +349,7 @@ public class ForeServlet extends BaseForeServlet {
 
 	public String bought(HttpServletRequest request, HttpServletResponse response, Page page) {
 		User user =(User) request.getSession().getAttribute("user");
-		List<Order> os= orderDAO.list(user.getId_user(), OrdersDAO.delete);
+		List<Orders> os= orderDAO.list(user.getId_user(), OrdersDAO.delete);
 		
 		itemOrderDAO.fill(os);
 		
@@ -377,7 +389,7 @@ public class ForeServlet extends BaseForeServlet {
 		Orders o = orderDAO.get(oid);
 		itemOrderDAO.fill(o);
 		Product p = o.getItemOrders().get(0).getProduct();
-		List<Comment> comment = commentDAO.list(p.getId());
+		List<Comment> comment = commentDAO.list(p.getId_product());
 		//productDAO.setSaleAndReviewNumber(p);
 		request.setAttribute("p", p);
 		request.setAttribute("o", o);
