@@ -11,8 +11,8 @@ public class ProductServlet extends BaseBackServlet {
 
 	
 	public String add(HttpServletRequest request, HttpServletResponse response, Page page) {
-		String name_category = request.getParameter("name_category");
-		Category c = categoryDAO.get(name_category);
+		int id_category = Integer.parseInt(request.getParameter("id_category"));
+		Category c = categoryDAO.get(id_category);
 		int id_user = Integer.parseInt(request.getParameter("id_user"));
 		User u = userDAO.get(id_user);
 		String name_product = request.getParameter("name_product");

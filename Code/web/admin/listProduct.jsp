@@ -22,8 +22,6 @@
 				return false;
 			if (!checkEmpty("origin", "Product Origin"))
 				return false;
-			if (!checkInt("sold", "Product Sold"))
-				return false;
 			if (!checkEmpty("brand", "Product Brand"))
 				return false;
 			if (!checkEmpty("color", "Product Color"))
@@ -74,7 +72,7 @@
 					<tr>
 						<td>${p.id_product}</td>
 						<td><img height="40px" src="img/category/${p.id_product}.jpg"></td>
-						<td>#{u.name_user}</td>
+						<td>${u.name_user}</td>
 						<td>${p.name_product}</td>
 						<td>${p.price}</td>
 						<td>${p.stock}</td>
@@ -112,8 +110,13 @@
 					</tr>
 					<tr>
 						<td>Cagetory</td>
-						<td><input id="name_category" name="name_category" type="text"
-							class="form-control"></td>
+						<td>
+							<select name="name_category" id="name_category">
+								<c:forEach items="${cs}" var="c">
+									<option>${c.name_category}</option>
+								</c:forEach>
+							</select>
+						</td>
 					</tr>
 					<tr>
 						<td>Name</td>
@@ -146,11 +149,6 @@
 							class="form-control"></td>
 					</tr>
 					<tr>
-						<td>Sold</td>
-						<td><input id="sold" name="sold" type="text"
-							class="form-control"></td>
-					</tr>
-					<tr>
 						<td>Brand</td>
 						<td><input id="brand" name="brand" type="text"
 							class="form-control"></td>
@@ -173,8 +171,8 @@
                     </tr>
 					<tr class="submitTR">
 						<td colspan="2" align="center">
-							<input type="hidden" name="cid" value="${c.id_category}">
-							<button type="submit" class="btn btn-success">Submit</button>
+							<input type="hidden" name="id_category" value="${c.id_category}">
+							<a href="admin_product_add"><button class="btn btn-success">Submit</button></a>
 						</td>
 					</tr>
 				</table>

@@ -51,7 +51,6 @@ CREATE TABLE product (
 	brand varchar(255) DEFAULT NULL,
 	color varchar(255) DEFAULT NULL,
 	material varchar(255) DEFAULT NULL,
-	note double(11,1) DEFAULT NULL,
 	PRIMARY KEY (id_product),
 	CONSTRAINT fk_product_category FOREIGN KEY (id_category) REFERENCES category (id_category),
 	CONSTRAINT fk_product_user FOREIGN KEY (id_user) REFERENCES user (id_user)
@@ -63,6 +62,7 @@ CREATE TABLE comment (
 	id_product int(11) DEFAULT NULL,
 	date_comment datetime DEFAULT NULL,
 	note double(11,1) DEFAULT NULL,
+	content varchar(3000) DEFAULT NULL,
 	PRIMARY KEY (id_comment),
 	CONSTRAINT fk_comment_product FOREIGN KEY (id_product) REFERENCES product (id_product),
 	CONSTRAINT fk_comment_user FOREIGN KEY (id_user) REFERENCES user (id_user)
