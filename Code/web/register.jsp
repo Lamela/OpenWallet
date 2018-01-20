@@ -238,9 +238,14 @@ pageEncoding="UTF-8" isELIgnored="false"%>
 			</tr>   
 			<tr>
 				<td colspan="2">
-					<h4>Already have an account? >><a href="login.html" style="color: black;">Sign in</a></h4>
+					<h4>Already have an account? >><a href="login.jsp" style="color: black;">Sign in</a></h4>
 				</td>
-			</tr>            
+			</tr>      
+			<tr>
+				<td colspan="2">
+					<h4>Wanna go back home page? >><a href="home.jsp" style="color: black;">Go back home</a></h4>
+				</td>
+			</tr>       
 
 		</tbody></table>
 	</form>
@@ -261,3 +266,4 @@ pageEncoding="UTF-8" isELIgnored="false"%>
 </body>
 
 </html>
+
