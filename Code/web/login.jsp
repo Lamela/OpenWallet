@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" isELIgnored="false"%>
+pageEncoding="UTF-8" isELIgnored="false"%>
 <!DOCTYPE html>
 <!--[if IE 6]>
 <html id="ie6" dir="ltr" lang="en-US">
@@ -14,17 +14,17 @@
 <html dir="ltr" lang="en-US">
     <!--<![endif]-->
     <head>
-
+        
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width" />
-
+        
         <title>Open Wallet - Probably the best online shop</title>
-
+        
         <!-- [favicon] begin -->
         <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico" />
         <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
-        <!-- [favicon] end -->
-
+        <!-- [favicon] end --> 
+        
         <!-- CSS Main -->
         <link rel="stylesheet" type="text/css" media="all" href="css/reset.css" />
         <link rel="stylesheet" type="text/css" media="all" href="style.css" />
@@ -32,19 +32,19 @@
         <link rel="stylesheet" type="text/css" media="screen and (max-width: 600px)" href="css/lessthen600.css" />
         <link rel="stylesheet" type="text/css" media="screen and (max-width: 480px)" href="css/lessthen480.css" />
         <link rel="stylesheet" type="text/css" media="all" href="css/memento.css"  />
-
+        
         <!-- CSS Plugin -->
         <link rel="stylesheet" href="css/prettyPhoto.css" type="text/css" media="all" />
         <link rel="stylesheet" href="css/tipsy.css" type="text/css" media="all" />
         <link rel='stylesheet' href='css/buttons.min.css' type='text/css' media='all' />
 		<link rel='stylesheet' href='css/labels.min.css' type='text/css' media='all' />
 		<link rel='stylesheet' href='css/wells.min.css' type='text/css' media='all' />
-
+        
         <!-- CSS Slider -->
         <link rel="stylesheet" href="css/slider-thumbnails.css" type="text/css" media="all" />
-
+        
         <link rel="stylesheet" type="text/css" media="all" href="css/homes/home.css" />
-
+        
 
         <!-- FONTS -->
         <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Droid+Sans&amp;subset=latin%2Ccyrillic%2Cgreek&amp;ver=3.4.1" type="text/css" media="all" />
@@ -52,7 +52,7 @@
                 <link rel='stylesheet' href='css/font-awesome.css' type='text/css' media='all' />
         <link rel='stylesheet' href='fonts/socialico/stylesheet.css' type='text/css' media='all' />
         <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed%3A300%7CPlayfair+Display%3A400italic&#038;ver=3.4.1' type='text/css' media='all' />
-
+        
         <!-- JavaScripts -->
         <script type="text/javascript">
             var yiw_prettyphoto_style = 'pp_default';
@@ -73,86 +73,113 @@
         <script type='text/javascript' src='js/buttons.min.js'></script>
         <script type='text/javascript' src='js/layerslider.kreaturamedia.jquery-min.js'></script>
         <script type='text/javascript' src='js/jquery.quicksand.js'></script>
-
+        
         <link rel="stylesheet" type="text/css" media="all" href="bootstrap.min.css" />
         <script type='text/javascript' src='js/bootstrap.min.js'></script>
-
+        
         <style>
-        div.searchDiv{
-            background-color: #000000;
-            width: 400px;
-            margin: 50px auto;
-            padding: 1px;
-            height: 40px;
-            display: block;
-            margin-bottom: 10px;
+        div.loginDiv{
+            position: absolute; 
+            left: 0;
+            top:0;
+            bottom: 0;
+            right: 0;
+            max-height: 100%;
+            max-width: 100%;
+            margin: 0 auto;
         }
-        div.searchDiv input{
-            width: 275px;
-            border: 1px solid transparent;
+        table.loginTable{
+            font-size: 16px;
+            table-layout: fixed;
+        }
+        table.loginTable td{
+            font-style: bold;
+        }
+        table.loginTable input{
+            border: 1px solid #DEDEDE;
+            width: 213px;
             height: 36px;
-            margin: 1px;
-            outline:none;
-            font-style: italic;
+            font-size: 14px;
         }
-        div.searchDiv button{
-            width: 110px;
-            border: 1px solid transparent;
-            background-color: #000000;
+        table.loginTable button{
+            width: 170px;
+            height: 36px;
+            border-radius: 2px;
             color: white;
-            font-size: 20px;
+            background-color: #C40000;
+            border-width: 0px;
+        }
+        td.loginTip{
             font-weight: bold;
         }
-        img.logo{
-            position: absolute;
-            left: 0px;
-            top: 30px;
-            z-index:-1;
+        td.loginTableLeftTD{
+            width: 300px;
+            text-align: right;
+            font-style: bold;
         }
-        body{
-            font-size:12px;
-            font-family:Arial;
+        td.loginTableRightTD{
+            width: 300px;
+            text-align: left;
+            font-style: bold;
         }
-        a{
-            color:#999;
+        td.loginButtonTD{
+            text-align: center;
         }
-        a:hover{
-            text-decoration:none;
-            color:#C40000;
+        h5 {
+            color: white;
         }
-        </style>
+        h2 {
+            color: white;
+            font-size: 40px;
+        }
+</style>
     </head>
     <body class="no_js responsive boxed-layout chrome ">
+        <div class="loginDiv" align="center">
+            <h2>OpenWallet</h2>
+            <form method="post" action="forelogin">
+    <table align="center" class="loginTable">
+        <tbody><tr>
+            <td style="font-size : 20px;" class="loginTip loginTableLeftTD">Sign in</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="loginTableLeftTD">Email</td>
+            <td class="loginTableRightTD" ><input type="email" name="email" id="email"></td>
+        </tr>     
+        <tr>
+            <a href="forgotpassword.html">Forgot your password?</a>
+            <td class="loginTableLeftTD">Password</td>
+            <td class="loginTableRightTD"><input type="password" name="password" id="password"> </td>
+        </tr>
+        <tr>
+            <td class="loginButtonTD" colspan="2">
+                <a href="forelogin"><button>Sign in</button></a>
+            </td>
+        </tr>   
+        <tr>
+            <td colspan="2">
+                <h4>New to OpenWallet? </h4>
+                <a href="register.jsp">Create your OpenWallet account</a>            
+            </td>
+        </tr>            
+        
+    </tbody></table>
+</form>
+</div>
+<script type="text/javascript">
 
-        <!-- TOPBAR -->
-        <div id="topbar">
-            <div class="inner group">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36516261-21']);
+  _gaq.push(['_trackPageview']);
 
-                <div class="topbar-left">
-                    <!-- START TWITTER -->
-                    <div id="twitter-slider" class="group">
-                        <div class="tweets-list"></div>
-                        <script type="text/javascript" src="js/twitter.js" ></script>
-                    </div>
-                    <!-- END TWITTER -->
-                </div>
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
 
-                <div class="topbar-right">
-                    <ul class="topbar-level-1">
-                        <!-- <li>
-                            <a href="#">Top bar menu</a>
-                            <ul class="sub-menu">
-                                <li><a href="#">And submenu</a></li>
-                                <li><a href="#"><i class="icon-home"></i>with icons</a></li>
-                            </ul>
-                        </li> -->
-                        <li><a href="home.jsp"><i class="icon-envelope"></i>Home</a></li>
-                        <li><a href="register.jsp"><i class="icon-envelope"></i>Inscription</a></li>
-                        <li class="login_link"><i class="icon-key"></i><a href="login.jsp">Login</a></li>
-						<li><a href="cart.jsp"><i class="cart"></i>Cart</a></li>
-                    </ul>
-                </div>
-
-            </div>
-        </div>
-        <!-- END TOPBAR -->
+</script>       
+    </body>
+            
+</html>
