@@ -112,7 +112,7 @@
 					</tr>
 					<tr>
 						<td>Cagetory</td>
-						<td><input id="id_category" name="id_category" type="text"
+						<td><input id="name_category" name="name_category" type="text"
 							class="form-control"></td>
 					</tr>
 					<tr>
@@ -165,6 +165,12 @@
 						<td><input id="material" name="material" type="text"
 							class="form-control"></td>
 					</tr>
+					<tr>
+                        <td>Category Image</td>
+                        <td>
+                            <input id="categoryPic" accept="image/*" type="file" name="filepath" />
+                        </td>
+                    </tr>
 					<tr class="submitTR">
 						<td colspan="2" align="center">
 							<input type="hidden" name="cid" value="${c.id_category}">

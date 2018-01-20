@@ -38,6 +38,7 @@
 					<th>Image</th>
 					<th>Category Name</th>
 					<th>Edit</th>
+                    <th>Category Management</th>
 					<th>Delete</th>
 				</tr>
 			</thead>
@@ -48,6 +49,7 @@
 					<td><img height="40px" src="img/category/${c.id_category}.jpg"></td>
 					<td>${c.name_category}</td>
                     <td><a href="admin_category_edit?id=${c.id_category}"><span class="glyphicon glyphicon-edit"></span></a></td>
+                    <td><a href="admin_product_list?id_category=${c.id_category}"><span class="glyphicon glyphicon-shopping-cart"></span></a></td>
                     <td><a deleteLink="true" href="admin_category_delete?id=${c.id_category}"><span class="glyphicon glyphicon-trash"></span></a></td>
                    
                 </tr>

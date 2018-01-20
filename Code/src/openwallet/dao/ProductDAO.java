@@ -290,10 +290,10 @@ public class ProductDAO {
         for (Category c : cs) {
             List<Product> products =  c.getProducts();
             List<List<Product>> productsByRow =  new ArrayList<>();
-            for (int i = 0; i < products.size(); i+=productNumberEachRow) {
-                int size = i+productNumberEachRow;
-                size= size>products.size()?products.size():size;
-                List<Product> productsOfEachRow =products.subList(i, size);
+            for (int i = 0; i < products.size(); i += productNumberEachRow) {
+                int size = i + productNumberEachRow;
+                size = size > products.size()? products.size() : size;
+                List<Product> productsOfEachRow = products.subList(i, size);
                 productsByRow.add(productsOfEachRow);
             }
             c.setProductsByRow(productsByRow);
