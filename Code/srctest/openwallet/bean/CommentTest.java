@@ -17,7 +17,7 @@ public class CommentTest {
   public void avantTest(){
     this.user = new User("Open","Wallet",new Date(0).valueOf("1995-11-21"),
     "normalType", false, "open.wallet@gmail.com", "mdp", "0611111111", "123456");
-    this.date_comment = new Date(2018,01,20);
+    this.date_comment = new Date(0).valueOf("2018-01-20");
     this.product = new Product();
     this.note = 0.0;
     this.comment = new Comment(user,product,date_comment,note);
@@ -35,24 +35,24 @@ public class CommentTest {
 
   @Test
   public void testUpdate(){
-    this.comment.setDate_comment(new Date(2018,01,18));
+    this.comment.setDate_comment(new Date(0).valueOf("2018-01-18"));
     this.commentDAO.update(this.comment);
     Comment comment2= commentDAO.get(id_comment);
 
-    assertEquals(comment2.getDate_comment().equals(new Date(2018,01,18)), true);
+    assertEquals(comment2.getDate_comment().equals(new Date(0).valueOf("2018-01-18")), true);
   }
 
   @Test
   public void testDelete(){
     Comment comment2= commentDAO.get(id_comment);
 
-    id_comment2 = addrDAO.add(comment2);
-    addrDAO.delete(id_comment2);
+    id_comment2 = commentDAO.add(comment2);
+    commentDAO.delete(id_comment2);
 
-    assertEquals(addrDAO.get(id_comment2), null);
+    assertEquals(commentDAO.get(id_comment2), null);
   }
 
-  private boolean assertCommentEquals(Address comment1,Address comment2) {
+  private boolean assertCommentEquals(Comment comment1,Comment comment2) {
 
     if(comment1.getId_comment()!=comment2.getId_comment()) {
       System.out.println("TestComment Error: id_comment not equals !");
