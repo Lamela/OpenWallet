@@ -13,8 +13,8 @@ import org.junit.runners.Suite.SuiteClasses;
   CommentTest.class,
   OrdersTest.class,
   CategoryTest.class
-  //, Item_CartTest.class,
-  //Item_OrderTest.class
+  //, ItemCartTest.class,
+  //ItemOrderTest.class
 })
 
 public class SuiteAll {}
