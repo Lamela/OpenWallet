@@ -187,16 +187,9 @@
                             <li>
                                 <a href="index.html"><i class="icon-home"></i>Departements</a>
                                 <ul class="sub-menu">
-                                    <li><a href="home-ii-stretched.html">Boonks & Audible</a></li>
-                                    <li><a href="home-iii-portfolio.html">Electronics, Computers & Office</a></li>
-                                    <li><a href="home-iv.html">Home, Garden, Pets & Tools</a></li>
-                                    <li><a href="home-v.html">Food & Grocery</a></li>
-                                    <li><a href="home-vi.html">Beauty & Health</a></li>
-                                    <li><a href="home-vii.html">Toys, Kids & Baby</a></li>
-                                    <li><a href="home-ix-with-tab.html">Clothing, Shoes & Jewelry</a></li>
-                                    <li><a href="home-x.html">Handmade</a></li>
-                                    <li><a href="home-x.html">Sports & Outdoors</a></li>
-                                    <li><a href="home-x.html">Automotive & industrial</a></li>
+                                    <c:forEach items="${cs}" var="c">
+                                        <li><a href="forecategory?id_category=${c.id_category}">${c.name_category}</a></li>
+                                    </c:forEach>
                                 </ul>
                             </li>
                         </div>
