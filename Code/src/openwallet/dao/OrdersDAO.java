@@ -22,7 +22,7 @@ public class OrdersDAO {
 	public static final String waitReview = "waitReview";
 	public static final String finish = "finish";
 	public static final String delete = "delete";
-	
+
   public int getTotal() {
     int total = 0;
     try (Connection c = DBUtil.getConnection(); Statement s = c.createStatement();) {
@@ -198,7 +198,7 @@ public List<Orders> list(int start, int count) {
       bean.setPay_date(pay_date);
       bean.setDelivery_date(delivery_date);
       bean.setConfirm_date(confirm_date);
-      bean.setStatus(status); 
+      bean.setStatus(status);
       bean.setTotal_number(total_number);
 
       beans.add(bean);
