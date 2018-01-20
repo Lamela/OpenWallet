@@ -115,7 +115,7 @@ public class CategoryDAO {
  
             if (rs.next()) {
                 bean = new Category();
-                int id_category = rs.getString(1);
+                int id_category = rs.getInt(1);
                 bean.setName_category(name);
                 bean.setId_category(id_category);
             }

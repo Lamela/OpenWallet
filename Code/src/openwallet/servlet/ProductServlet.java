@@ -48,7 +48,7 @@ public class ProductServlet extends BaseBackServlet {
 		p.setComment_count(comment_count);
 		
 		productDAO.add(p);
-		return "@admin_product_list?id_category="+id_category;
+		return "@admin_product_list?id_category="+c.getId_category();
 	}
 
 	
