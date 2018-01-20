@@ -11,13 +11,15 @@ import openwallet.util.Page;
 
 public class BaseForeServlet extends HttpServlet{
 
+	protected AddressDao addressDAO = new AddressDao();
 	protected CategoryDAO categoryDAO = new CategoryDAO();
+	protected CommentDAO commentDAO = new CommentDAO();
 	protected OrderDAO orderDAO = new OrderDAO();
 	protected ItemOrderDAO itemOrderDAO = new ItemOrderDAO();
 	protected ProductDAO productDAO = new ProductDAO();
 	//protected ProductImageDAO productImageDAO = new ProductImageDAO();
-	protected CommentDAO commentDAO = new CommentDAO();
 	protected UserDAO userDAO = new UserDAO();
+	protected ItemCartDAO itemCartDAO = new ItemCartDAO();
 	
 	public void service(HttpServletRequest request, HttpServletResponse response) {
 		try {

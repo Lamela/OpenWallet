@@ -1,4 +1,4 @@
-package tmall.filter;
+package openwallet.filter;
 
 import java.io.IOException;
 import java.util.List;
@@ -14,11 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang.StringUtils;
 
-import tmall.bean.Category;
-import tmall.bean.OrderItem;
-import tmall.bean.User;
-import tmall.dao.CategoryDAO;
-import tmall.dao.OrderItemDAO;
+import openwallet.bean.*;
+import openwallet.dao.*;
 
 public class ForeServletFilter implements Filter{
 	

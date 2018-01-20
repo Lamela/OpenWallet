@@ -233,20 +233,21 @@ public class UserDAO {
         return bean;
 	}
 
-	public User get(String firstname, String lastname, String password) {
+	public User get(String email, String password) {
 		User bean = null;
 		 
-		String sql = "select * from User where firstname = ? and lastname = ? and password=?";
+		String sql = "select * from User where email = ? and password=?";
         try (Connection c = DBUtil.getConnection(); PreparedStatement ps = c.prepareStatement(sql)) {
-        	ps.setString(1, firstname);
-            ps.setString(2, lastname);
-        	ps.setString(3, password);
+        	ps.setString(1, email);
+        	ps.setString(2, password);
             ResultSet rs = ps.executeQuery();
  
             if (rs.next()) {
                 bean = new User();
                 int id = rs.getInt("id_user");
+				String firstname = rs.getString("firstname_user");
                 bean.setFirstname_user(firstname);
+				String lastname = rs.getString("lastname_user");
                 bean.setLastname_user(lastname);
                 bean.setPassword(password);
                 Date birthday = DateUtil.t2d(rs.getTimestamp("birthday"));
@@ -255,7 +256,6 @@ public class UserDAO {
                 bean.setType_user(type_user);
                 boolean premium = rs.getBoolean("premium");
                 bean.setPremium(premium);
-                String email = rs.getString("email");
                 bean.setEmail(email);
                 String mobile_user = rs.getString("mobile_user");
                 bean.setMobile_user(mobile_user);

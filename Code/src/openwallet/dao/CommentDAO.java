@@ -32,11 +32,12 @@ public class CommentDAO {
         }
         return total;
     }
+
     public int getTotal(int pid) {
     	int total = 0;
     	try (Connection c = DBUtil.getConnection(); Statement s = c.createStatement();) {
     		
-    		String sql = "select count(*) from Comment where pid = " + pid;
+    		String sql = "select count(*) from Comment where id_product = " + pid;
     		
     		ResultSet rs = s.executeQuery(sql);
     		while (rs.next()) {
@@ -53,13 +54,14 @@ public class CommentDAO {
 
 
 
-        String sql = "insert into Comment values(null,?,?,?,?)";
+        String sql = "insert into Comment values(null,?,?,?,?,?)";
         try (Connection c = DBUtil.getConnection(); PreparedStatement ps = c.prepareStatement(sql);) {
  
             ps.setInt(1, bean.getUser().getId_user());
             ps.setInt(2, bean.getProduct().getId_product());
             ps.setTimestamp(3, DateUtil.d2t(bean.getDate_comment()));
-	    ps.setDouble(4, bean.getNote());
+			ps.setDouble(4, bean.getNote());
+			ps.setString(5, bean.getContent());
             
             ps.execute();
  
@@ -76,13 +78,14 @@ public class CommentDAO {
  
     public void update(Comment bean) {
 
-        String sql = "update Comment set id_user= ?, id_product=?, date_comment=? , note = ? where id_comment = ?";
+        String sql = "update Comment set id_user= ?, id_product=?, date_comment=? , note = ? , content = ? where id_comment = ?";
         try (Connection c = DBUtil.getConnection(); PreparedStatement ps = c.prepareStatement(sql);) {
             ps.setInt(1, bean.getUser().getId_user());
             ps.setInt(2, bean.getProduct().getId_product());
             ps.setTimestamp(3, DateUtil.d2t(bean.getDate_comment()));
-	    ps.setDouble(4, bean.getNote());
-            ps.setInt(5, bean.getId_comment());
+			ps.setDouble(4, bean.getNote());
+			ps.setString(5, bean.getContent());
+            ps.setInt(6, bean.getId_comment());
             ps.execute();
  
         } catch (SQLException e) {
@@ -122,12 +125,14 @@ public class CommentDAO {
                 int id_product = rs.getInt("id_product");
                 Date date_comment = DateUtil.t2d(rs.getTimestamp("date_comment"));
                 Double note = rs.getDouble("note");
+				String content = rs.getString("content");
                 
                 bean.setId_comment(id);
                 bean.setDate_comment(date_comment);
                 bean.setUser(userDAO.get(id_user));
                 bean.setProduct(productDAO.get(id_product));
                 bean.setNote(note);
+				bean.setContent(content);
             }
  
         } catch (SQLException e) {
@@ -158,6 +163,7 @@ public class CommentDAO {
         }
         return 0;    	
     }
+
     public List<Comment> list(int pid, int start, int count) {
         List<Comment> beans = new ArrayList<Comment>();
  
@@ -180,6 +186,7 @@ public class CommentDAO {
                 int id_product = rs.getInt("id_product");
                 Date date_comment = DateUtil.t2d(rs.getTimestamp("date_comment"));
                 Double note = rs.getDouble("note");
+				String content = rs.getContent("content");
                 
                 
                 bean.setId_comment(id_comment);
@@ -187,6 +194,7 @@ public class CommentDAO {
                 bean.setUser(userDAO.get(id_user));
                 bean.setProduct(productDAO.get(id_product));
                 bean.setNote(note);
+				bena.setContent(content);
                 beans.add(bean);
             }
         } catch (SQLException e) {
@@ -195,6 +203,7 @@ public class CommentDAO {
         }
         return beans;
     }
+
 	public boolean isExist(Double note, int pid) {
 		
 		 
