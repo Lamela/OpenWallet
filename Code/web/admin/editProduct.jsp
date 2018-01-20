@@ -37,12 +37,18 @@ $(function() {
 				<table class="editTable">
 					<tr>
 						<td>Product Name</td>
-						<td><input id="name" name="name" value="${p.name}"
+						<td><input id="name" name="name" value="${p.name_product}"
 							type="text" class="form-control"></td>
 					</tr>
 					<tr>
+						<td>Product Category</td>
+						<td><input id="category"  value="${p.category_name}" name="category" type="text"
+							class="form-control"></td>
+					</tr>
+  
+					<tr>
 						<td>Product price</td>
-						<td><input id="orignalPrice" value="${p.orignalPrice}" name="orignalPrice" type="text"
+						<td><input id="Price" value="${p.price}" name="Price" type="text"
 							class="form-control"></td>
 					</tr>
 					<tr>
@@ -55,7 +61,33 @@ $(function() {
 	    				<td>
 	    					<input id="productPic" accept="image/*" type="file" name="filepath" />
 	    				</td>
-	    			</tr>	    
+					</tr>	
+					<tr>
+						<td>Product Origin</td>
+						<td><input id="origin"  value="${p.origin}" name="origin" type="text"
+							class="form-control"></td>
+					</tr>
+					<tr>
+						<td>Product Brand</td>
+						<td><input id="brand"  value="${p.brand}" name="brand" type="text"
+							class="form-control"></td>
+					</tr>  
+					<tr>
+						<td>Product Color</td>
+						<td><input id="color"  value="${p.color}" name="color" type="text"
+							class="form-control"></td>
+					</tr>   
+					<tr>
+						<td>Product Material</td>
+						<td><input id="material"  value="${p.material}" name="material" type="text"
+							class="form-control"></td>
+					</tr>
+					<tr>
+						<td>Product Description</td>
+						<td><input id="description" name="description" value="${p.description}"
+							type="text" class="form-control"></td>
+					</tr>     
+ 
 										
 					<tr class="submitTR">
 						<td colspan="2" align="center">
