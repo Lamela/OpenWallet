@@ -103,6 +103,27 @@ public class CategoryDAO {
         }
         return bean;
     }
+
+    public Category get(String name) {
+        Category bean = null;
+ 
+        try (Connection c = DBUtil.getConnection(); Statement s = c.createStatement();) {
+ 
+            String sql = "select * from Category where name_category = " + name;
+ 
+            ResultSet rs = s.executeQuery(sql);
+ 
+            if (rs.next()) {
+                bean = new Category();
+                int id_category = rs.getString(1);
+                bean.setName_category(name);
+                bean.setId_category(id_category);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return bean;
+    }
  
     public List<Category> list() {
         return list(0, Short.MAX_VALUE);

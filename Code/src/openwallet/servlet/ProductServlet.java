@@ -11,8 +11,8 @@ public class ProductServlet extends BaseBackServlet {
 
 	
 	public String add(HttpServletRequest request, HttpServletResponse response, Page page) {
-		int id_category = Integer.parseInt(request.getParameter("id_category"));
-		Category c = categoryDAO.get(id_category);
+		String name_category = request.getParameter("name_category");
+		Category c = categoryDAO.get(name_category);
 		int id_user = Integer.parseInt(request.getParameter("id_user"));
 		User u = userDAO.get(id_user);
 		String name_product = request.getParameter("name_product");
@@ -24,11 +24,12 @@ public class ProductServlet extends BaseBackServlet {
 		cal.set(Integer.parseInt(date[0]), Integer.parseInt(date[1]), Integer.parseInt(date[2]));
 		Date create_date_product = cal.getTime();
 		String origin = request.getParameter("origin");
-		int sold = Integer.parseInt(request.getParameter("sold"));
+		int sold = 0;
 		String brand = request.getParameter("brand");
 		String color = request.getParameter("color");
 		String material = request.getParameter("material");
-		int comment_count = Integer.parseInt(request.getParameter("comment_count"));
+		//int comment_count = Integer.parseInt(request.getParameter("comment_count"));
+		int comment_count = 0;
 
 		Product p = new Product();
 
