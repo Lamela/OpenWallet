@@ -4,10 +4,10 @@
 
 if [ $# -eq 1 ]; then
   if [ $1 == "compile" ]; then
-    javac -classpath  ./web/WEB-INF/classes/openwallet/bean/*.class:/usr/share/java/junit4.jar:./classes:./classestest -sourcepath ./srctest -d ./classestest/openwallet/bean ./srctest/openwallet/bean/*.java
-    javac -classpath  ./web/WEB-INF/classes/openwallet/bean/*.class:/usr/share/java/junit4.jar:./classestest -sourcepath ./srctest -d ./classestest ./srctest/openwallet/*.java
+    javac -classpath  web/WEB-INF/classes:/usr/share/java/junit4.jar:./classes:./classestest -sourcepath ./srctest -d ./classestest/openwallet/bean ./srctest/openwallet/bean/*.java
+    javac -classpath  web/WEB-INF/classes:/usr/share/java/junit4.jar:./classestest -sourcepath ./srctest -d ./classestest ./srctest/openwallet/*.java
   elif  [ $1 == "exec" ]; then
-    java -classpath classestest openwallet.SuiteAll
+    java -classpath web/WEB-INF/classes:classes/:classestest/:classestest/junit-4.10.jar org.junit.runner.JUnitCore openwallet.SuiteAll
   elif  [ $1 == "remove"]; then
     rm -rf ./classes/
     rm -rf ./classestest/
