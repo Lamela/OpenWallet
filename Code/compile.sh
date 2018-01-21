@@ -4,19 +4,11 @@
 
 if [ $# -eq 1 ]; then
   if [ $1 == "compile" ]; then
-
-    javac -classpath ./classes -sourcepath ./src -d ./classes ./openwallet/bean/*.java
-    javac -classpath ./classes -sourcepath ./src -d ./classes ./src/openwallet/dao/*.java
-    javac -classpath ./classes -sourcepath ./src -d ./classes ./src/openwallet/filter/*.java
-    javac -classpath ./classes -sourcepath ./src -d ./classes ./src/openwallet/servlet/*.java
-    javac -classpath ./classes -sourcepath ./src -d ./classes ./src/openwallet/util/*.java
-    javac -classpath ./classes -sourcepath ./src -d ./classes ./src/openwallet/dao/*.java
-
-    javac -classpath  /usr/share/java/junit4.jar:./classes:./classestest -sourcepath ./srctest:./src -d ./classestest ./srctest/openwallet/dao/*.java
-    javac -classpath  /usr/share/java/junit4.jar:./classes:./classestest -sourcepath ./srctest:./src -d ./classestest ./srctest/openwallet/*.java
+    javac -classpath  ./web/WEB-INF/classes/openwallet/bean/*.class:/usr/share/java/junit4.jar:./classes:./classestest -sourcepath ./srctest -d ./classestest/openwallet/bean ./srctest/openwallet/bean/*.java
+    javac -classpath  ./web/WEB-INF/classes/openwallet/bean/*.class:/usr/share/java/junit4.jar:./classestest -sourcepath ./srctest -d ./classestest ./srctest/openwallet/*.java
   elif  [ $1 == "exec" ]; then
     java -classpath classestest openwallet.SuiteAll
-  elif  [ $1 == "clear"]; then
+  elif  [ $1 == "remove"]; then
     rm -rf ./classes/
     rm -rf ./classestest/
   else
