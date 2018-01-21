@@ -45,6 +45,7 @@ public class User {
       this.number_id_card = number_id_card;
   }
 
+
   //Getters:
   public int getId_user() {
       return id_user;

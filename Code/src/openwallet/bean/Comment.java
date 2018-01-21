@@ -6,6 +6,7 @@ import java.util.TreeSet;
 import java.time.LocalDate;
 
 public class Comment {
+
   private int id_comment;
   private User user;
   private Product product;
@@ -30,6 +31,7 @@ public class Comment {
       this.note = note;
    this.content = content;
     }
+
 
    public int getId_comment() {
        return id_comment;

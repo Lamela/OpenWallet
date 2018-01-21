@@ -47,7 +47,7 @@ $(function(){
 					<tr>
 						<td>${o.id_orders}</td>
 						<td>${o.status}</td>
-						<td>￥<fmt:formatNumber type="number" value="${o.total_price}" minFractionDigits="2"/></td>
+						<td>€ <fmt:formatNumber type="number" value="${o.total_price}" minFractionDigits="2"/></td>
 						<td align="center">${o.total_number}</td>
 						<td align="center">${o.user.firstname}</td>
 						<td align="center">${o.user.lastname}</td>
