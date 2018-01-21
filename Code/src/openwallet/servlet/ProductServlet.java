@@ -137,8 +137,8 @@ public class ProductServlet extends BaseBackServlet {
 
 	
 	public String list(HttpServletRequest request, HttpServletResponse response, Page page) {
-		List<Product> ps = productDAO.list(page.getStart(),page.getCount());
 		Category c = categoryDAO.get(Integer.parseInt(request.getParameter("id_category")));
+		List<Product> ps = productDAO.list(c.getId_category(), page.getStart(), page.getCount());
 		int total = productDAO.getTotal();
 		page.setTotal(total);
 		
