@@ -256,10 +256,6 @@ Nous présentons ici une liste non-exhaustive des diagrammes d'utilisation
 \end_layout
 
 \begin_layout Standard
-
-\end_layout
-
-\begin_layout Standard
 \begin_inset Float figure
 placement H
 wide false
@@ -574,6 +570,11 @@ Diagramme de navigation
 \end_layout
 
 \begin_layout Standard
+Le diagramme de navigation nous permettra de modéliser le parcours d'un
+ utilisateur sur le site.
+\end_layout
+
+\begin_layout Standard
 \begin_inset Float figure
 placement H
 wide false
@@ -766,8 +767,84 @@ DSS - Suppression d'un produit
 Diagramme de séquence
 \end_layout
 
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/rasendrasoa/OpenWallet/Conception/diagram_sequence_cart_management.png
+	scale 75
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Diagramme de séquence - gestion du panier
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Diagramme de classe
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/rasendrasoa/OpenWallet/Conception/diagramme_classe.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Diagramme de classe
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Part
@@ -776,6 +853,183 @@ Conception détaillée
 
 \begin_layout Part
 Implémentation et tests
+\end_layout
+
+\begin_layout Standard
+Dans cette partie, nous allons dans un premier temps détailler les étapes
+ de la programmation ainsi que les choix techniques, puis les tests effectués,
+ un aperçu du résultat obtenu et enfin les principales difficultés rencontrées.
+\end_layout
+
+\begin_layout Section
+Les différentes étapes du développement
+\end_layout
+
+\begin_layout Subsection
+Construction des pages avant-plan (front-end)
+\end_layout
+
+\begin_layout Standard
+Nous avons dans un premier dans mis en place la structure principale du
+ site avec les diagrammes de conception.
+ Pour réaliser les fonctionnalités dans notre diagramme de navigation, on
+ avons déterminé qu’il y a au total 13 pages type à réaliser: 
+\end_layout
+
+\begin_layout Itemize
+La page pour gérer le compte utilisateur
+\end_layout
+
+\begin_layout Itemize
+La page pour ajouter en spécifier un produit à vendre
+\end_layout
+
+\begin_layout Itemize
+La page pour faire une recherche avancée dans notre liste des produits
+\end_layout
+
+\begin_layout Itemize
+La page pour gérer le panier et passer au paiement
+\end_layout
+
+\begin_layout Itemize
+La Homepage
+\end_layout
+
+\begin_layout Itemize
+La page pour inscription
+\end_layout
+
+\begin_layout Itemize
+La page pour s’indentifier
+\end_layout
+
+\begin_layout Itemize
+La page pour accéder au information détaillé du commande
+\end_layout
+
+\begin_layout Itemize
+La page du produit à vendre
+\end_layout
+
+\begin_layout Itemize
+La page pour afficher les résultats de recherche
+\end_layout
+
+\begin_layout Itemize
+La page pour devenir compte premium
+\end_layout
+
+\begin_layout Itemize
+La page pour ajouter une adresse de livraison
+\end_layout
+
+\begin_layout Itemize
+La page pour service clientèle
+\end_layout
+
+\begin_layout Standard
+Cette première partie est principalement axée sur le côté HTML/CSS quasiment
+ sans aucun développement back-end.
+ Nous avons développé ces pages pour un style de design unifié et pour vérifier
+ notre conception.
+\end_layout
+
+\begin_layout Subsubsection
+Choix techniques et bibliothèques
+\end_layout
+
+\begin_layout Itemize
+HTML/CSS: Le HTML (« HyperText Mark-Up Language ») est un langage dit de
+ « balisage » ou de « structuration » permettant la conception de pages
+ web avec des balises de formatage.
+ Les balises permettent d'indiquer la façon dont doivent être présentés
+ le document et les liens qu'il établit avec d'autres documents.
+ Le CSS (« Cascading Style Sheets » : feuilles de style en cascade) est
+ un langage informatique complétant le HTML.
+ Alors que le HTML structure la page Web, le CSS va la mettre en forme en
+ y apportant du style.
+ 
+\end_layout
+
+\begin_layout Itemize
+Modèle de design Mem[é]nto by Your Inspiration Themes: On a utilisé un modèle
+ de design web Memento.
+ Memento est un thème brandable et créatif avec une mise en page propre,
+ entreprise et réactive., Il permet de définir n'importe quelle couleur à
+ des éléments tels que des arrière-plans, des liens, du texte, des liens
+ de menu, etc.
+ et changer complètement l'apparence de site en quelques secondes.
+ 
+\end_layout
+
+\begin_layout Subsection
+Conception de base de données
+\end_layout
+
+\begin_layout Standard
+La réalisation de notre site web a requis la création d’une base de données.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename collé1.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Base de données MySQL
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+Dans notre cas, il nous a tout d’abord fallu créer ces 8 tables pour la
+ gestion de site web.
+ La table user est destinér à gérer toutes les information utilisateur autre
+ que le pseudonyme et le mot de passe.
+ Ensuite on construit les autres 3 tables de base: orders, category et address.
+ Puis, lorsque nous avons commencé category et user, ça nous permet d’initialise
+r le table produit avec 2 clés étranger id_user et id_category.
+ Après on construit la table orders pour rajouter la possibilité d’insérer
+ plusieurs produits.
+ La table comment est reliée au orders et user.
+ Enfin, pour obtenir un état intermédiaire entre produit, user et orders,
+ il nous a donc fallu rajouter deux tables: item_cart et item_order concernant
+ les tableaux récapitulatif des items perçus par l’association avec les
+ paniers et les commandes.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Choix techniques et bibliothèques
+\end_layout
+
+\begin_layout Itemize
+SQL: est un langage informatique normalisé servant à exploiter des bases
+ de données relationnelles.
+ La partie langage de manipulation des données de SQL permet de rechercher,
+ d'ajouter, de modifier ou de supprimer des données dans les bases de données
+ relationnelles.
+ 
 \end_layout
 
 \begin_layout Part
