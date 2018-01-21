@@ -100,7 +100,7 @@ public class ForeServlet extends BaseForeServlet {
 			System.out.println("###################################################");
 		}
 		Product p = productDAO.get(pid);
-		Category c = categoryDAO.get(p.getID_category());
+		Category c = p.getCategory();
 		
 		List<Comment> comments = commentDAO.list(p.getId_product());
 
