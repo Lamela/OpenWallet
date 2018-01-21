@@ -241,8 +241,18 @@ Résolutions d'écran supportées : le site web doit pouvoir s'adapter à tous
 Spécifications
 \end_layout
 
+\begin_layout Standard
+Dans cette partie, nous présenterons les différents diagrammes qui découlent
+ de l'analyse fonctionelle du problème.
+\end_layout
+
 \begin_layout Section
 Diagrammes de cas d'utilisation
+\end_layout
+
+\begin_layout Standard
+Nous présentons ici une liste non-exhaustive des diagrammes d'utilisation
+ issue de la compréhension du besoin métier.
 \end_layout
 
 \begin_layout Standard
@@ -560,16 +570,21 @@ Diagramme de navigation
 \end_layout
 
 \begin_layout Standard
+Le diagramme de navigation nous permettra de modéliser le parcours d'un
+ utilisateur sur le site.
+\end_layout
+
+\begin_layout Standard
 \begin_inset Float figure
 placement H
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename /home/rasendrasoa/OpenWallet/Conception/diagramme_nav.png
-	scale 30
+	scale 20
 
 \end_inset
 
@@ -602,7 +617,154 @@ Conception préliminaire
 \end_layout
 
 \begin_layout Section
-Diagrammes de séquence
+Diagrammes de sequence système
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/rasendrasoa/OpenWallet/Conception/sequence_diagram_system_account.png
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+DSS - gestion de compte
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/rasendrasoa/OpenWallet/Conception/sequence_diagram_system_account_creation.png
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+DSS - création de compte
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/rasendrasoa/OpenWallet/Conception/sequence_diagram_system_consult_a_product.jpeg
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+DSS - consultation d'un produit
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/rasendrasoa/OpenWallet/Conception/sequence_diagram_system_delete_a_product.jpeg
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+DSS - Suppression d'un produit
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Section
+Diagramme de séquence
 \end_layout
 
 \begin_layout Section

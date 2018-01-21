@@ -85,6 +85,23 @@ Technologie Web 2
 Rapport de Projet
 \end_layout
 
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FloatList figure
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Part
 Introduction
 \end_layout
@@ -132,24 +149,6 @@ via la recherche avancée, qui sera multi-critères (nom/ type d'objet / prix
 \end_layout
 
 \begin_layout Subsection
-Valorisation de comptes
-\end_layout
-
-\begin_layout Standard
-Le systèle de valorisation de comptes qui sera utilisée sera le suivant
- :
-\end_layout
-
-\begin_layout Itemize
-un compte Premium ayant des avantages supplémentaires lors de l'achat de
- produits par rapport à l'utilisateur simple.
-\end_layout
-
-\begin_layout Itemize
-un compte Super Premium ayant encore plus d'avantages.
-\end_layout
-
-\begin_layout Subsection
 Actions disponibles sur le site
 \end_layout
 
@@ -184,6 +183,24 @@ commenter et noter un produit,
 
 \begin_layout Itemize
 accéder au support client
+\end_layout
+
+\begin_layout Subsection
+Valorisation de comptes
+\end_layout
+
+\begin_layout Standard
+Le systèle de valorisation de comptes qui sera utilisée sera le suivant
+ :
+\end_layout
+
+\begin_layout Itemize
+un compte Premium ayant des avantages supplémentaires lors de l'achat de
+ produits par rapport à l'utilisateur simple.
+\end_layout
+
+\begin_layout Itemize
+un compte Super Premium ayant encore plus d'avantages.
 \end_layout
 
 \begin_layout Section
@@ -224,8 +241,533 @@ Résolutions d'écran supportées : le site web doit pouvoir s'adapter à tous
 Spécifications
 \end_layout
 
+\begin_layout Standard
+Dans cette partie, nous présenterons les différents diagrammes qui découlent
+ de l'analyse fonctionelle du problème.
+\end_layout
+
+\begin_layout Section
+Diagrammes de cas d'utilisation
+\end_layout
+
+\begin_layout Standard
+Nous présentons ici une liste non-exhaustive des diagrammes d'utilisation
+ issue de la compréhension du besoin métier.
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/rasendrasoa/OpenWallet/Conception/use_case_create_account.png
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+cas d'utilisation : création/gestion de compte
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/rasendrasoa/OpenWallet/Conception/use_case_search_products.png
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+cas d'utilisation : rechercher un produit
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/rasendrasoa/OpenWallet/Conception/use_case_identification.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+cas d'utilisation : connexion
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/rasendrasoa/OpenWallet/Conception/use_case_consult_a_product.jpeg
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+cas d'utilisation : consulter un produit
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/rasendrasoa/OpenWallet/Conception/use_case_add_delete_product.jpeg
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+cas d'utilisation : ajouter/supprimer un produit
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/rasendrasoa/OpenWallet/Conception/use_case_diagram_comment.jpeg
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+cas d'utilisation : commenter un produit
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/rasendrasoa/OpenWallet/Conception/use_case_diagram_management_cart.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+cas d'utilisation : gestion du panier d'achat
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/rasendrasoa/OpenWallet/Conception/use_case_diagram_payment.jpeg
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+cas d'utilisation : paiement
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/rasendrasoa/OpenWallet/Conception/use_case_Grade.png
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+cas d'utilisation : noter un produit
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Diagramme de navigation
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/rasendrasoa/OpenWallet/Conception/diagramme_nav.png
+	scale 20
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Diagramme de navigation
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Part
 Conception préliminaire
+\end_layout
+
+\begin_layout Section
+Diagrammes de sequence système
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/rasendrasoa/OpenWallet/Conception/sequence_diagram_system_account.png
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+DSS - gestion de compte
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/rasendrasoa/OpenWallet/Conception/sequence_diagram_system_account_creation.png
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+DSS - création de compte
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/rasendrasoa/OpenWallet/Conception/sequence_diagram_system_consult_a_product.jpeg
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+DSS - consultation d'un produit
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/rasendrasoa/OpenWallet/Conception/sequence_diagram_system_delete_a_product.jpeg
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+DSS - Suppression d'un produit
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Section
+Diagramme de séquence
+\end_layout
+
+\begin_layout Section
+Diagramme de classe
 \end_layout
 
 \begin_layout Part
