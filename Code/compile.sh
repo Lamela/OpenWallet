@@ -15,9 +15,10 @@ if [ $# -eq 1 ]; then
     javac -classpath  /usr/share/java/junit4.jar:./classes:./classestest -sourcepath ./srctest:./src -d ./classestest ./srctest/openwallet/dao/*.java
     javac -classpath  /usr/share/java/junit4.jar:./classes:./classestest -sourcepath ./srctest:./src -d ./classestest ./srctest/openwallet/*.java
   elif  [ $1 == "exec" ]; then
-    java -classpath classes openwallet.SuiteAll
+    java -classpath classestest openwallet.SuiteAll
   elif  [ $1 == "clear"]; then
     rm -rf ./classes/
+    rm -rf ./classestest/
   else
     echo "argument non reconnu"
   fi
