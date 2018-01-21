@@ -1532,6 +1532,53 @@ Choix technique: Servlet : Une servlet est une classe Java qui permet de
 \end_layout
 
 \begin_layout Section
+Tests
+\end_layout
+
+\begin_layout Standard
+L'ensemble des tests a été réalisé sur le Modèle, les tests sur le Controleur
+ et la Vue étant optionnels et demandant trop de temps à implémenter.
+ Les fichiers suivants ont donc été testés via JUnit : 
+\end_layout
+
+\begin_layout Enumerate
+Address.java
+\end_layout
+
+\begin_layout Enumerate
+Category.java
+\end_layout
+
+\begin_layout Enumerate
+Comment.java
+\end_layout
+
+\begin_layout Enumerate
+Orders.java
+\end_layout
+
+\begin_layout Enumerate
+Product.java
+\end_layout
+
+\begin_layout Enumerate
+User.java
+\end_layout
+
+\begin_layout Standard
+L'exécution des tests se fait via le script ~/OpenWallet/Code/compile.sh
+ en exécutant les commandes suivantes dans le terminal :
+\end_layout
+
+\begin_layout Enumerate
+bash -x compile.sh compile : compilation des fichiers de test
+\end_layout
+
+\begin_layout Enumerate
+bash -x compile.sh exec : exécute la suite de test SuiteAll
+\end_layout
+
+\begin_layout Section
 Guide utilisateur
 \end_layout
 

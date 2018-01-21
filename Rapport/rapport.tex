@@ -20,10 +20,11 @@
 \usepackage{babel}
 \begin{document}
 
-\title{Technologie Web 2}
+\title{TW2 : Rapport de Projet - Site de Vente}
 
 
-\author{Rapport de Projet}
+\author{Groupe 6 : Xu Jitao, Lu Chenxin, Zhu Zhenghui, Osmani Wael, Rasendrasoa
+Sandratra}
 
 \maketitle
 \tableofcontents{}
@@ -184,7 +185,7 @@ Le diagramme de navigation nous permettra de modéliser le parcours
 d'un utilisateur sur le site.
 
 \begin{figure}[H]
-\includegraphics[scale=0.2]{/home/rasendrasoa/OpenWallet/Conception/diagramme_nav}
+\includegraphics[angle=-90,scale=0.28]{/home/rasendrasoa/OpenWallet/Conception/diagramme_nav}
 
 \caption{Diagramme de navigation}
 
@@ -244,7 +245,7 @@ d'un utilisateur sur le site.
 \section{Diagramme de classe}
 
 \begin{figure}[H]
-\includegraphics[scale=0.5]{/home/rasendrasoa/OpenWallet/Conception/diagramme_classe}
+\includegraphics[angle=-90,scale=0.28]{/home/rasendrasoa/OpenWallet/Conception/diagramme_classe}
 
 \caption{Diagramme de classe}
 
@@ -255,8 +256,8 @@ d'un utilisateur sur le site.
 
 \part{Conception détaillée}
 
-\begin{figure}
-\includegraphics[scale=0.3]{/home/rasendrasoa/OpenWallet/Conception/diagramme_classe}
+\begin{figure}[H]
+\includegraphics[angle=-90,scale=0.28]{/home/rasendrasoa/OpenWallet/Conception/diagramme_classe}
 
 \caption{Digramme de classes participantes}
 
@@ -326,7 +327,7 @@ La réalisation de notre site web a requis la création d\textquoteright une
 base de données. 
 
 \begin{figure}[H]
-\includegraphics{collé1}
+\includegraphics[scale=0.5]{collé1}
 
 \caption{Base de données MySQL}
 \end{figure}
@@ -538,6 +539,26 @@ elles peuvent également l'être au format XML ou tout autre format
 destiné aux navigateurs web. 
 
 
+\section{Tests}
+
+L'ensemble des tests a été réalisé sur le Modèle, les tests sur le
+Controleur et la Vue étant optionnels et demandant trop de temps à
+implémenter. Les fichiers suivants ont donc été testés via JUnit : 
+\begin{enumerate}
+\item Address.java
+\item Category.java
+\item Comment.java
+\item Orders.java
+\item Product.java
+\item User.java
+\end{enumerate}
+L'exécution des tests se fait via le script \textasciitilde{}/OpenWallet/Code/compile.sh
+en exécutant les commandes suivantes dans le terminal :
+\begin{enumerate}
+\item bash -x compile.sh compile : compilation des fichiers de test
+\item bash -x compile.sh exec : exécute la suite de test SuiteAll
+\end{enumerate}
+
 \section{Guide utilisateur}
 
 Dans la partie \textquoteleft Guide d\textquoteright utilisateurs\textquoteright ,
@@ -548,7 +569,10 @@ l\textquoteright administrateur.
 \subsection{Déploiement de l'application web}
 
 Il est nécessaire de lancer le script \textasciitilde{}/OpenWallet/Code/web/compile\_linux.sh
-afin de compiler l'ensemble du code source.
+afin de compiler l'ensemble du code source et créer l'archive .jar.
+L'archive est alors disponible sous le nom \textasciitilde{}/OpenWallet/Code/web/Openwallet.war.
+Il suffit ensuite de copier cette archive dans le répoertoire qui
+y est dédié dans serveur pour le déploiement.
 
 
 \subsection{Guide Admin}
