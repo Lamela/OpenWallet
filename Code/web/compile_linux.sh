@@ -7,4 +7,4 @@ javac -cp $CLASSPATH -sourcepath src -d ./WEB-INF/classes ../src/openwallet/filt
 javac -Xlint:deprecation -Xlint:unchecked -cp $CLASSPATH -sourcepath src -d ./WEB-INF/classes ../src/openwallet/servlet/*.java
 
 jar cf Openwallet.war WEB-INF include admin css fonts images js style.css img *.jsp
-cp Openwallet.war ~/Downloads/apache-tomcat-8.5.24/webapps
+#cp Openwallet.war ~/Downloads/apache-tomcat-8.5.24/webapps
