@@ -188,7 +188,7 @@
                                 <a href="index.html"><i class="icon-home"></i>Categories</a>
                                 <ul class="sub-menu">
                                     <c:forEach items="${cs}" var="c">
-                                        <li><a href="forecategory?id_category=${c.id_category}">${c.name_category}</a></li>
+                                        <li><a href="forecategory?cid=${c.id_category}">${c.name_category}</a></li>
                                     </c:forEach>
                                 </ul>
                             </li>

@@ -88,19 +88,7 @@ public class ForeServlet extends BaseForeServlet {
 	}	
 	
 	public String product(HttpServletRequest request, HttpServletResponse response, Page page) {
-		int pid;
-		try{
-			String s = request.getParameter("id_product");
-			if(s == null) 
-				throw new Exception();
-			pid = Integer.parseInt(s);
-		}
-		catch (Exception e) {
-			System.out.println("###################################################");
-			e.printStackTrace();
-			System.out.println("###################################################");
-			pid = 1;
-		}
+		int pid = Integer.parseInt(request.getParameter("id_product"));
 		Product p = productDAO.get(pid);
 		Category c = p.getCategory();
 		
@@ -137,41 +125,12 @@ public class ForeServlet extends BaseForeServlet {
 	}
 
 	public String category(HttpServletRequest request, HttpServletResponse response, Page page) {
-		int cid;
-		if (request.getParameter("id_cagetory") == null)
-			cid = 1;
-		else
-			cid = Integer.parseInt(request.getParameter("id_cagetory"));
+		int	cid = Integer.parseInt(request.getParameter("cid"));
 		
 		Category c = new CategoryDAO().get(cid);
 		new ProductDAO().fill(c);
 		List<Product> ps = c.getProducts();
-		// new ProductDAO().setSaleAndReviewNumber(c.getProducts());		
-	/*	
-		String sort = request.getParameter("sort");
-		if(null!=sort){
-		switch(sort){
-			case "review":
-				Collections.sort(c.getProducts(),new ProductReviewComparator());
-				break;
-			case "date" :
-				Collections.sort(c.getProducts(),new ProductDateComparator());
-				break;
-				
-			case "saleCount" :
-				Collections.sort(c.getProducts(),new ProductSaleCountComparator());
-				break;
-				
-			case "price":
-				Collections.sort(c.getProducts(),new ProductPriceComparator());
-				break;
-				
-			case "all":
-				Collections.sort(c.getProducts(),new ProductAllComparator());
-				break;
-			}
-		}
-	*/	
+	
 		request.setAttribute("c", c);
 		request.setAttribute("ps", ps);
 		return "category.jsp";		
@@ -234,11 +193,7 @@ public class ForeServlet extends BaseForeServlet {
 	}	
 
 	public String addCart(HttpServletRequest request, HttpServletResponse response, Page page) {
-		int pid;
-		if (request.getParameter("id_product") == null)
-			pid = 2;
-		else 
-			pid = Integet.parseInt(request.getParameter("id_product"));
+		int	pid = Integer.parseInt(request.getParameter("pid"));
 		Product p = productDAO.get(pid);
 		int num = Integer.parseInt(request.getParameter("num"));
 		
