@@ -142,6 +142,7 @@ public class ForeServlet extends BaseForeServlet {
 		
 		Category c = new CategoryDAO().get(cid);
 		new ProductDAO().fill(c);
+		ArrayList<Product> ps = c.getProducts();
 		// new ProductDAO().setSaleAndReviewNumber(c.getProducts());		
 	/*	
 		String sort = request.getParameter("sort");
@@ -169,6 +170,7 @@ public class ForeServlet extends BaseForeServlet {
 		}
 	*/	
 		request.setAttribute("c", c);
+		request.setAttribute("ps", ps);
 		return "category.jsp";		
 	}
 	
