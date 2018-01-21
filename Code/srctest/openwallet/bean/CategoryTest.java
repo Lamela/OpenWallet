@@ -1,6 +1,7 @@
-package openwallet.dao;
+package openwallet.bean;
 
 import openwallet.dao.CategoryDAO;
+import openwallet.bean.Category;
 import org.junit.*;
 
 public class CategoryTest {

@@ -1,7 +1,11 @@
 package openwallet.dao;
 
-import openwallet.dao.AddressDAO;
+import openwallet.dao.ProductDAO;
 import openwallet.dao.UserDAO;
+import openwallet.dao.CategoryDAO;
+import openwallet.bean.Product;
+import openwallet.bean.User;
+import openwallet.bean.Category;
 import org.junit.*;
 
 public class ProductTest {
