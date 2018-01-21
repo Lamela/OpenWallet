@@ -28,7 +28,6 @@ public class ProductServlet extends BaseBackServlet {
 		String brand = request.getParameter("brand");
 		String color = request.getParameter("color");
 		String material = request.getParameter("material");
-		//int comment_count = Integer.parseInt(request.getParameter("comment_count"));
 		int comment_count = 0;
 
 		Product p = new Product();
@@ -66,32 +65,6 @@ public class ProductServlet extends BaseBackServlet {
 		request.setAttribute("p", p);
 		return "admin/editProduct.jsp";		
 	}
-	
-	/*
-	public String editPropertyValue(HttpServletRequest request, HttpServletResponse response, Page page) {
-		int id = Integer.parseInt(request.getParameter("id"));
-		Product p = productDAO.get(id);
-		request.setAttribute("p", p);
-		
-		propertyValueDAO.init(p);
-		
-		List<PropertyValue> pvs = propertyValueDAO.list(p.getId());
-		
-		request.setAttribute("pvs", pvs);
-		
-		return "admin/editProductValue.jsp";		
-	}
-
-	public String updatePropertyValue(HttpServletRequest request, HttpServletResponse response, Page page) {
-		int pvid = Integer.parseInt(request.getParameter("pvid"));
-		String value = request.getParameter("value");
-		
-		PropertyValue pv =propertyValueDAO.get(pvid);
-		pv.setValue(value);
-		propertyValueDAO.update(pv);
-		return "%success";
-	}
-	*/
 	
 	public String update(HttpServletRequest request, HttpServletResponse response, Page page) {
 		int id_product = Integer.parseInt(request.getParameter("id_product"));		

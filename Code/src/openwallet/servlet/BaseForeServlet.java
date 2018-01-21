@@ -17,7 +17,6 @@ public class BaseForeServlet extends HttpServlet{
 	protected OrdersDAO orderDAO = new OrdersDAO();
 	protected ItemOrderDAO itemOrderDAO = new ItemOrderDAO();
 	protected ProductDAO productDAO = new ProductDAO();
-	//protected ProductImageDAO productImageDAO = new ProductImageDAO();
 	protected UserDAO userDAO = new UserDAO();
 	protected ItemCartDAO itemCartDAO = new ItemCartDAO();
 	
@@ -55,7 +54,6 @@ public class BaseForeServlet extends HttpServlet{
 			
 			
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			throw new RuntimeException(e);
 		}
