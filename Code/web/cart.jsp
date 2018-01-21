@@ -1,83 +1,297 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8" isELIgnored="false"%>
+	pageEncoding="UTF-8" isELIgnored="false"%>
 <%@include file="./include/Header.jsp"%>
- <!-- START WRAPPER -->
- <div class="wrapper group">
-  
-    <!-- /PAGE META -->        
-    <div id="primary" class="layout-sidebar-right home-section">
-        <div class="inner group">
-            <!-- START CONTENT -->
-            <div id="content" class="group" style="margin-right:0px;width:650px;padding-right:0px">
-                <div class="page type-page status-publish hentry group">
-                    <h2 class="title-post-page">Shopping Cart</h2>
-                    <!--<div clas="cartTitle pull-right">
-                        <span>Chosen product</span>
-                        <span class="cartTitlePrice">€0.00</span>
-                        <button class="createOrderButton" disabled="disabled">Proceed to checkout</button>
-                    </div>-->
-                    <table class="short-table white" style="width: 95%" cellspacing="0" cellpadding="0">
-                        <thead>
-                            <tr>
-                                <th></th>
-                                <th>Product</th>
-                                <th>Price per unit</th>
-                                <th>Quantity</th>
-                                <th>Price</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><img src="images/404.png" width="40px" height="40px"/></td>
-                                <td>iPhone X</td>
-                                <td><i class="yiw-sc-tick icon-ok" style="color:#23b10b;font-size:14px;">800€</i></td>
-                                <td>
-                                    <div class="cartProductChangeNumberDiv">
-                                        <a href="#nowhere" class="numberMinus" >-</a>
-                                        <input value="1" class="orderItemNumberSetting" style="border: solid 1px #AAAAAA;
-                                            width: 42px;
-                                            display: inline-block;"/>
-                                        <a href="#nowhere" class="numberPlus">+</a>
-                                    </div>
-                                </td>
-                                <td><i class="yiw-sc-tick icon-ok" style="color:#23b10b;font-size:14px;">800€</i></td>
-                                <td><a href="#">Delete</a></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <!--<div class="cartFoot">
-                        <div class="pull-right">
-                            <span>You have chosen <span class="cartSumNumber">0</span> product</span>
-                            <span>Summary: </span>
-                            <span class="cartSumPrice">€0.00</span>
-                            <button class="createOrderButton" disabled="disabled">Proceed to checkout</button>
-                        </div>
-                    </div>-->
-                </div>
-            </div>
-            <!-- END CONTENT -->
-            <!-- START SIDEBAR -->
-            <div id="sidebar" class="group one-fourth last" style="float:left;margin-left:0px;padding-left:0px">
-                <div class="price-table" style="margin:0px;padding:0px;float:left">
-                    <div class="head">
-                        <p>Subtotal:</p>
-                        <h2 class="price">45.0 $</h2>
-                    </div>
-                    <div class="body">
-                        <ul>
-                             <li>Morbi est elit, imperdiet sit amet</li>
-                             <li>Lorem ipsum seget, egestas in leo.</li>
-                             <li>Morbi est elit, imperdiet sit amet</li>
-                             <li>Lorem ipsum seget, egestas in leo.</li>
-                         </ul>
-                         <p class="more"><a href="#">Proceed to checkout</a></p>
-                     </div>
-                 </div>
-            </div>
-            <!-- END SIDEBAR -->    
-        </div>
-    </div>
-</div>     
-<!-- END WRAPPER -->
+
+<script>
+var deleteOrderItem = false;
+var deleteOrderItemid = 0;
+$(function(){
+
+	$("a.deleteOrderItem").click(function(){
+		deleteOrderItem = false;
+		var oiid = $(this).attr("oiid")
+		deleteOrderItemid = oiid;
+		$("#deleteConfirmModal").modal('show');	   
+	});
+	$("button.deleteConfirmButton").click(function(){
+		deleteOrderItem = true;
+		$("#deleteConfirmModal").modal('hide');
+	});
+	
+	$('#deleteConfirmModal').on('hidden.bs.modal', function (e) {
+		if(deleteOrderItem){
+			var page="foredeleteOrderItem";
+			$.post(
+				    page,
+				    {"oiid":deleteOrderItemid},
+				    function(result){
+						if("success"==result){
+							$("tr.cartProductItemTR[oiid="+deleteOrderItemid+"]").hide();
+						}
+						else{
+							location.href="login.jsp";
+						}
+				    }
+				);
+			
+		}
+	})	
+	
+	$("img.cartProductItemIfSelected").click(function(){
+		var selectit = $(this).attr("selectit")
+		if("selectit"==selectit){
+			$(this).attr("src","img/site/cartNotSelected.png");
+			$(this).attr("selectit","false")
+			$(this).parents("tr.cartProductItemTR").css("background-color","#fff");
+		}
+		else{
+			$(this).attr("src","img/site/cartSelected.png");
+			$(this).attr("selectit","selectit")
+			$(this).parents("tr.cartProductItemTR").css("background-color","#FFF8E1");
+		}
+		syncSelect();
+		syncCreateOrderButton();
+		calcCartSumPriceAndNumber();
+	});
+	$("img.selectAllItem").click(function(){
+		var selectit = $(this).attr("selectit")
+		if("selectit"==selectit){
+			$("img.selectAllItem").attr("src","img/site/cartNotSelected.png");
+			$("img.selectAllItem").attr("selectit","false")
+			$(".cartProductItemIfSelected").each(function(){
+				$(this).attr("src","img/site/cartNotSelected.png");
+				$(this).attr("selectit","false");
+				$(this).parents("tr.cartProductItemTR").css("background-color","#fff");
+			});			
+		}
+		else{
+			$("img.selectAllItem").attr("src","img/site/cartSelected.png");
+			$("img.selectAllItem").attr("selectit","selectit")
+			$(".cartProductItemIfSelected").each(function(){
+				$(this).attr("src","img/site/cartSelected.png");
+				$(this).attr("selectit","selectit");
+				$(this).parents("tr.cartProductItemTR").css("background-color","#FFF8E1");
+			});				
+		}
+		syncCreateOrderButton();
+		calcCartSumPriceAndNumber();
+		
+
+	});
+	
+	$(".orderItemNumberSetting").keyup(function(){
+		var pid=$(this).attr("pid");
+		var stock= $("span.orderItemStock[pid="+pid+"]").text();
+		var price= $("span.orderItemPromotePrice[pid="+pid+"]").text();
+		
+		var num= $(".orderItemNumberSetting[pid="+pid+"]").val();
+		num = parseInt(num);
+		if(isNaN(num))
+			num= 1;
+		if(num<=0)
+			num = 1;
+		if(num>stock)
+			num = stock;
+		
+		syncPrice(pid,num,price);
+	});
+
+	$(".numberPlus").click(function(){
+		
+		var pid=$(this).attr("pid");
+		var stock= $("span.orderItemStock[pid="+pid+"]").text();
+		var price= $("span.orderItemPromotePrice[pid="+pid+"]").text();
+		var num= $(".orderItemNumberSetting[pid="+pid+"]").val();
+
+		num++;
+		if(num>stock)
+			num = stock;
+		syncPrice(pid,num,price);
+	});
+	$(".numberMinus").click(function(){
+		var pid=$(this).attr("pid");
+		var stock= $("span.orderItemStock[pid="+pid+"]").text();
+		var price= $("span.orderItemPromotePrice[pid="+pid+"]").text();
+		
+		var num= $(".orderItemNumberSetting[pid="+pid+"]").val();
+		--num;
+		if(num<=0)
+			num=1;
+		syncPrice(pid,num,price);
+	});	
+	
+	$("button.createOrderButton").click(function(){
+		var params = "";
+		$(".cartProductItemIfSelected").each(function(){
+			if("selectit"==$(this).attr("selectit")){
+				var oiid = $(this).attr("oiid");
+				params += "&oiid="+oiid;
+			}
+		});
+		params = params.substring(1);
+		location.href="forebuy?"+params;
+	});
+	
+	
+	
+})
+
+function syncCreateOrderButton(){
+	var selectAny = false;
+	$(".cartProductItemIfSelected").each(function(){
+		if("selectit"==$(this).attr("selectit")){
+			selectAny = true;
+		}
+	});
+	
+	if(selectAny){
+		$("button.createOrderButton").css("background-color","#C40000");
+		$("button.createOrderButton").removeAttr("disabled");
+	}
+	else{
+		$("button.createOrderButton").css("background-color","#AAAAAA");
+		$("button.createOrderButton").attr("disabled","disabled");		
+	}
+		
+}
+function syncSelect(){
+	var selectAll = true;
+	$(".cartProductItemIfSelected").each(function(){
+		if("false"==$(this).attr("selectit")){
+			selectAll = false;
+		}
+	});
+	
+	if(selectAll)
+		$("img.selectAllItem").attr("src","img/site/cartSelected.png");
+	else
+		$("img.selectAllItem").attr("src","img/site/cartNotSelected.png");
+	
+	
+	
+}
+function calcCartSumPriceAndNumber(){
+	var sum = 0;
+	var totalNumber = 0;
+	$("img.cartProductItemIfSelected[selectit='selectit']").each(function(){
+		var oiid = $(this).attr("oiid");
+		var price =$(".cartProductItemSmallSumPrice[oiid="+oiid+"]").text();
+		price = price.replace(/,/g, "");
+		price = price.replace(/￥/g, "");
+		sum += new Number(price);	
+		
+		var num =$(".orderItemNumberSetting[oiid="+oiid+"]").val();
+		totalNumber += new Number(num);	
+		
+	});
+	
+	$("span.cartSumPrice").html("￥"+formatMoney(sum));
+	$("span.cartTitlePrice").html("￥"+formatMoney(sum));
+	$("span.cartSumNumber").html(totalNumber);
+}
+function syncPrice(pid,num,price){
+	$(".orderItemNumberSetting[pid="+pid+"]").val(num);
+	var cartProductItemSmallSumPrice = formatMoney(num*price); 
+	$(".cartProductItemSmallSumPrice[pid="+pid+"]").html("￥"+cartProductItemSmallSumPrice);
+	calcCartSumPriceAndNumber();
+	
+	var page = "forechangeOrderItem";
+	$.post(
+		    page,
+		    {"pid":pid,"number":num},
+		    function(result){
+				if("success"!=result){
+					location.href="login.jsp";
+				}
+		    }
+		);
+
+}
+</script>	
+
+<title>Shopping Cart</title>
+<div class="cartDiv">
+	<div class="cartTitle pull-right">
+		<span style="color: red;">Products selected</span>
+		<span class="cartTitlePrice" style="color: red;">$0.00</span>
+		<button class="createOrderButton" href="forebuy" style="color: red;">Pay</button>
+	</div>
+	
+	
+	<div class="cartProductList">
+		<table class="short-table white" style="width: 95%" cellspacing="0" cellpadding="0">
+			<thead>
+				<tr>
+					<th class="selectAndImage">
+							<img selectit="false" class="selectAllItem" src="img/site/cartNotSelected.png">				
+					All Selected
+					
+					</th>
+					<th>Product Name</th>
+					<th>Price per unity</th>
+					<th>Number</th>
+					<th width="120px">Price</th>
+					<th class="operation">Operation</th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach items="${ois}" var="oi">
+					<tr oiid="${oi.id_item_order}" class="cartProductItemTR">
+						<td>
+							<img selectit="false" oiid="${oi.id_item_order}" class="cartProductItemIfSelected" src="img/site/cartNotSelected.png">
+							<a style="display:none" href="#nowhere"><img src="img/site/cartSelected.png"></a>
+							<img class="cartProductImg"  src="img/product/${oi.product.id_product}.jpg" height="40px" width="40px">
+						</td>
+						<td>
+							<div class="cartProductLinkOutDiv">
+								<a href="foreproduct?pid=${oi.product.id_product}" class="cartProductLink">${oi.product.name_product}</a>
+							</div>
+							
+						</td>
+						<td>
+							<span class="cartProductItemOringalPrice">$ ${oi.product.price}</span>
+						</td>
+						<td>
+						
+							<div class="cartProductChangeNumberDiv">
+								<!-- <span class="hidden orderItemStock " pid="${oi.product.id_product}">${oi.product.stock}</span>
+								<span class="hidden orderItemPromotePrice " pid="${oi.product.id_product}">${oi.product.price}</span> -->
+								<a  pid="${oi.product.id_product}" class="numberMinus" href="#nowhere">-</a>
+								<input pid="${oi.product.id_product}" oiid="${oi.id_item_order}" class="orderItemNumberSetting" autocomplete="off" value="${oi.number_item_order}">
+								<a  stock="${oi.product.stock}" pid="${oi.product.id_product}" class="numberPlus" href="#nowhere">+</a>
+							</div>					
+						
+						 </td>
+						<td >
+							<span class="cartProductItemSmallSumPrice" oiid="${oi.id_item_order}" pid="${oi.product.id_product}" >
+							$<fmt:formatNumber type="number" value="${oi.product.price*oi.number_item_order}" minFractionDigits="2"/>
+							</span>
+						
+						</td>
+						<td>
+							<a class="deleteOrderItem" oiid="${oi.id_item_order}"  href="#nowhere">Delete</a>
+						</td>
+					</tr>
+				</c:forEach>				
+			</tbody>
+		
+		</table>
+	</div>
+	
+	<div class="cartFoot">
+		<img selectit="false" class="selectAllItem" src="img/site/cartNotSelected.png">
+		<span style="color: black;">All select</span>
+<!-- 		<a href="#">Delete</a> -->
+		
+		<div class="pull-right">
+			<span style="color: red;">Products selected <span class="cartSumNumber" >0</span> Items</span>
+			
+			<span style="color: red;">Total Price: </span> 
+			<span class="cartSumPrice" style="color: red;">$ 0.00</span>
+			<button class="createOrderButton" href="forebuy" style="color: red;">Pay</button>
+		</div>
+		
+	</div>
+	
+</div>
 <%@include file="./include/Footer.jsp"%>
