@@ -3,6 +3,7 @@ package openwallet.bean;
 import openwallet.bean.User;
 import openwallet.dao.UserDAO;
 import org.junit.*;
+import java.sql.Date;
 
 public class UserTest {
   private UserDAO userDAO;
@@ -16,36 +17,37 @@ public class UserTest {
 
 
     this.userDAO = new UserDAO();
-    this.id_user = this.userDAO.add(comment);
+    this.id_user = this.userDAO.add(user);
   }
 
   @Test
   public void testAdd() {
     User user2= userDAO.get(this.id_user);
 
-    assertEquals(this.assertUserEquals(this.user, user2), true);
+    Assert.assertEquals(this.assertUserEquals(this.user, user2), true);
   }
 
   @Test
   public void testUpdate(){
     this.user.setBirthday(new Date(0).valueOf("2018-01-18"));
     this.userDAO.update(this.user);
-    User user2= userDAO.get(id_comment);
+    User user2= userDAO.get(this.id_user);
 
-    assertEquals(user2.getBirthday().equals(new Date(0).valueOf("2018-01-18")), true);
+    Assert.assertEquals(user2.getBirthday().equals(new Date(0).valueOf("2018-01-18")), true);
   }
 
   @Test
   public void testDelete(){
     User user2= userDAO.get(this.id_user);
 
-    id_user2 = userDAO.add(user2);
+    int id_user2 = userDAO.add(user2);
     userDAO.delete(id_user2);
 
-    assertEquals(userDAO.get(id_comment2), null);
+    Assert.assertEquals(userDAO.get(id_user2), null);
   }
 
   private boolean assertUserEquals(User user1,User user2) {
+    boolean equal=false;
 
     if(user1.getId_user()!=user2.getId_user()) {
       System.out.println("TestUser Error: id_user not equals !");
@@ -59,7 +61,7 @@ public class UserTest {
           if(!user1.getBirthday().equals(user2.getBirthday())) {
             System.out.println("TestUser Error: birthday not equals !");
           } else {
-            if(!user1.getType_usergetType_user().equals(user2.getType_user())) {
+            if(!user1.getType_user().equals(user2.getType_user())) {
               System.out.println("TestUser Error: type_user not equals !");
             } else {
               if(!user1.getEmail().equals(user2.getEmail())) {

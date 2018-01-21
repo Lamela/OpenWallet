@@ -3,6 +3,7 @@ package openwallet.bean;
 import openwallet.bean.Comment;
 import openwallet.dao.CommentDAO;
 import org.junit.*;
+import java.sql.Date;
 
 public class CommentTest {
   private Comment comment;
@@ -20,7 +21,7 @@ public class CommentTest {
     this.date_comment = new Date(0).valueOf("2018-01-20");
     this.product = new Product();
     this.note = 0.0;
-    this.comment = new Comment(user,product,date_comment,note);
+    this.comment = new Comment(user,product,date_comment,note,"content");
 
     this.commentDAO = new CommentDAO();
     this.id_comment = commentDAO.add(comment);
@@ -30,7 +31,7 @@ public class CommentTest {
   public void testAdd() {
     Comment comment2= commentDAO.get(id_comment);
 
-    assertEquals(this.assertCommentEquals(this.comment, comment2), true);
+    Assert.assertEquals(this.assertCommentEquals(this.comment, comment2), true);
   }
 
   @Test
@@ -39,31 +40,32 @@ public class CommentTest {
     this.commentDAO.update(this.comment);
     Comment comment2= commentDAO.get(id_comment);
 
-    assertEquals(comment2.getDate_comment().equals(new Date(0).valueOf("2018-01-18")), true);
+    Assert.assertEquals(comment2.getDate_comment().equals(new Date(0).valueOf("2018-01-18")), true);
   }
 
   @Test
   public void testDelete(){
     Comment comment2= commentDAO.get(id_comment);
 
-    id_comment2 = commentDAO.add(comment2);
+    int id_comment2 = commentDAO.add(comment2);
     commentDAO.delete(id_comment2);
 
-    assertEquals(commentDAO.get(id_comment2), null);
+    Assert.assertEquals(commentDAO.get(id_comment2), null);
   }
 
   private boolean assertCommentEquals(Comment comment1,Comment comment2) {
+    boolean equal=false;
 
     if(comment1.getId_comment()!=comment2.getId_comment()) {
       System.out.println("TestComment Error: id_comment not equals !");
     } else {
-      if(!comment1.getUser().getId_user().equals(comment2.getUser().getId_user())) {
+      if(comment1.getUser().getId_user()!=comment2.getUser().getId_user()) {
         System.out.println("TestComment Error: User not equals !");
       }else {
         if(!comment1.getProduct().equals(comment2.getProduct())) {
           System.out.println("TestComment Error: Product not equals !");
         } else {
-          if(!comment1.getNote().equals(comment2.getNote())) {
+          if(comment1.getNote()!=comment2.getNote()) {
             System.out.println("TestComment Error: Note not equals !");
           } else {
             if(!comment1.getDate_comment().equals(comment2.getDate_comment())) {

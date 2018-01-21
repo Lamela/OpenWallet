@@ -24,7 +24,7 @@ public class CategoryTest {
   public void testAdd() {
       Category myCategory2 = categoryDAO.get(myCategoryID);
 
-      assertEquals(this.assertCategoryEquals(myCategory, myCategory2), true);
+      Assert.assertEquals(this.assertCategoryEquals(myCategory, myCategory2), true);
 
   }
 
@@ -36,7 +36,7 @@ public class CategoryTest {
 
       Category myCategory2 = categoryDAO.get(myCategoryID);
 
-      assertEquals(myCategory2.getName_category().equals("Tools"), true);
+      Assert.assertEquals(myCategory2.getName_category().equals("Tools"), true);
 
   }
 
@@ -44,15 +44,16 @@ public class CategoryTest {
   public void testDelete() {
     Category myCategory2 = new Category("Food");
 
-    myCategoryID2 = categoryDAO.add(myCategory2);
+    int myCategoryID2 = categoryDAO.add(myCategory2);
     categoryDAO.delete(myCategoryID2);
 
-    assertEquals(categoryDAO.get(myCategoryID2), null);
+    Assert.assertEquals(categoryDAO.get(myCategoryID2), null);
   }
 
   private boolean assertCategoryEquals(Category cat1,Category cat2) {
+    boolean equal=false;
 
-    if(cat1.getId_Category()!=cat2.getId_Category()) {
+    if(cat1.getId_category()!=cat2.getId_category()) {
       System.out.println("TestCategory Erreur: id_category ne sont pas égaux!");
     } else {
       if(!cat1.getName_category().equals(cat2.getName_category())) {
