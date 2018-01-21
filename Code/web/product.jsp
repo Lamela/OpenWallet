@@ -82,7 +82,7 @@ pageEncoding="UTF-8" isELIgnored="false"%>
                 <div id="text-image-5" class="widget-1 widget-first widget text-image">
                     <h3>Add to cart <span>now!</span></h3>
                     <div class="text-image" style="text-align:left"><img src="images/enjoy.jpg"  /></div>
-                    <td><a href="foreaddCart?id_product=${p.id_product}"><button type="submit">Add</button></a></td>
+                    <td><a href="foreaddCart?id_product=2"><button type="submit">Add</button></a></td>
                     </p>
                 </div>
                 

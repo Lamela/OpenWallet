@@ -88,16 +88,18 @@ public class ForeServlet extends BaseForeServlet {
 	}	
 	
 	public String product(HttpServletRequest request, HttpServletResponse response, Page page) {
+		int pid;
 		try{
-			String s = request.getParameter("id_product"));
+			String s = request.getParameter("id_product");
 			if(s == null) 
 				throw new Exception();
-			int pid = Integer.parseInt(s);
+			pid = Integer.parseInt(s);
 		}
 		catch (Exception e) {
 			System.out.println("###################################################");
 			e.printStackTrace();
 			System.out.println("###################################################");
+			pid = 1;
 		}
 		Product p = productDAO.get(pid);
 		Category c = p.getCategory();
