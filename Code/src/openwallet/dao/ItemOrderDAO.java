@@ -18,7 +18,7 @@ public class ItemOrderDAO {
         int total = 0;
         try (Connection c = DBUtil.getConnection(); Statement s = c.createStatement();) {
  
-            String sql = "select count(*) from ItemOrder";
+            String sql = "select count(*) from item_order";
  
             ResultSet rs = s.executeQuery(sql);
             while (rs.next()) {
@@ -35,7 +35,7 @@ public class ItemOrderDAO {
 
 
 
-        String sql = "insert into ItemOrder values(null,?,?,?,?)";
+        String sql = "insert into item_order values(null,?,?,?,?)";
         try (Connection c = DBUtil.getConnection(); PreparedStatement ps = c.prepareStatement(sql);) {
  
             ps.setInt(1, bean.getProduct().getId_product());
@@ -62,7 +62,7 @@ public class ItemOrderDAO {
  
     public void update(ItemOrder bean) {
 
-        String sql = "update ItemOrder set id_product = ?, id_order = ?, id_user = ?, number_item_order = ?  where id_item_order = ?";
+        String sql = "update item_order set id_product = ?, id_order = ?, id_user = ?, number_item_order = ?  where id_item_order = ?";
         try (Connection c = DBUtil.getConnection(); PreparedStatement ps = c.prepareStatement(sql);) {
 
 
@@ -88,7 +88,7 @@ public class ItemOrderDAO {
  
         try (Connection c = DBUtil.getConnection(); Statement s = c.createStatement();) {
  
-            String sql = "delete from ItemOrder where id_item_order = " + id;
+            String sql = "delete from item_order where id_item_order = " + id;
  
             s.execute(sql);
  
@@ -103,7 +103,7 @@ public class ItemOrderDAO {
  
         try (Connection c = DBUtil.getConnection(); Statement s = c.createStatement();) {
  
-            String sql = "select * from ItemOrder where id_item_order = " + id;
+            String sql = "select * from item_order where id_item_order = " + id;
  
             ResultSet rs = s.executeQuery(sql);
  
@@ -140,7 +140,7 @@ public class ItemOrderDAO {
     public List<ItemOrder> listByUser(int id_user, int start, int count) {
         List<ItemOrder> beans = new ArrayList<ItemOrder>();
  
-        String sql = "select * from ItemOrder where id_user = ? and id_order = -1 order by id_item_order desc limit ?,? ";
+        String sql = "select * from item_order where id_user = ? and id_order = -1 order by id_item_order desc limit ?,? ";
  
         try (Connection c = DBUtil.getConnection(); PreparedStatement ps = c.prepareStatement(sql);) {
  
@@ -186,7 +186,7 @@ public class ItemOrderDAO {
     public List<ItemOrder> listByOrder(int id_order, int start, int count) {
     	List<ItemOrder> beans = new ArrayList<ItemOrder>();
     	
-    	String sql = "select * from ItemOrder where id_order = ? order by id_item_order desc limit ?,? ";
+    	String sql = "select * from item_order where id_order = ? order by id_item_order desc limit ?,? ";
     	
     	try (Connection c = DBUtil.getConnection(); PreparedStatement ps = c.prepareStatement(sql);) {
     		
@@ -261,7 +261,7 @@ public class ItemOrderDAO {
     public List<ItemOrder> listByProduct(int id_product, int start, int count) {
         List<ItemOrder> beans = new ArrayList<ItemOrder>();
  
-        String sql = "select * from ItemOrder where id_product = ? order by id_item_order desc limit ?,? ";
+        String sql = "select * from item_order where id_product = ? order by id_item_order desc limit ?,? ";
  
         try (Connection c = DBUtil.getConnection(); PreparedStatement ps = c.prepareStatement(sql);) {
  

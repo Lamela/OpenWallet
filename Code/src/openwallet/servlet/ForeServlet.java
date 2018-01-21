@@ -218,7 +218,7 @@ public class ForeServlet extends BaseForeServlet {
 			oi.setProduct(p);
 			itemOrderDAO.add(oi);
 		}
-		return "%success";
+		return "@foreproduct?id_product="+pid;
 	}
 
 	public String cart(HttpServletRequest request, HttpServletResponse response, Page page) {

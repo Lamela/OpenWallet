@@ -82,27 +82,30 @@ CREATE TABLE orders (
 	status varchar(255) DEFAULT NULL,
 	total_number int(11) DEFAULT NULL,
 	PRIMARY KEY (id_order),
-	CONSTRAINT fk_order_user FOREIGN KEY (id_user) REFERENCES user (id_user)
+	CONSTRAINT fk_orders_user FOREIGN KEY (id_user) REFERENCES user (id_user)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE item_cart (
-	id_item_cart int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE itemcart (
+	id_itemcart int(11) NOT NULL AUTO_INCREMENT,
 	id_user int(11) DEFAULT NULL,
 	id_product int(11) DEFAULT NULL,
-	number_item_cart int(11) DEFAULT NULL,
+	number_itemcart int(11) DEFAULT NULL,
 	PRIMARY KEY (id_item_cart),
-	CONSTRAINT fk_item_cart_user FOREIGN KEY (id_user) REFERENCES user (id_user),
-	CONSTRAINT fk_item_cart_product FOREIGN KEY (id_product) REFERENCES product (id_product)
+	CONSTRAINT fk_itemcart_user FOREIGN KEY (id_user) REFERENCES user (id_user),
+	CONSTRAINT fk_itemcart_product FOREIGN KEY (id_product) REFERENCES product (id_product)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE item_order (
-	id_item_order int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE itemorder (
+	id_itemorder int(11) NOT NULL AUTO_INCREMENT,
 	id_product int(11) DEFAULT NULL,
 	id_order int(11) DEFAULT NULL,
 	id_user int(11) DEFAULT NULL,
-	number_item_order int(11) DEFAULT NULL,
-	PRIMARY KEY (id_item_order),
-	CONSTRAINT fk_item_order_order FOREIGN KEY (id_order) REFERENCES orders (id_order),
-	CONSTRAINT fk_item_order_product FOREIGN KEY (id_product) REFERENCES product (id_product),
-	CONSTRAINT fk_item_order_user FOREIGN KEY (id_user) REFERENCES user (id_user)
+	number_itemorder int(11) DEFAULT NULL,
+	PRIMARY KEY (id_itemorder),
+	CONSTRAINT fk_itemorder_orders FOREIGN KEY (id_order) REFERENCES orders (id_order),
+	CONSTRAINT fk_itemorder_product FOREIGN KEY (id_product) REFERENCES product (id_product),
+	CONSTRAINT fk_itemorder_user FOREIGN KEY (id_user) REFERENCES user (id_user)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+insert into category values(null, "Homme");
+insert into category values(null, "Light");
