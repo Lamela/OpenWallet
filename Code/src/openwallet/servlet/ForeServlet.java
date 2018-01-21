@@ -90,7 +90,7 @@ public class ForeServlet extends BaseForeServlet {
 	public String product(HttpServletRequest request, HttpServletResponse response, Page page) {
 		int pid = Integer.parseInt(request.getParameter("id_product"));
 		Product p = productDAO.get(pid);
-		Category c = categoryDAO.get(p.getID_category());
+		Category c = p.getCategory();
 		
 		List<Comment> comments = commentDAO.list(p.getId_product());
 

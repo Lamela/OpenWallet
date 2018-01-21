@@ -185,7 +185,7 @@
                     <div id="nav" class="group">
                         <ul id="menu-main-nav" class="level-1">
                             <li>
-                                <a href="index.html"><i class="icon-home"></i>Departements</a>
+                                <a href="index.html"><i class="icon-home"></i>Categories</a>
                                 <ul class="sub-menu">
                                     <c:forEach items="${cs}" var="c">
                                         <li><a href="forecategory?id_category=${c.id_category}">${c.name_category}</a></li>
