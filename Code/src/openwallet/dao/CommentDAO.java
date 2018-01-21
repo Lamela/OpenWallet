@@ -50,10 +50,7 @@ public class CommentDAO {
     	return total;
     }
  
-    public void add(Comment bean) {
-
-
-
+    public int add(Comment bean) {
         String sql = "insert into Comment values(null,?,?,?,?,?)";
         try (Connection c = DBUtil.getConnection(); PreparedStatement ps = c.prepareStatement(sql);) {
  
@@ -74,6 +71,7 @@ public class CommentDAO {
  
             e.printStackTrace();
         }
+        return bean.getId_comment();
     }
  
     public void update(Comment bean) {

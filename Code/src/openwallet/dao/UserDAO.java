@@ -34,7 +34,7 @@ public class UserDAO {
         return total;
     }
  
-    public void add(User bean) {
+    public int add(User bean) {
  
         String sql = "insert into user values(null ,? ,?, ?, ?, ?, ?, ?, ?, ?)";
         try (Connection c = DBUtil.getConnection(); PreparedStatement ps = c.prepareStatement(sql);) {
@@ -60,6 +60,7 @@ public class UserDAO {
  
             e.printStackTrace();
         }
+        return bean.getId_user();
     }
  
     public void update(User bean) {

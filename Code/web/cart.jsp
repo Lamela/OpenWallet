@@ -210,23 +210,13 @@ function syncPrice(pid,num,price){
 </script>	
 
 <title>Shopping Cart</title>
-<div class="cartDiv">
-	<div class="cartTitle pull-right">
-		<span style="color: red;">Products selected</span>
-		<span class="cartTitlePrice" style="color: red;">$0.00</span>
-		<button class="createOrderButton" href="forebuy" style="color: red;">Pay</button>
-	</div>
-	
-	
+<form method="post" action="forebuy">
+<div class="cartDiv">	
 	<div class="cartProductList">
 		<table class="short-table white" style="width: 95%" cellspacing="0" cellpadding="0">
 			<thead>
 				<tr>
-					<th class="selectAndImage">
-							<img selectit="false" class="selectAllItem" src="img/site/cartNotSelected.png">				
-					All Selected
-					
-					</th>
+					<th>Product Image</th>
 					<th>Product Name</th>
 					<th>Price per unity</th>
 					<th>Number</th>
@@ -238,8 +228,6 @@ function syncPrice(pid,num,price){
 				<c:forEach items="${ois}" var="oi">
 					<tr oiid="${oi.id_item_order}" class="cartProductItemTR">
 						<td>
-							<img selectit="false" oiid="${oi.id_item_order}" class="cartProductItemIfSelected" src="img/site/cartNotSelected.png">
-							<a style="display:none" href="#nowhere"><img src="img/site/cartSelected.png"></a>
 							<img class="cartProductImg"  src="img/product/${oi.product.id_product}.jpg" height="40px" width="40px">
 						</td>
 						<td>
@@ -279,19 +267,17 @@ function syncPrice(pid,num,price){
 	</div>
 	
 	<div class="cartFoot">
-		<img selectit="false" class="selectAllItem" src="img/site/cartNotSelected.png">
-		<span style="color: black;">All select</span>
-<!-- 		<a href="#">Delete</a> -->
 		
 		<div class="pull-right">
 			<span style="color: red;">Products selected <span class="cartSumNumber" >0</span> Items</span>
 			
 			<span style="color: red;">Total Price: </span> 
 			<span class="cartSumPrice" style="color: red;">$ 0.00</span>
-			<button class="createOrderButton" href="forebuy" style="color: red;">Pay</button>
+			<a href="forebuy"><button class="createOrderButton" href="forebuy" style="color: red;">Pay</button></a>
 		</div>
 		
 	</div>
 	
 </div>
+</form>
 <%@include file="./include/Footer.jsp"%>

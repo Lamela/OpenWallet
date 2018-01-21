@@ -33,8 +33,7 @@ public class ItemCartDAO {
         return total;
     }
  
-    public void add(ItemCart bean) {
- 
+    public int add(ItemCart bean) {
         String sql = "insert into item_cart values(null, ?, ?, ?)";
         try (Connection c = DBUtil.getConnection(); PreparedStatement ps = c.prepareStatement(sql);) {
  
@@ -53,6 +52,7 @@ public class ItemCartDAO {
  
             e.printStackTrace();
         }
+        return bean.getId_item_cart();
     }
  
     public void update(ItemCart bean) {

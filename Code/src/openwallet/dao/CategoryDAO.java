@@ -30,8 +30,7 @@ public class CategoryDAO {
         return total;
     }
  
-    public void add(Category bean) {
- 
+    public int add(Category bean) {
         String sql = "insert into category values(null,?)";
         try (Connection c = DBUtil.getConnection(); PreparedStatement ps = c.prepareStatement(sql);) {
  
@@ -48,6 +47,7 @@ public class CategoryDAO {
  
             e.printStackTrace();
         }
+        return bean.getId_category();
     }
  
     public void update(Category bean) {

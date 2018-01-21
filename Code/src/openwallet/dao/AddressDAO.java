@@ -34,8 +34,7 @@ public class AddressDAO {
         return total;
     }
  
-    public void add(Address bean) {
- 
+    public int add(Address bean) {
         String sql = "insert into address values(null, ?, ?, ?, ?, ?, ?, ?, ?)";
         try (Connection c = DBUtil.getConnection(); PreparedStatement ps = c.prepareStatement(sql);) {
  
@@ -59,6 +58,7 @@ public class AddressDAO {
  
             e.printStackTrace();
         }
+        return bean.getId_address();
     }
  
     public void update(Address bean) {

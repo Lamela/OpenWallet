@@ -49,7 +49,7 @@ public class ProductDAO {
         return total;
     }
   
-    public void add(Product bean) {
+    public int add(Product bean) {
  
         String sql = "insert into Product values(null,?,?,?,?,?,?,?, ?, ?, ?, ?, ?)";
         try (Connection c = DBUtil.getConnection(); PreparedStatement ps = c.prepareStatement(sql);) {
@@ -77,6 +77,7 @@ public class ProductDAO {
   
             e.printStackTrace();
         }
+        return bean.getId_product();
     }
   
     public void update(Product bean) {

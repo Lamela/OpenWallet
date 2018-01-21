@@ -31,10 +31,7 @@ public class ItemOrderDAO {
         return total;
     }
  
-    public void add(ItemOrder bean) {
-
-
-
+    public int add(ItemOrder bean) {
         String sql = "insert into item_order values(null,?,?,?,?)";
         try (Connection c = DBUtil.getConnection(); PreparedStatement ps = c.prepareStatement(sql);) {
  
@@ -58,6 +55,7 @@ public class ItemOrderDAO {
  
             e.printStackTrace();
         }
+        return bean.getId_item_order();
     }
  
     public void update(ItemOrder bean) {

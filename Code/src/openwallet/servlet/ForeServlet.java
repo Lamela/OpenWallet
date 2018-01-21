@@ -180,11 +180,13 @@ public class ForeServlet extends BaseForeServlet {
 		List<ItemOrder> ois = new ArrayList<>();
 		float total = 0;
 
-		for (String strid : oiids) {
-			int oiid = Integer.parseInt(strid);
-			ItemOrder oi= itemOrderDAO.get(oiid);
-			total +=oi.getProduct().getPrice()*oi.getNumber_item_order();
-			ois.add(oi);
+		if (oiids != null) {
+			for (int i = 0; i < oiids.length; i++) {
+				int oiid = Integer.parseInt(oiids[i]);
+				ItemOrder oi= itemOrderDAO.get(oiid);
+				total +=oi.getProduct().getPrice()*oi.getNumber_item_order();
+				ois.add(oi);
+			}
 		}
 		
 		request.getSession().setAttribute("ois", ois);

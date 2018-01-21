@@ -40,7 +40,7 @@ public class OrdersDAO {
     return total;
   }
 
-  public void add(Orders bean) {
+  public int add(Orders bean) {
     String sql = "insert into orders values(null,?,?,?,?,?,?,?,?,?,?,?)";
     try (Connection c = DBUtil.getConnection(); PreparedStatement ps = c.prepareStatement(sql);) {
 
@@ -67,6 +67,7 @@ public class OrdersDAO {
 
       e.printStackTrace();
     }
+    return bean.getId_order();
   }
 
   public void update(Orders bean) {
