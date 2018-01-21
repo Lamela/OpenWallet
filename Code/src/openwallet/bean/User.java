@@ -35,21 +35,6 @@ public class User {
   private String mobile_user;
   private String number_id_card;
 
-  public User(){};
-
-  public User(int id_user, String firstname_user, String lastname_user, Date birthday, String type_user, boolean premium, String email, String password, String mobile_user, String number_id_card) {
-      this.id_user = id_user;
-      this.firstname_user = firstname_user;
-      this.lastname_user = lastname_user;
-      this.birthday = birthday;
-      this.type_user = type_user;
-      this.premium = premium;
-      this.email = email;
-      this.password = password;
-      this.mobile_user = mobile_user;
-      this.number_id_card = number_id_card;
-  }
-
   //Getters:
   public int getId_user() {
       return id_user;

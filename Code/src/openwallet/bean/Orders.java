@@ -17,14 +17,8 @@ import java.time.LocalDate;
 
 import openwallet.dao.*;
 
-@Entity
-@Table(name = "Orders")
 public class Orders {
-  @Id
-  @GeneratedValue(strategy=GenerationType.AUTO)
-  @Column(name = "id_order")
   private int id_order;
-  @OneToOne(cascade=CascadeType.ALL,fetch = FetchType.LAZY)
   private User user;
   private double total_price;
   private Address delivery_address;
@@ -37,24 +31,6 @@ public class Orders {
   private String status;
   private int total_number;
   private List<ItemOrder> itemOrders;
-
-
-  public Orders(){};
-
-  public Orders(int id_order, User user, double total_price, Address delivery_address, Address invoice_address, String user_message, Date create_date_order, Date pay_date, Date delivery_date, Date confirm_date, String status, int total_number, List<ItemOrder> itemOrders) {
-      this.user = user;
-      this.total_price = total_price;
-      this.delivery_address = delivery_address;
-      this.invoice_address = invoice_address;
-      this.user_message = user_message;
-      this.create_date_order = create_date_order;
-      this.pay_date = pay_date;
-      this.delivery_date = delivery_date;
-      this.confirm_date = confirm_date;
-      this.status = status;
-      this.total_number = total_number;
-      this.itemOrders = itemOrders;
-  }
 
   public String getStatusDesc(){
     String desc ="Unknown";

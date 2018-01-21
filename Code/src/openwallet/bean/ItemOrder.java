@@ -17,29 +17,13 @@ import javax.persistence.OneToMany;
 import java.util.TreeSet;
 import java.time.LocalDate;
 
-@Entity
-@Table(name = "Item_Order")
+
 public class ItemOrder {
-  @Id
-  @GeneratedValue(strategy=GenerationType.AUTO)
-  @Column(name = "id_item_order")
   private int id_item_order;
   private User user;
-  @OneToOne(cascade=CascadeType.ALL,fetch = FetchType.LAZY)
   private Orders orders;
-  @OneToOne(cascade=CascadeType.ALL,fetch = FetchType.LAZY)
   private Product product;
   private int number_item_order;
-
-  public ItemOrder(){};
-
-  public ItemOrder(int id_item_order, User user, Orders orders, Product product, int number_item_order) {
-    this.id_item_order = id_item_order;
-    this.orders = orders;
-    this.product = product;
-    this.user = user;
-    this.number_item_order = number_item_order;
-  }
 
   public int getId_item_order() {
       return id_item_order;

@@ -17,14 +17,9 @@ import javax.persistence.OneToMany;
 import java.util.TreeSet;
 import java.time.LocalDate;
 
-@Entity
-@Table(name = "Product")
+
 public class Product {
-  @Id
-  @GeneratedValue(strategy=GenerationType.AUTO)
-  @Column(name = "id_product")
   private int id_product;
-  @OneToOne(cascade=CascadeType.ALL,fetch = FetchType.LAZY)
   private Category category;
   private User user;
   private String name_product;
@@ -38,25 +33,6 @@ public class Product {
   private String color;
   private String material;
   private int comment_count;
-
-  public Product(){};
-
-  public Product(int id_product, Category category, User user, String name_product, String description, double price, int stock, Date create_date_product, String origin, int sold, String brand, String color, String material) {
-    this.id_product = id_product;
-    this.category = category;
-    this.user = user;
-    this.name_product = name_product;
-    this.description = description;
-    this.price = price;
-    this.stock = stock;
-    this.create_date_product = create_date_product;
-    this.origin = origin;
-    this.sold = sold;
-    this.brand = brand;
-    this.color = color;
-    this.material = material;
-	this.comment_count = comment_count;
-  }
 
   public int getId_product() {
       return id_product;

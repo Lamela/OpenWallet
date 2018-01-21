@@ -18,31 +18,14 @@ import java.util.TreeSet;
 import java.time.LocalDate;
 
 
-@Entity
-@Table(name = "Comment")
 public class Comment {
-  @Id
-  @GeneratedValue(strategy=GenerationType.AUTO)
-  @Column(name = "id_comment")
+ 
   private int id_comment;
-  @OneToOne(cascade=CascadeType.ALL,fetch = FetchType.LAZY)
   private User user;
-  @OneToOne(cascade=CascadeType.ALL,fetch = FetchType.LAZY)
   private Product product;
   private Date date_comment;
   private double note;
   private String content;
-
-  public Comment(){};
-
-  public Comment(int id_comment, User user, Product product, Date date_comment, double note, String content) {
-     this.id_comment = id_comment;
-     this.user = user;
-     this.product = product;
-     this.date_comment = date_comment;
-     this.note = note;
-	 this.content = content;
-   }
 
    public int getId_comment() {
        return id_comment;
