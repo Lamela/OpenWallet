@@ -142,7 +142,7 @@ public class ForeServlet extends BaseForeServlet {
 		
 		Category c = new CategoryDAO().get(cid);
 		new ProductDAO().fill(c);
-		ArrayList<Product> ps = c.getProducts();
+		List<Product> ps = c.getProducts();
 		// new ProductDAO().setSaleAndReviewNumber(c.getProducts());		
 	/*	
 		String sort = request.getParameter("sort");
