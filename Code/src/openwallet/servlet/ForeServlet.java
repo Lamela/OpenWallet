@@ -89,7 +89,7 @@ public class ForeServlet extends BaseForeServlet {
 	
 	public String product(HttpServletRequest request, HttpServletResponse response, Page page) {
 		try{
-			String s = request.getParameter("id_product"));
+			String s = request.getParameter("id_product");
 			if(s == null) 
 				throw new Exception();
 			int pid = Integer.parseInt(s);
@@ -232,7 +232,11 @@ public class ForeServlet extends BaseForeServlet {
 	}	
 
 	public String addCart(HttpServletRequest request, HttpServletResponse response, Page page) {
-		int pid = Integer.parseInt(request.getParameter("id_product"));
+		int pid;
+		if (request.getParameter("id_product") == null)
+			pid = 2;
+		else 
+			pid = Integet.parseInt(request.getParameter("id_product"));
 		Product p = productDAO.get(pid);
 		int num = Integer.parseInt(request.getParameter("num"));
 		
