@@ -90,22 +90,13 @@ public class ForeServlet extends BaseForeServlet {
 	public String product(HttpServletRequest request, HttpServletResponse response, Page page) {
 		int pid = Integer.parseInt(request.getParameter("id_product"));
 		Product p = productDAO.get(pid);
+		Category c = categoryDAO.get(p.getID_category());
 		
-		//List<ProductImage> productSingleImages = productImageDAO.list(p, ProductImageDAO.type_single);
-		//List<ProductImage> productDetailImages = productImageDAO.list(p, ProductImageDAO.type_detail);
-		//p.setProductSingleImages(productSingleImages);
-		//p.setProductDetailImages(productDetailImages);
-		
-		//List<PropertyValue> pvs = propertyValueDAO.list(p.getId());		
-	
 		List<Comment> comments = commentDAO.list(p.getId_product());
-		
-		//productDAO.setSaleAndReviewNumber(p);
 
 		request.setAttribute("comments", comments);
-
+		request.setAttribute("c", c);
 		request.setAttribute("p", p);
-		// request.setAttribute("pvs", pvs);
 		return "product.jsp";		
 	}
 
