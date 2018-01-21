@@ -134,7 +134,11 @@ public class ForeServlet extends BaseForeServlet {
 	}
 
 	public String category(HttpServletRequest request, HttpServletResponse response, Page page) {
-		int cid = Integer.parseInt(request.getParameter("id_cagetory"));
+		int cid;
+		if (request.getParameter("id_cagetory") == null)
+			cid = 1;
+		else
+			cid = Integer.parseInt(request.getParameter("id_cagetory"));
 		
 		Category c = new CategoryDAO().get(cid);
 		new ProductDAO().fill(c);

@@ -42,7 +42,7 @@
                     <!-- START LOGO -->
                     <div id="logo" class="group">
                         <h1>
-                            <a class="logo-text" href="index.html" title="Mem&eacute;nto">OpenWallet</a>
+                            <a class="logo-text" href="home.jsp" title="Mem&eacute;nto">OpenWallet</a>
                         </h1>
                         <p>Probably the best online shop</p>
                     </div>
