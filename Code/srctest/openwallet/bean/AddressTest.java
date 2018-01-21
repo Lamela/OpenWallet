@@ -2,6 +2,8 @@ package openwallet.dao;
 
 import openwallet.dao.AddressDAO;
 import openwallet.dao.UserDAO;
+import openwallet.bean.User;
+import openwallet.bean.Address;
 import org.junit.*;
 
 public class AddressTest {
