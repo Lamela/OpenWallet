@@ -12,7 +12,7 @@ pageEncoding="UTF-8" isELIgnored="false"%>
                 <div class="bl_services type-bl_services status-publish hentry hentry-post group internal-post">
                     <h2>Product information</h2>
                     <div class="post_header group">
-                        <img src="img/product/${p.id_product}.jpg" class="internal wp-post-image" alt="socialmarketing" title="socialmarketing" />                            
+                        <img height="200px" width="200px" src="img/product/${p.id_product}.jpg" class="internal wp-post-image" alt="socialmarketing" title="socialmarketing" />                            
                     </div>
                     <table align="center" class="productTable">
                             <tbody><tr>
