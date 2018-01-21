@@ -819,7 +819,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename /home/rasendrasoa/OpenWallet/Conception/diagramme_classe.png
-	scale 50
+	scale 25
 
 \end_inset
 
@@ -853,14 +853,15 @@ Conception détaillée
 
 \begin_layout Standard
 \begin_inset Float figure
+placement H
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename /home/rasendrasoa/OpenWallet/Conception/diagramme_classe.png
-	scale 30
+	scale 25
 
 \end_inset
 
@@ -1021,11 +1022,12 @@ La réalisation de notre site web a requis la création d’une base de données
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename collé1.png
+	scale 50
 
 \end_inset
 

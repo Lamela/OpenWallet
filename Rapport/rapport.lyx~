@@ -819,7 +819,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename /home/rasendrasoa/OpenWallet/Conception/diagramme_classe.png
-	scale 50
+	scale 25
 
 \end_inset
 
@@ -860,7 +860,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename /home/rasendrasoa/OpenWallet/Conception/diagramme_classe.png
-	scale 30
+	scale 25
 
 \end_inset
 
@@ -1021,11 +1021,12 @@ La réalisation de notre site web a requis la création d’une base de données
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename collé1.png
+	scale 50
 
 \end_inset
 
@@ -1540,7 +1541,10 @@ Déploiement de l'application web
 
 \begin_layout Standard
 Il est nécessaire de lancer le script ~/OpenWallet/Code/web/compile_linux.sh
- afin de compiler l'ensemble du code source.
+ afin de compiler l'ensemble du code source et créer l'archive .jar.
+ L'archive est alors disponible sous le nom ~/OpenWallet/Code/web/Openwallet.war.
+ Il suffit ensuite de copier cette archive dans le répoertoire qui y est
+ dédié dans serveur pour le déploiement.
 \end_layout
 
 \begin_layout Subsection
