@@ -1,32 +1,29 @@
 package openwallet.bean;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.FetchType;
-import javax.persistence.OrderBy;
-import javax.persistence.Column;
 import java.sql.Date;
 import java.util.Set;
-import javax.persistence.Table;
-import javax.persistence.CascadeType;
-import javax.persistence.OneToMany;
 import java.util.TreeSet;
 import java.time.LocalDate;
 import java.util.List;
 
 
 public class Category {
-  
   private int id_category;
   private String name_category;
   List<Product> products;
   List<List<Product>> productsByRow;
 
-  
+  public Category(){};
+
+
+      public Category(int id_category, String name_category) {
+          this.id_category = id_category;
+          this.name_category = name_category;
+      }
+      public Category(String name_category) {
+          this.name_category = name_category;
+      }
+
 
   public int getId_category() {
     return id_category;

@@ -1,22 +1,9 @@
 package openwallet.bean;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.FetchType;
-import javax.persistence.OrderBy;
-import javax.persistence.Column;
 import java.util.Date;
 import java.util.Set;
-import javax.persistence.Table;
-import javax.persistence.CascadeType;
-import javax.persistence.OneToMany;
 import java.util.TreeSet;
 import java.time.LocalDate;
-
 
 public class Product {
   private int id_product;
@@ -33,6 +20,41 @@ public class Product {
   private String color;
   private String material;
   private int comment_count;
+
+  public Product(){};
+
+  public Product(int id_product, Category category, User user, String name_product, String description, double price, int stock, Date create_date_product, String origin, int sold, String brand, String color, String material) {
+    this.id_product = id_product;
+    this.category = category;
+    this.user = user;
+    this.name_product = name_product;
+    this.description = description;
+    this.price = price;
+    this.stock = stock;
+    this.create_date_product = create_date_product;
+    this.origin = origin;
+    this.sold = sold;
+    this.brand = brand;
+    this.color = color;
+    this.material = material;
+	this.comment_count = comment_count;
+  }
+
+  public Product(Category category, User user, String name_product, String description, double price, int stock, Date create_date_product, String origin, int sold, String brand, String color, String material) {
+    this.category = category;
+    this.user = user;
+    this.name_product = name_product;
+    this.description = description;
+    this.price = price;
+    this.stock = stock;
+    this.create_date_product = create_date_product;
+    this.origin = origin;
+    this.sold = sold;
+    this.brand = brand;
+    this.color = color;
+    this.material = material;
+  this.comment_count = comment_count;
+  }
 
   public int getId_product() {
       return id_product;
@@ -137,7 +159,7 @@ public class Product {
   public void setMaterial(String material) {
       this.material = material;
   }
-  
+
   public void setComment_count(int comment_count) {
       this.comment_count = comment_count;
   }

@@ -1,29 +1,12 @@
 package openwallet.bean;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.FetchType;
-import javax.persistence.OrderBy;
-import javax.persistence.Column;
 import java.util.Date;
 import java.util.Set;
-import javax.persistence.Table;
-import javax.persistence.CascadeType;
-import javax.persistence.OneToMany;
 import java.util.TreeSet;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-@Entity
-@Table(name = "User")
 public class User {
-  @Id
-  @GeneratedValue(strategy=GenerationType.AUTO)
-  @Column(name = "id_user")
   private int id_user;
   private String firstname_user;
   private String lastname_user;
@@ -34,6 +17,34 @@ public class User {
   private String password;
   private String mobile_user;
   private String number_id_card;
+
+  public User(){};
+
+  public User(int id_user, String firstname_user, String lastname_user, Date birthday, String type_user, boolean premium, String email, String password, String mobile_user, String number_id_card) {
+      this.id_user = id_user;
+      this.firstname_user = firstname_user;
+      this.lastname_user = lastname_user;
+      this.birthday = birthday;
+      this.type_user = type_user;
+      this.premium = premium;
+      this.email = email;
+      this.password = password;
+      this.mobile_user = mobile_user;
+      this.number_id_card = number_id_card;
+  }
+
+  public User(String firstname_user, String lastname_user, Date birthday, String type_user, boolean premium, String email, String password, String mobile_user, String number_id_card) {
+      this.firstname_user = firstname_user;
+      this.lastname_user = lastname_user;
+      this.birthday = birthday;
+      this.type_user = type_user;
+      this.premium = premium;
+      this.email = email;
+      this.password = password;
+      this.mobile_user = mobile_user;
+      this.number_id_card = number_id_card;
+  }
+
 
   //Getters:
   public int getId_user() {

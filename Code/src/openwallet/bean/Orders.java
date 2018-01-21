@@ -1,18 +1,6 @@
 package openwallet.bean;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.FetchType;
-import javax.persistence.OrderBy;
-import javax.persistence.Column;
 import java.util.*;
-import javax.persistence.Table;
-import javax.persistence.CascadeType;
-import javax.persistence.OneToMany;
 import java.time.LocalDate;
 
 import openwallet.dao.*;
@@ -31,6 +19,40 @@ public class Orders {
   private String status;
   private int total_number;
   private List<ItemOrder> itemOrders;
+
+
+  public Orders(){};
+
+  public Orders(int id_order, User user, double total_price, Address delivery_address, Address invoice_address, String user_message, Date create_date_order, Date pay_date, Date delivery_date, Date confirm_date, String status, int total_number, List<ItemOrder> itemOrders) {
+      this.id_order = id_order;
+      this.user = user;
+      this.total_price = total_price;
+      this.delivery_address = delivery_address;
+      this.invoice_address = invoice_address;
+      this.user_message = user_message;
+      this.create_date_order = create_date_order;
+      this.pay_date = pay_date;
+      this.delivery_date = delivery_date;
+      this.confirm_date = confirm_date;
+      this.status = status;
+      this.total_number = total_number;
+      this.itemOrders = itemOrders;
+  }
+  public Orders(User user, double total_price, Address delivery_address, Address invoice_address, String user_message, Date create_date_order, Date pay_date, Date delivery_date, Date confirm_date, String status, int total_number, List<ItemOrder> itemOrders) {
+      this.user = user;
+      this.total_price = total_price;
+      this.delivery_address = delivery_address;
+      this.invoice_address = invoice_address;
+      this.user_message = user_message;
+      this.create_date_order = create_date_order;
+      this.pay_date = pay_date;
+      this.delivery_date = delivery_date;
+      this.confirm_date = confirm_date;
+      this.status = status;
+      this.total_number = total_number;
+      this.itemOrders = itemOrders;
+  }
+
 
   public String getStatusDesc(){
     String desc ="Unknown";
@@ -118,7 +140,7 @@ public class Orders {
   public Date getPay_date() {
       return pay_date;
   }
-  
+
   public void setPay_date(Date pay_date) {
       this.pay_date = pay_date;
   }

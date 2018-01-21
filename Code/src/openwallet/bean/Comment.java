@@ -1,31 +1,37 @@
 package openwallet.bean;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.FetchType;
-import javax.persistence.OrderBy;
-import javax.persistence.Column;
 import java.util.Date;
 import java.util.Set;
-import javax.persistence.Table;
-import javax.persistence.CascadeType;
-import javax.persistence.OneToMany;
 import java.util.TreeSet;
 import java.time.LocalDate;
 
-
 public class Comment {
- 
+
   private int id_comment;
   private User user;
   private Product product;
   private Date date_comment;
   private double note;
   private String content;
+
+  public Comment(){};
+
+  public Comment(int id_comment, User user, Product product, Date date_comment, double note, String content) {
+     this.id_comment = id_comment;
+     this.user = user;
+     this.product = product;
+     this.date_comment = date_comment;
+     this.note = note;
+	 this.content = content;
+   }
+   public Comment(User user, Product product, Date date_comment, double note, String content) {
+      this.user = user;
+      this.product = product;
+      this.date_comment = date_comment;
+      this.note = note;
+   this.content = content;
+    }
+
 
    public int getId_comment() {
        return id_comment;

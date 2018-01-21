@@ -20,9 +20,6 @@ import openwallet.dao.CategoryDAO;
 import openwallet.dao.OrdersDAO;
 import openwallet.dao.ItemOrderDAO;
 import openwallet.dao.ProductDAO;
-// import openwallet.dao.ProductImageDAO;
-// import openwallet.dao.PropertyDAO;
-// import openwallet.dao.PropertyValueDAO;
 import openwallet.dao.CommentDAO;
 import openwallet.dao.UserDAO;
 import openwallet.util.Page;
@@ -39,9 +36,6 @@ public abstract class BaseBackServlet extends HttpServlet {
     protected OrdersDAO ordersDAO = new OrdersDAO();
     protected ItemOrderDAO itemOrderDAO = new ItemOrderDAO();
     protected ProductDAO productDAO = new ProductDAO();
-    // protected ProductImageDAO productImageDAO = new ProductImageDAO();
-    // protected PropertyDAO propertyDAO = new PropertyDAO();
-    // protected PropertyValueDAO propertyValueDAO = new PropertyValueDAO();
     protected CommentDAO commentDAO = new CommentDAO();
     protected UserDAO userDAO = new UserDAO();
     
@@ -109,9 +103,5 @@ public abstract class BaseBackServlet extends HttpServlet {
 	        }
 			return is;
 		}
-	
-	 
-	
-
 }
 

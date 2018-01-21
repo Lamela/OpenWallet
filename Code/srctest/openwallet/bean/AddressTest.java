@@ -1,9 +1,10 @@
-package openwallet.dao;
+package openwallet.bean;
 
 import openwallet.dao.AddressDAO;
 import openwallet.dao.UserDAO;
 import openwallet.bean.User;
 import openwallet.bean.Address;
+import java.sql.Date;
 import org.junit.*;
 
 public class AddressTest {
@@ -32,7 +33,7 @@ public class AddressTest {
   public void testAdd() {
       Address myAddress2 = addrDAO.get(myAddrID);
 
-      assertEquals(this.assertAddressEquals(myAddress, myAddress2), true);
+      Assert.assertEquals(this.assertAddressEquals(myAddress, myAddress2), true);
 
       // if(this.assertAddressEquals(myAddress, myAddress2))
       //   System.out.println("TestAddress: testAdd Succès");
@@ -49,7 +50,7 @@ public class AddressTest {
 
       Address myAddress2 = addrDAO.get(myAddrID);
 
-      assertEquals(myAddress2.getCity().equals("Paris"), true);
+      Assert.assertEquals(myAddress2.getCity().equals("Paris"), true);
 
       // if(myAddress2.getCity().equals("Paris"))
       //   System.out.println("TestAddress: testUpdate Succès");
@@ -62,10 +63,10 @@ public class AddressTest {
     Address myAddress2 = new Address(myUser,"Georges",
      "Dubois", "0611111111", "Rue République","Rouen", "France", "76000");
 
-    myAddrID2 = addrDAO.add(myAddress2);
+    int myAddrID2 = addrDAO.add(myAddress2);
     addrDAO.delete(myAddrID2);
 
-    assertEquals(addrDAO.get(myAddrID2), null);
+    Assert.assertEquals(addrDAO.get(myAddrID2), null);
 
     // if(addrDAO.get(myAddrID2)==null)
     //   System.out.println("TestAddress: testDelete Succès");
@@ -74,7 +75,7 @@ public class AddressTest {
   }
 
   private boolean assertAddressEquals(Address addr1,Address addr2) {
-
+    boolean equal=false;
     if(addr1.getId_address()!=addr2.getId_address()) {
       System.out.println("TestAddress Erreur: id_address ne sont pas égaux!");
     } else {
