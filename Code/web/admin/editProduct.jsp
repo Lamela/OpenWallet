@@ -26,7 +26,7 @@ $(function() {
 <div class="workingArea">
 	<ol class="breadcrumb">
 	  <li><a href="admin_category_list">All categories</a></li>
-	  <li class="active">${p.name}</li>
+	  <li class="active">${p.name_product}</li>
 	  <li class="active">Edit Product</li>
 	</ol>
 	
@@ -100,3 +100,4 @@ $(function() {
 		</div>
 	</div>
 </div>
+<%@include file="../include/admin/adminFooter.jsp"%>
