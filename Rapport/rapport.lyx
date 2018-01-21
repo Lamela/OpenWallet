@@ -78,11 +78,12 @@
 \begin_body
 
 \begin_layout Title
-Technologie Web 2
+TW2 : Rapport de Projet - Site de Vente
 \end_layout
 
 \begin_layout Author
-Rapport de Projet
+Groupe 6 : Xu Jitao, Lu Chenxin, Zhu Zhenghui, Osmani Wael, Rasendrasoa
+ Sandratra
 \end_layout
 
 \begin_layout Standard
@@ -584,7 +585,8 @@ status collapsed
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename /home/rasendrasoa/OpenWallet/Conception/diagramme_nav.png
-	scale 20
+	scale 28
+	rotateAngle -90
 
 \end_inset
 
@@ -772,7 +774,7 @@ Diagramme de séquence
 placement H
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
@@ -819,7 +821,8 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename /home/rasendrasoa/OpenWallet/Conception/diagramme_classe.png
-	scale 25
+	scale 28
+	rotateAngle -90
 
 \end_inset
 
@@ -856,12 +859,13 @@ Conception détaillée
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename /home/rasendrasoa/OpenWallet/Conception/diagramme_classe.png
-	scale 25
+	scale 28
+	rotateAngle -90
 
 \end_inset
 
