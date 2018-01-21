@@ -851,6 +851,43 @@ Diagramme de classe
 Conception détaillée
 \end_layout
 
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/rasendrasoa/OpenWallet/Conception/diagramme_classe.png
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Digramme de classes participantes
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Part
 Implémentation et tests
 \end_layout
@@ -2040,6 +2077,12 @@ Premium, la fonctionnalité a été jugée peu importante.
 La fonctionnalité Commentaire n'est pas entièrement opérationnelle, on a
  une place pour afficher les commentaire s'ils existent.
  On ne peut pas avoir un commentaire que si on a fini une commande.
+\end_layout
+
+\begin_layout Enumerate
+Pour les utilisateurs, afin de simplifier la tâche, l'administrateur est
+ considéré comme le seul vendeur, il peut gérer les catégories et les produits
+ sur les page dans le répertoire /web/admin.
 \end_layout
 
 \end_body

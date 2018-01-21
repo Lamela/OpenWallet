@@ -851,6 +851,43 @@ Diagramme de classe
 Conception détaillée
 \end_layout
 
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/rasendrasoa/OpenWallet/Conception/diagramme_classe.png
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Digramme de classes participantes
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Part
 Implémentation et tests
 \end_layout
@@ -1503,7 +1540,10 @@ Déploiement de l'application web
 
 \begin_layout Standard
 Il est nécessaire de lancer le script ~/OpenWallet/Code/web/compile_linux.sh
- afin de compiler l'ensemble du code source.
+ afin de compiler l'ensemble du code source et créer l'archive .jar.
+ L'archive est alors disponible sous le nom ~/OpenWallet/Code/web/Openwallet.war.
+ Il suffit ensuite de copier cette archive dans le répoertoire qui y est
+ dédié dans serveur pour le déploiement.
 \end_layout
 
 \begin_layout Subsection
